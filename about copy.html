@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos - Beluga Restaurant</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2B1B4D;
+            --secondary: #3D2A5F;
+            --accent: #D4A574;
+            --dark: #1A0F2E;
+            --warm: #F8F5F0;
+            --light: #FFFFFF;
+            --gold: #D4A574;
+            --text-dark: #2B1B4D;
+            --text-light: #5A4A6F;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 30px rgba(43, 27, 77, 0.1);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--accent);
+            letter-spacing: 2px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .btn-reserve {
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-reserve:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(43, 27, 77, 0.3);
+        }
+
+        /* Hero Header */
+        .page-hero {
+            padding: 180px 60px 100px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            font-size: 14px;
+            color: var(--accent);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 900;
+            color: white;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.4s forwards;
+        }
+
+        .hero-description {
+            font-size: 20px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.6s forwards;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Content Section */
+        .about-content {
+            padding: 120px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+            margin-bottom: 100px;
+        }
+
+        .content-text {
+            position: sticky;
+            top: 120px;
+        }
+
+        .section-label {
+            font-size: 13px;
+            color: var(--accent);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .content-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.3;
+            margin-bottom: 30px;
+        }
+
+        .content-paragraph {
+            font-size: 18px;
+            line-height: 1.9;
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        .content-highlight {
+            background: rgba(212, 165, 116, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 40px 0;
+        }
+
+        .content-highlight p {
+            font-size: 20px;
+            line-height: 1.8;
+            color: var(--primary);
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        .content-images {
+            display: grid;
+            gap: 20px;
+        }
+
+        .image-large {
+            width: 100%;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .image-large:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .image-small {
+            width: 100%;
+            height: 280px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-small img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .image-small:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 100px 60px;
+            background: var(--warm);
+        }
+
+        .values-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .values-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .values-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 52px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .values-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .value-card {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(43, 27, 77, 0.12);
+            border-color: var(--accent);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin: 0 auto 25px;
+            transition: all 0.4s ease;
+        }
+
+        .value-card:hover .value-icon {
+            transform: rotate(5deg) scale(1.1);
+        }
+
+        .value-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .value-description {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-light);
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 120px 60px;
+            background: white;
+        }
+
+        .team-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .team-intro {
+            max-width: 800px;
+            margin: 0 auto 80px;
+            text-align: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-photo {
+            width: 100%;
+            aspect-ratio: 3/4;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: all 0.5s ease;
+        }
+
+        .team-member:hover .team-photo img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        .team-photo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(43, 27, 77, 0.3) 0%, transparent 50%);
+            transition: opacity 0.5s ease;
+        }
+
+        .team-member:hover .team-photo::after {
+            opacity: 0;
+        }
+
+        .team-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .team-role {
+            font-size: 15px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .team-bio {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-light);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .cta-text {
+            font-size: 20px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 20px 50px;
+            background: white;
+            color: var(--primary);
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            padding: 80px 60px 40px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand {
+            max-width: 350px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .footer-description {
+            font-size: 15px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 25px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-column h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: white;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .content-text {
+                position: relative;
+                top: 0;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px 30px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .page-hero {
+                padding: 140px 30px 80px;
+            }
+
+            .hero-title {
+                font-size: 42px;
+            }
+
+            .about-content {
+                padding: 80px 30px;
+            }
+
+            .content-title {
+                font-size: 36px;
+            }
+
+            .values-title {
+                font-size: 38px;
+            }
+
+            .cta-title {
+                font-size: 38px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="/" class="logo">BELUGA</a>
+        <ul class="nav-links">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/about" class="active">À Propos</a></li>
+            <li><a href="/menu">Menu</a></li>
+            <li><a href="/events">Événements</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+        <button class="btn-reserve">Réserver</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="hero-content">
+            <div class="hero-label">Découvrez notre histoire</div>
+            <h1 class="hero-title">À Propos de Beluga</h1>
+            <p class="hero-description">
+                Une passion pour la gastronomie, un engagement envers l'excellence, et une ambiance unique qui fait de
+                chaque visite une expérience mémorable.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="about-content">
+        <div class="content-grid">
+            <div class="content-text">
+                <div class="section-label">Notre Philosophie</div>
+                <h2 class="content-title">L'Excellence Culinaire au Cœur de Notre ADN</h2>
+
+                <p class="content-paragraph">
+                    <strong>Beluga</strong>, c'est avant tout un restaurant qualitatif avec <strong>95% de produits
+                        frais cuisinés sur place</strong> par notre équipe de professionnels des métiers de bouche. Une
+                    carte variée, des produits sympas et tendance, des changements réguliers en fonction des saisons, un
+                    bar à cocktail, et pleins de moments festifs !
+                </p>
+
+                <p class="content-paragraph">
+                    Notre cuisine « maison » se veut <strong>généreuse et conviviale</strong> à un prix accessible.
+                    Idéal pour un déjeuner rapide le midi dans une ambiance différente, pour un afterwork entre
+                    collègues, un dîner entre amis ou même un brunch familial le dimanche matin !
+                </p>
+
+                <div class="content-highlight">
+                    <p>"Chaque plat raconte une histoire, chaque ingrédient est choisi avec soin, et chaque assiette est
+                        préparée avec passion."</p>
+                </div>
+
+                <p class="content-paragraph">
+                    Nous croyons fermement que la qualité ne doit pas être un luxe. C'est pourquoi nous travaillons
+                    directement avec des producteurs locaux et des fournisseurs de confiance pour vous offrir le
+                    meilleur de la gastronomie française, tout en respectant les saisons et l'environnement.
+                </p>
+
+                <p class="content-paragraph">
+                    Notre chef et son équipe créent des plats raffinés qui allient <strong>tradition et
+                        modernité</strong>, pour une expérience culinaire qui surprend et ravit à chaque bouchée.
+                </p>
+            </div>
+
+            <div class="content-images">
+                <div class="image-large">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=1000&fit=crop"
+                        alt="Restaurant Beluga">
+                </div>
+                <div class="image-grid">
+                    <div class="image-small">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&h=400&fit=crop"
+                            alt="Cuisine">
+                    </div>
+                    <div class="image-small">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=400&fit=crop"
+                            alt="Plats">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="values-container">
+            <div class="values-header">
+                <div class="section-label">Nos Valeurs</div>
+                <h2 class="values-title">Ce qui nous définit</h2>
+                <p class="values-subtitle">
+                    Des principes qui guident chacune de nos actions et façonnent l'expérience Beluga
+                </p>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🌿</div>
+                    <h3 class="value-title">Fraîcheur</h3>
+                    <p class="value-description">
+                        95% de produits frais cuisinés sur place quotidiennement. Nous privilégions les circuits courts
+                        et les producteurs locaux.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">👨‍🍳</div>
+                    <h3 class="value-title">Savoir-Faire</h3>
+                    <p class="value-description">
+                        Une équipe de professionnels passionnés qui maîtrisent l'art culinaire et perpétuent les
+                        traditions gastronomiques.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🎭</div>
+                    <h3 class="value-title">Convivialité</h3>
+                    <p class="value-description">
+                        Une ambiance chaleureuse et festive où chaque moment devient une célébration, du déjeuner rapide
+                        au dîner entre amis.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🌱</div>
+                    <h3 class="value-title">Saisonnalité</h3>
+                    <p class="value-description">
+                        Des changements réguliers de carte pour suivre les saisons et vous offrir le meilleur des
+                        produits du moment.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">💎</div>
+                    <h3 class="value-title">Accessibilité</h3>
+                    <p class="value-description">
+                        Une cuisine généreuse et de qualité à des prix justes, parce que la gastronomie doit être
+                        accessible à tous.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">✨</div>
+                    <h3 class="value-title">Innovation</h3>
+                    <p class="value-description">
+                        Une carte qui évolue avec les tendances culinaires tout en respectant les traditions de la
+                        cuisine française.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="team-container">
+            <div class="team-intro">
+                <div class="section-label">Notre Équipe</div>
+                <h2 class="content-title">Les Artisans de Votre Expérience</h2>
+                <p class="content-paragraph">
+                    Une équipe passionnée et dévouée qui travaille chaque jour pour faire de votre visite un moment
+                    inoubliable.
+                </p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&h=500&fit=crop"
+                            alt="Chef">
+                    </div>
+                    <h3 class="team-name">Alexandre Dubois</h3>
+                    <div class="team-role">Chef Exécutif</div>
+                    <p class="team-bio">
+                        15 ans d'expérience dans les plus grandes tables, Alexandre apporte sa créativité et sa passion
+                        pour sublimer chaque plat.
+                    </p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?w=400&h=500&fit=crop"
+                            alt="Sommelier">
+                    </div>
+                    <h3 class="team-name">Sophie Laurent</h3>
+                    <div class="team-role">Chef Sommelière</div>
+                    <p class="team-bio">
+                        Experte en accords mets et vins, Sophie sélectionne avec soin chaque référence pour accompagner
+                        parfaitement nos plats.
+                    </p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1542909168-82c3e7fdca44?w=400&h=500&fit=crop"
+                            alt="Manager">
+                    </div>
+                    <h3 class="team-name">Thomas Bernard</h3>
+                    <div class="team-role">Directeur de Salle</div>
+                    <p class="team-bio">
+                        Garant de votre confort, Thomas orchestre le service avec élégance pour que chaque détail soit
+                        parfait.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-title">Prêt à vivre l'expérience Beluga ?</h2>
+            <p class="cta-text">
+                Réservez votre table dès maintenant et découvrez une cuisine qui célèbre le meilleur de la gastronomie
+                française.
+            </p>
+            <a href="/reservation" class="cta-button">Réserver une table</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">BELUGA</div>
+                <p class="footer-description">
+                    Restaurant gastronomique au cœur du Carré Sénart.
+                    Une expérience culinaire unique dans un cadre chaleureux et raffiné.
+                </p>
+                <div class="footer-social">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">🐦</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="/about">À Propos</a></li>
+                    <li><a href="/menu">Menu</a></li>
+                    <li><a href="/events">Événements</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Infos Pratiques</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Horaires</a></li>
+                    <li><a href="#">La Carte</a></li>
+                    <li><a href="#">Réserver</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li>Carré Sénart</li>
+                    <li>77127 Lieusaint</li>
+                    <li>01 60 18 18 18</li>
+                    <li>contact@beluga.fr</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2025 Beluga - Tous droits réservés | Mentions légales | Politique de confidentialité
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.value-card, .team-member').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Add staggered delay to value cards
+        document.querySelectorAll('.value-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Add staggered delay to team members
+        document.querySelectorAll('.team-member').forEach((member, index) => {
+            member.style.transitionDelay = `${index * 0.15}s`;
+        });
+    </script>
+</body>
+
+</html>

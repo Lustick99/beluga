@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manger - Beluga Restaurant</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2B1B4D;
+            --secondary: #3D2A5F;
+            --accent: #D4A574;
+            --text-dark: #2B1B4D;
+            --text-light: #5A4A6F;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fff;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* Custom Cursor */
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            transition: all 0.15s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .custom-cursor-follower {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+            opacity: 0.5;
+        }
+
+        .custom-cursor.hover {
+            width: 60px;
+            height: 60px;
+            background: rgba(212, 165, 116, 0.1);
+        }
+
+        /* Animated Texture Background */
+        .texture-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(212, 165, 116, 0.03) 2px,
+                    rgba(212, 165, 116, 0.03) 4px);
+            pointer-events: none;
+            z-index: 1;
+            animation: textureMove 20s linear infinite;
+        }
+
+        @keyframes textureMove {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(50px);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 60px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 2px 20px rgba(43, 27, 77, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--accent);
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* Hero with Parallax */
+        .hero-section {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #F8F5F0 0%, #fff 100%);
+        }
+
+        .hero-bg-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: floatShapes 20s ease-in-out infinite;
+        }
+
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent);
+            top: 10%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            bottom: 20%;
+            right: -5%;
+            animation-delay: 5s;
+        }
+
+        .shape-3 {
+            width: 200px;
+            height: 200px;
+            background: var(--accent);
+            top: 50%;
+            right: 20%;
+            animation-delay: 10s;
+        }
+
+        @keyframes floatShapes {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-30px, 30px) scale(0.9);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 1200px;
+            padding: 0 40px;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(60px, 10vw, 140px);
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 0.9;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .hero-title span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(100px) rotate(-5deg);
+            animation: titleReveal 1s ease forwards;
+        }
+
+        .hero-title span:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .hero-title span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .hero-title span:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .hero-title span:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .hero-title span:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .hero-title span:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes titleReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0) rotate(0);
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeIn 1s ease 1.5s forwards, bounce 2s ease infinite 2.5s;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 2px;
+            height: 50px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+            margin: 0 auto 10px;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(10px);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Content Section with Reveal */
+        .content-section {
+            position: relative;
+            z-index: 10;
+            padding: 150px 60px;
+            background: #fff;
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-block {
+            margin-bottom: 100px;
+            opacity: 0;
+            transform: translateY(80px);
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .content-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .content-text {
+            font-size: clamp(28px, 4vw, 48px);
+            line-height: 1.6;
+            color: var(--text-dark);
+            font-weight: 300;
+            letter-spacing: -0.5px;
+        }
+
+        .content-text strong {
+            font-weight: 700;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .content-text strong::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.6s ease;
+        }
+
+        .content-block.visible .content-text strong::after {
+            width: 100%;
+        }
+
+        /* Image Grid with Hover Effects */
+        .image-grid-section {
+            padding: 100px 60px;
+            background: #F8F5F0;
+        }
+
+        .grid-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 30px;
+        }
+
+        .grid-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .grid-item-1 {
+            grid-column: 1 / 8;
+            grid-row: 1 / 3;
+        }
+
+        .grid-item-2 {
+            grid-column: 8 / 13;
+            grid-row: 1 / 2;
+        }
+
+        .grid-item-3 {
+            grid-column: 8 / 13;
+            grid-row: 2 / 3;
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            filter: grayscale(0.3);
+        }
+
+        .grid-item:hover img {
+            transform: scale(1.15);
+            filter: grayscale(0);
+        }
+
+        .grid-item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(43, 27, 77, 0.8) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 40px;
+        }
+
+        .grid-item:hover .grid-item-overlay {
+            opacity: 1;
+        }
+
+        .grid-item-text {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            transform: translateY(20px);
+            transition: transform 0.6s ease;
+        }
+
+        .grid-item:hover .grid-item-text {
+            transform: translateY(0);
+        }
+
+        /* Values Cards with 3D Effect */
+        .values-section {
+            padding: 150px 60px;
+            background: #fff;
+        }
+
+        .values-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .value-card {
+            background: #fff;
+            padding: 50px 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 60px rgba(43, 27, 77, 0.08);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-20px) rotateX(5deg);
+            box-shadow: 0 30px 80px rgba(43, 27, 77, 0.15);
+        }
+
+        .value-card:hover::before {
+            opacity: 0.03;
+        }
+
+        .value-icon {
+            font-size: 60px;
+            margin-bottom: 25px;
+            display: block;
+            transform: scale(1);
+            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .value-card:hover .value-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .value-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .value-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-light);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* CTA with Animated Gradient */
+        .cta-section {
+            padding: 150px 60px;
+            background: linear-gradient(-45deg, var(--primary), var(--secondary), var(--primary), var(--accent));
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(40px, 6vw, 72px);
+            font-weight: 900;
+            color: white;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 25px 60px;
+            background: white;
+            color: var(--primary);
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            body {
+                cursor: auto;
+            }
+
+            .custom-cursor,
+            .custom-cursor-follower {
+                display: none;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-item-1,
+            .grid-item-2,
+            .grid-item-3 {
+                grid-column: 1 / -1;
+                grid-row: auto;
+                height: 300px;
+            }
+
+            .content-section {
+                padding: 80px 30px;
+            }
+
+            .values-section,
+            .cta-section {
+                padding: 100px 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-follower"></div>
+
+    <!-- Texture Overlay -->
+    <div class="texture-overlay"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">BELUGA</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span>M</span><span>A</span><span>N</span><span>G</span><span>E</span><span>R</span>
+            </h1>
+        </div>
+
+        <div class="scroll-indicator">
+            <span></span>
+            <p style="font-size: 12px; color: var(--text-light); text-transform: uppercase; letter-spacing: 2px;">Scroll
+            </p>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <div class="content-wrapper">
+            <div class="content-block">
+                <p class="content-text">
+                    <strong>BELUGA</strong> c'est avant tout un restaurant qualitatif avec <strong>95% de produits frais
+                        cuisinés sur place</strong> par notre équipe de professionnels des métiers de bouche.
+                </p>
+            </div>
+
+            <div class="content-block">
+                <p class="content-text">
+                    Une carte variée, des produits sympas et tendance, des changements réguliers en fonction des
+                    saisons, un bar à cocktail, et pleins de moments festifs !
+                </p>
+            </div>
+
+            <div class="content-block">
+                <p class="content-text">
+                    Notre cuisine « maison » se veut <strong>généreuse et conviviale</strong> à un prix accessible.
+                </p>
+            </div>
+
+            <div class="content-block">
+                <p class="content-text">
+                    Idéal pour un déjeuner rapide le midi dans une ambiance différente, pour un afterwork entre
+                    collègues, un dîner entre amis ou même un brunch familial le dimanche matin !
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Grid -->
+    <section class="image-grid-section">
+        <div class="grid-container">
+            <div class="grid-item grid-item-1">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=800&fit=crop"
+                    alt="Restaurant">
+                <div class="grid-item-overlay">
+                    <div class="grid-item-text">Notre Salle</div>
+                </div>
+            </div>
+            <div class="grid-item grid-item-2">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&h=600&fit=crop" alt="Plats">
+                <div class="grid-item-overlay">
+                    <div class="grid-item-text">Nos Plats</div>
+                </div>
+            </div>
+            <div class="grid-item grid-item-3">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=600&fit=crop" alt="Cuisine">
+                <div class="grid-item-overlay">
+                    <div class="grid-item-text">En Cuisine</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="values-grid">
+            <div class="value-card">
+                <span class="value-icon">🌿</span>
+                <h3 class="value-title">Produits Frais</h3>
+                <p class="value-description">95% de produits frais cuisinés quotidiennement sur place par nos chefs</p>
+            </div>
+
+            <div class="value-card">
+                <span class="value-icon">👨‍🍳</span>
+                <h3 class="value-title">Fait Maison</h3>
+                <p class="value-description">Une équipe de professionnels passionnés qui cuisinent avec amour</p>
+            </div>
+
+            <div class="value-card">
+                <span class="value-icon">🎭</span>
+                <h3 class="value-title">Ambiance Festive</h3>
+                <p class="value-description">Des moments conviviaux dans une atmosphère chaleureuse</p>
+            </div>
+
+            <div class="value-card">
+                <span class="value-icon">🌱</span>
+                <h3 class="value-title">Carte Saisonnière</h3>
+                <p class="value-description">Des changements réguliers pour suivre les saisons</p>
+            </div>
+
+            <div class="value-card">
+                <span class="value-icon">🍸</span>
+                <h3 class="value-title">Bar à Cocktails</h3>
+                <p class="value-description">Des cocktails créatifs et des tapas pour l'apéritif</p>
+            </div>
+
+            <div class="value-card">
+                <span class="value-icon">💰</span>
+                <h3 class="value-title">Prix Accessible</h3>
+                <p class="value-description">Une cuisine de qualité à des tarifs justes et abordables</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-title">Prêt à découvrir Beluga ?</h2>
+            <a href="/reservation" class="cta-button">Réserver une table</a>
+        </div>
+    </section>
+
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.custom-cursor');
+        const cursorFollower = document.querySelector('.custom-cursor-follower');
+        let mouseX = 0, mouseY = 0;
+        let followerX = 0, followerY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursor.style.left = mouseX + 'px';
+            cursor.style.top = mouseY + 'px';
+        });
+
+        function animateFollower() {
+            followerX += (mouseX - followerX) * 0.1;
+            followerY += (mouseY - followerY) * 0.1;
+            cursorFollower.style.left = followerX + 'px';
+            cursorFollower.style.top = followerY + 'px';
+            requestAnimationFrame(animateFollower);
+        }
+        animateFollower();
+
+        // Hover effect on interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, .grid-item, .value-card');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // Scroll Reveal Animation
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.content-block').forEach(block => {
+            observer.observe(block);
+        });
+
+        // Parallax effect on hero shapes
+        document.addEventListener('mousemove', (e) => {
+            const shapes = document.querySelectorAll('.shape');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+
+            shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 20;
+                const x = (mouseX - 0.5) * speed;
+                const y = (mouseY - 0.5) * speed;
+                shape.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,2021 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Folks - EAT DRINK PLAY</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange: #ff6b35;
+            --dark: #0d0d0d;
+            --ease: cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--dark);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+            padding: 30px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.5s var(--ease);
+            background: transparent;
+            mix-blend-mode: difference;
+        }
+
+        nav.scrolled {
+            background: rgba(13, 13, 13, 0.98);
+            backdrop-filter: blur(30px);
+            padding: 20px 60px;
+            box-shadow: 0 10px 60px rgba(0, 0, 0, 0.5);
+            mix-blend-mode: normal;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            font-weight: 400;
+            color: #fff;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--orange);
+        }
+
+        .menu-toggle {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            cursor: pointer;
+            gap: 6px;
+            position: relative;
+        }
+
+        .menu-toggle span {
+            height: 2px;
+            background: #fff;
+            transition: all 0.5s var(--ease);
+            border-radius: 2px;
+        }
+
+        .menu-toggle span:nth-child(1) {
+            width: 35px;
+        }
+
+        .menu-toggle span:nth-child(2) {
+            width: 45px;
+        }
+
+        .menu-toggle span:nth-child(3) {
+            width: 25px;
+        }
+
+        .menu-toggle:hover span:nth-child(1) {
+            width: 45px;
+        }
+
+        .menu-toggle:hover span:nth-child(3) {
+            width: 35px;
+        }
+
+        .menu-toggle.active span {
+            width: 40px !important;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        /* Menu Overlay */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--orange) 0%, #ff4545 100%);
+            z-index: 9998;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            clip-path: circle(0% at 95% 5%);
+            transition: clip-path 1s var(--ease);
+        }
+
+        .menu-overlay.active {
+            clip-path: circle(150% at 95% 5%);
+        }
+
+        .menu-content {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s var(--ease);
+        }
+
+        .menu-overlay.active .menu-content {
+            opacity: 1;
+            transform: scale(1);
+            transition-delay: 0.4s;
+        }
+
+        .menu-content ul {
+            list-style: none;
+            text-align: center;
+        }
+
+        .menu-content ul li {
+            margin: 25px 0;
+            overflow: hidden;
+        }
+
+        .menu-content ul li a {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 80px;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            display: inline-block;
+            position: relative;
+            transition: all 0.4s var(--ease);
+        }
+
+        .menu-content ul li a::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            overflow: hidden;
+            color: var(--dark);
+            transition: width 0.6s var(--ease);
+        }
+
+        .menu-content ul li a:hover::before {
+            width: 100%;
+        }
+
+        .menu-content ul li a:hover {
+            letter-spacing: 12px;
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at 30% 50%, #1a0f0f 0%, var(--dark) 60%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulseHero 10s ease-in-out infinite alternate;
+            filter: blur(80px);
+        }
+
+        @keyframes pulseHero {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: translate(-30%, -30%) scale(1.4);
+                opacity: 0.6;
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 160px;
+            font-weight: 400;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 25px;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .hero-title span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(150px) rotateX(-90deg);
+            animation: flipIn 1.2s var(--ease) forwards;
+        }
+
+        @keyframes flipIn {
+            to {
+                opacity: 1;
+                transform: translateY(0) rotateX(0);
+            }
+        }
+
+        .hero-title span:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .hero-title span:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .hero-title span:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .hero-title span:nth-child(4) {
+            animation-delay: 0.25s;
+        }
+
+        .hero-title span:nth-child(5) {
+            animation-delay: 0.3s;
+        }
+
+        .hero-title span:nth-child(6) {
+            animation-delay: 0.35s;
+        }
+
+        .hero-title span:nth-child(7) {
+            animation-delay: 0.45s;
+        }
+
+        .hero-title span:nth-child(8) {
+            animation-delay: 0.5s;
+        }
+
+        .hero-title span:nth-child(9) {
+            animation-delay: 0.55s;
+        }
+
+        .hero-title span:nth-child(10) {
+            animation-delay: 0.6s;
+        }
+
+        .hero-title span:nth-child(11) {
+            animation-delay: 0.65s;
+        }
+
+        .hero-subtitle {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 60px;
+            font-weight: 400;
+            letter-spacing: 30px;
+            color: var(--orange);
+            opacity: 0;
+            animation: fadeSlideUp 1s ease 0.8s forwards;
+            text-shadow: 0 0 40px rgba(255, 107, 53, 0.5);
+        }
+
+        @keyframes fadeSlideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-description {
+            max-width: 900px;
+            margin: 50px auto 0;
+            font-size: 17px;
+            line-height: 2;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeSlideUp 1s ease 1.2s forwards;
+            transform: translateY(30px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            opacity: 0;
+            animation: fadeSlideUp 1s ease 1.6s forwards;
+        }
+
+        .scroll-indicator::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 8px;
+            background: var(--orange);
+            border-radius: 2px;
+            animation: scrollAnim 2.5s ease-in-out infinite;
+        }
+
+        @keyframes scrollAnim {
+
+            0%,
+            100% {
+                transform: translate(-50%, 0);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(-50%, 20px);
+                opacity: 0;
+            }
+        }
+
+        /* Sections */
+        .section {
+            padding: 180px 60px;
+            position: relative;
+        }
+
+        .section-intro {
+            text-align: center;
+            margin-bottom: 120px;
+        }
+
+        .section-label {
+            font-size: 13px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s var(--ease);
+        }
+
+        .section-label.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 100px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1.2s var(--ease) 0.2s;
+        }
+
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-text {
+            font-size: 19px;
+            max-width: 850px;
+            margin: 0 auto;
+            line-height: 2;
+            font-weight: 300;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s var(--ease) 0.4s;
+        }
+
+        .section-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Cards principales */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+            max-width: 1700px;
+            margin: 0 auto;
+        }
+
+        .card {
+            position: relative;
+            height: 650px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(80px);
+            transition: all 1s var(--ease);
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:nth-child(1).visible {
+            transition-delay: 0.1s;
+        }
+
+        .card:nth-child(2).visible {
+            transition-delay: 0.3s;
+        }
+
+        .card:nth-child(3).visible {
+            transition-delay: 0.5s;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s var(--ease);
+        }
+
+        .card-image-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.5s var(--ease);
+            will-change: transform;
+        }
+
+        .card:hover .card-image {
+            transform: scale(1.15);
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.95) 100%);
+            z-index: 1;
+        }
+
+        .card-overlay-color {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--orange);
+            opacity: 0;
+            transition: opacity 0.8s var(--ease);
+            mix-blend-mode: multiply;
+            z-index: 2;
+        }
+
+        .card:hover .card-overlay-color {
+            opacity: 0.85;
+        }
+
+        .card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 60px;
+            z-index: 3;
+        }
+
+        .card-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 140px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.08);
+            line-height: 1;
+            position: absolute;
+            top: -40px;
+            left: 60px;
+            transition: all 0.8s var(--ease);
+        }
+
+        .card:hover .card-number {
+            color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-10px);
+        }
+
+        .card-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 60px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .card-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #fff;
+            transition: width 0.6s var(--ease);
+        }
+
+        .card:hover .card-title::after {
+            width: 100%;
+        }
+
+        .card-description {
+            font-size: 16px;
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s var(--ease);
+        }
+
+        .card:hover .card-description {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.2s;
+        }
+
+        .card-link {
+            display: inline-block;
+            padding: 18px 45px;
+            background: #fff;
+            color: var(--dark);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            opacity: 0;
+            transform: translateY(30px) scale(0.9);
+            transition: all 0.8s var(--ease);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover .card-link {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition-delay: 0.3s;
+        }
+
+        .card-link::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: var(--orange);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s var(--ease);
+        }
+
+        .card-link:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .card-link span {
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+
+        .card-link:hover span {
+            color: #fff;
+        }
+
+        /* Section détail (Manger, Jouer, Boire) */
+        .detail-section {
+            padding: 150px 60px;
+            background: var(--dark);
+        }
+
+        .detail-hero {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            text-align: center;
+        }
+
+        .detail-hero h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 120px;
+            letter-spacing: 10px;
+            color: var(--orange);
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s var(--ease);
+        }
+
+        .detail-hero h2.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .detail-hero p {
+            font-size: 20px;
+            line-height: 2;
+            font-weight: 300;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s var(--ease) 0.2s;
+        }
+
+        .detail-hero p.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto 150px;
+        }
+
+        .feature-card {
+            background: #1a1a1a;
+            padding: 60px;
+            border-radius: 0;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 1s var(--ease);
+        }
+
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--orange);
+            transition: width 0.6s var(--ease);
+            z-index: 0;
+        }
+
+        .feature-card:hover::before {
+            width: 100%;
+        }
+
+        .feature-card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-icon {
+            font-size: 60px;
+            margin-bottom: 30px;
+            transition: transform 0.4s var(--ease);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .feature-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .feature-text {
+            font-size: 16px;
+            line-height: 1.8;
+            font-weight: 300;
+            opacity: 0.8;
+        }
+
+        /* Text Section */
+        .text-section {
+            background: linear-gradient(135deg, var(--orange) 0%, #ff3535 100%);
+            padding: 250px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .text-section::before,
+        .text-section::after {
+            content: '';
+            position: absolute;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .text-section::before {
+            width: 800px;
+            height: 800px;
+            top: -400px;
+            left: -200px;
+            animation: floatBlob 20s ease-in-out infinite;
+        }
+
+        .text-section::after {
+            width: 600px;
+            height: 600px;
+            bottom: -300px;
+            right: -100px;
+            animation: floatBlob 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes floatBlob {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(60px, 60px) scale(1.1);
+            }
+        }
+
+        .text-large {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 90px;
+            font-weight: 400;
+            line-height: 1.3;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 3px;
+        }
+
+        .text-large .word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 1s var(--ease);
+        }
+
+        .text-large.visible .word {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 350px;
+            gap: 25px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: scale(0.85) translateY(40px);
+            transition: all 0.9s var(--ease);
+            cursor: pointer;
+        }
+
+        .gallery-item.visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-row: span 2;
+        }
+
+        .gallery-item:nth-child(4) {
+            grid-row: span 2;
+        }
+
+        .gallery-item:nth-child(7) {
+            grid-column: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s var(--ease);
+            filter: grayscale(0.3);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.2) rotate(2deg);
+            filter: grayscale(0);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.9) 0%, rgba(255, 45, 85, 0.9) 100%);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            mix-blend-mode: multiply;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--dark);
+            padding: 250px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+            animation: pulseHero 8s ease-in-out infinite alternate;
+        }
+
+        .cta-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 60px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s var(--ease);
+        }
+
+        .cta-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 120px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            margin-bottom: 80px;
+            background: linear-gradient(135deg, #fff 0%, var(--orange) 50%, #fff 100%);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s var(--ease) 0.2s;
+            animation: gradientShift 5s ease infinite;
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .cta-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 30px 70px;
+            background: var(--orange);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-decoration: none;
+            border-radius: 60px;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s var(--ease) 0.4s;
+        }
+
+        .cta-button.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: #fff;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.7s var(--ease);
+        }
+
+        .cta-button:hover::before {
+            width: 500px;
+            height: 500px;
+        }
+
+        .cta-button span {
+            position: relative;
+            z-index: 2;
+            transition: color 0.4s ease 0.3s;
+        }
+
+        .cta-button:hover span {
+            color: var(--orange);
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 100px 60px 50px;
+            text-align: center;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 48px;
+            color: var(--orange);
+            margin-bottom: 40px;
+            letter-spacing: 6px;
+        }
+
+        .footer-text {
+            font-size: 15px;
+            color: #666;
+            line-height: 2;
+            margin-bottom: 50px;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-social a {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 20px;
+            transition: all 0.4s var(--ease);
+            text-decoration: none;
+        }
+
+        .footer-social a:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1a1a1a;
+            padding-top: 40px;
+            font-size: 13px;
+            color: #444;
+        }
+
+        /* Page Sections (cachées par défaut) */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-title {
+                font-size: 100px;
+            }
+
+            .section-title {
+                font-size: 70px;
+            }
+
+            .text-large {
+                font-size: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 25px 30px;
+            }
+
+            .section {
+                padding: 100px 30px;
+            }
+
+            .detail-section {
+                padding: 100px 30px;
+            }
+
+            .hero-title {
+                font-size: 60px;
+                letter-spacing: 15px;
+            }
+
+            .hero-subtitle {
+                font-size: 35px;
+                letter-spacing: 15px;
+            }
+
+            .section-title {
+                font-size: 50px;
+            }
+
+            .text-large {
+                font-size: 40px;
+            }
+
+            .cta-title {
+                font-size: 60px;
+            }
+
+            .menu-content ul li a {
+                font-size: 50px;
+            }
+
+            .card {
+                height: 500px;
+            }
+
+            .detail-hero h2 {
+                font-size: 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="navbar">
+        <div class="logo" onclick="showPage('home')">LUCKY FOLKS</div>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="menu-content">
+            <ul>
+                <li><a href="#" data-page="manger" data-text="Manger">Manger</a></li>
+                <li><a href="#" data-page="jouer" data-text="Jouer">Jouer</a></li>
+                <li><a href="#" data-page="boire" data-text="Boire">Boire</a></li>
+                <li><a href="#" data-page="groupes" data-text="Groupes">Groupes</a></li>
+                <li><a href="#" data-page="home" data-text="Accueil">Accueil</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- PAGE HOME -->
+    <div id="home" class="page-section active">
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span>L</span><span>U</span><span>C</span><span>K</span><span>Y</span>
+                    <span> </span>
+                    <span>F</span><span>O</span><span>L</span><span>K</span><span>S</span>
+                </h1>
+                <div class="hero-subtitle">EAT. DRINK. PLAY.</div>
+                <p class="hero-description">
+                    Restaurant-bar à jeux ludique qui s'inspire de l'univers des fêtes foraines à l'ancienne !<br>
+                    Situé au cœur du Carré Sénart, près de Paris, ce lieu de vie original mêle cuisine maison,<br>
+                    ambiance chaleureuse et jeux à partager entre amis, en famille ou entre collègues.
+                </p>
+            </div>
+            <div class="scroll-indicator"></div>
+        </section>
+
+        <section class="section">
+            <div class="section-intro">
+                <div class="section-label" data-scroll>Le restaurant à jouer de KOEZIO</div>
+                <h2 class="section-title" data-scroll>Eat. Drink. Play.</h2>
+                <p class="section-text" data-scroll>
+                    Lucky Folks est une brasserie à jouer, conviviale et ouverte à tous,<br>
+                    dans l'esprit fête foraine revisitée.
+                </p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card" data-scroll>
+                    <div class="card-inner">
+                        <div class="card-image-wrapper">
+                            <img class="card-image"
+                                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=1200&fit=crop"
+                                alt="Manger">
+                        </div>
+                        <div class="card-overlay"></div>
+                        <div class="card-overlay-color"></div>
+                        <div class="card-content">
+                            <div class="card-number">01</div>
+                            <h3 class="card-title">MANGER</h3>
+                            <p class="card-description">
+                                95% de produits frais cuisinés sur place par notre équipe de professionnels.
+                                Une carte variée, des produits sympas et tendance, des changements réguliers en fonction
+                                des saisons.
+                            </p>
+                            <a href="#" class="card-link" data-page="manger"><span>Découvrir la carte</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-scroll>
+                    <div class="card-inner">
+                        <div class="card-image-wrapper">
+                            <img class="card-image"
+                                src="https://images.unsplash.com/photo-1511882150382-421056c89033?w=800&h=1200&fit=crop"
+                                alt="Jouer">
+                        </div>
+                        <div class="card-overlay"></div>
+                        <div class="card-overlay-color"></div>
+                        <div class="card-content">
+                            <div class="card-number">02</div>
+                            <h3 class="card-title">JOUER</h3>
+                            <p class="card-description">
+                                Fléchettes, shuffleboard, jeux de société, terrains de pétanque, karaoké privatif...
+                                Des zones de jeux privatisées et de nombreux jeux en libre accès.
+                            </p>
+                            <a href="#" class="card-link" data-page="jouer"><span>Voir les jeux</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-scroll>
+                    <div class="card-inner">
+                        <div class="card-image-wrapper">
+                            <img class="card-image"
+                                src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&h=1200&fit=crop"
+                                alt="Boire">
+                        </div>
+                        <div class="card-overlay"></div>
+                        <div class="card-overlay-color"></div>
+                        <div class="card-content">
+                            <div class="card-number">03</div>
+                            <h3 class="card-title">BOIRE</h3>
+                            <p class="card-description">
+                                Un bar à cocktails, des tapas pour les zones de jeux et pleins de moments festifs !
+                                Profitez de notre belle terrasse pour un moment de détente.
+                            </p>
+                            <a href="#" class="card-link" data-page="boire"><span>La carte des boissons</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="text-section">
+            <h2 class="text-large" data-scroll>
+                <span class="word">La</span> <span class="word">salle</span> <span class="word">de</span> <span
+                    class="word">jeux</span> <span class="word">parfaite</span> <span class="word">pour</span> <span
+                    class="word">Manger.</span><br>
+                <span class="word">Le</span> <span class="word">restaurant</span> <span class="word">idéal</span> <span
+                    class="word">pour</span> <span class="word">Jouer.</span><br>
+                <span class="word">Le</span> <span class="word">tout</span> <span class="word">dans</span> <span
+                    class="word">une</span> <span class="word">ambiance</span> <span class="word">Surprenante</span>
+            </h2>
+        </section>
+
+        <section class="section">
+            <div class="section-intro">
+                <div class="section-label" data-scroll>Notre univers</div>
+                <h2 class="section-title" data-scroll>Découvrez Lucky Folks</h2>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item" data-scroll>
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&h=800&fit=crop"
+                        alt="Restaurant">
+                </div>
+                <div class="gallery-item" data-scroll>
+                    <img src="https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?w=600&h=800&fit=crop"
+                        alt="Bar">
+                </div>
+                <div class="gallery-item" data-scroll>
+                    <img src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?w=600&h=800&fit=crop"
+                        alt="Jeux">
+                </div>
+                <div class="gallery-item" data-scroll>
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=800&fit=crop"
+                        alt="Ambiance">
+                </div>
+                <div class="gallery-item" data-scroll>
+                    <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=600&h=800&fit=crop"
+                        alt="Terrasse">
+                </div>
+                <div class="gallery-item" data-scroll>
+                    <img src="https://images.unsplash.com/photo-1543007631-283050bb3e8c?w=600&h=800&fit=crop"
+                        alt="Groupe">
+                </div>
+                <div class="gallery-item" data-scroll>
+                    <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&h=800&fit=crop"
+                        alt="Jeux de société">
+                </div>
+                <div class="gallery-item" data-scroll>
+                    <img src="https://images.unsplash.com/photo-1574126154517-d1e0d89ef734?w=600&h=800&fit=crop"
+                        alt="Pétanque">
+                </div>
+                <div class="gallery-item" data-scroll>
+                    <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=600&h=800&fit=crop"
+                        alt="Ambiance soirée">
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <p class="cta-text" data-scroll>Pssst,</p>
+            <h2 class="cta-title" data-scroll>Besoin d'un bon<br>Teambuilding ?</h2>
+            <a href="#" class="cta-button" data-page="groupes" data-scroll><span>Découvrir les offres groupes</span></a>
+        </section>
+    </div>
+
+    <!-- PAGE MANGER -->
+    <div id="manger" class="page-section">
+        <section class="detail-section" style="padding-top: 200px;">
+            <div class="detail-hero">
+                <h2 data-scroll>MANGER</h2>
+                <p data-scroll>
+                    LUCKY FOLKS c'est avant tout un restaurant qualitatif avec 95% de produits frais cuisinés sur place
+                    par notre équipe de professionnels des métiers de bouche. Une carte variée, des produits sympas et
+                    tendance, des changements réguliers en fonction des saisons, un bar à cocktail, des tapas pour les
+                    zones de jeux et pleins de moments festifs !
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card" data-scroll>
+                    <div class="feature-card-content">
+                        <div class="feature-icon">🍽️</div>
+                        <h3 class="feature-title">Cuisine Maison</h3>
+                        <p class="feature-text">
+                            Notre cuisine « maison » se veut généreuse et conviviale à un prix accessible. Des plats
+                            préparés avec passion par nos chefs.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-scroll>
+                    <div class="feature-card-content">
+                        <div class="feature-icon">🥗</div>
+                        <h3 class="feature-title">Produits Frais</h3>
+                        <p class="feature-text">
+                            95% de produits frais et de saison. Nous privilégions les circuits courts et les producteurs
+                            locaux.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-scroll>
+                    <div class="feature-card-content">
+                        <div class="feature-icon">🍔</div>
+                        <h3 class="feature-title">Déjeuner Rapide</h3>
+                        <p class="feature-text">
+                            Idéal pour un déjeuner rapide le midi dans une ambiance différente. Service efficace et
+                            gourmand.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-scroll>
+                    <div class="feature-card-content">
+                        <div class="feature-icon">🍹</div>
+                        <h3 class="feature-title">Afterwork</h3>
+                        <p class="feature-text">
+                            Parfait pour un afterwork entre collègues ou un dîner entre amis. Ambiance festive garantie
+                            !
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-intro">
+                <div class="section-label" data-scroll>Nos spécialités</div>
+                <h2 class="section-title" data-scroll>Une carte variée</h2>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item" data-scroll>
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&h=800&fit=crop"
+                        alt="Burger">
+                </div>
+                <div class="gallery-item" data-scroll>
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=800&fit=crop"
+                        alt="Pizza">
+                </div>
+                <div class="gallery-item" data-scroll>
+                    <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&h=800&fit=crop"
+                        alt="Dessert">
+                </div>
+                <div class="gallery-item" data-scroll>
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=800&fit=crop"
+                        alt="Plat">
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <p class="cta-text" data-scroll>Envie de découvrir</p>
+            <h2 class="cta-title" data-scroll>Nos Jeux ?</h2>
+            <a href="#" class="cta-button" data-page="jouer" data-scroll><span>Découvrir l'espace jeux</span></a>
+        </section>
+    </div>
+
+    <!-- PAGE JOUER -->
+    <div id="jouer" class="page-section">
+        <section class="detail-section" style="padding-top: 200px;">
+            <div class="detail-hero">
+                <h2 data-scroll>JOUER</h2>
+                <p data-scroll>
+                    LUCKY FOLKS c'est le restaurant/bar à jouer moderne, convivial et ludique qui plaira à tous et à
+                    tout moment ! Vous découvrirez également nos zones de jeux privatisées (pétanque, fléchettes,
+                    karaoké, shuffleboard) et nos nombreux jeux en libre accès.
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card" data-scroll>
+                    <div class="feature-card-content">
+                        <div class="feature-icon">🎯</div>
+                        <h3 class="feature-title">Fléchettes</h3>
+                        <p class="feature-text">
+                            Des cibles électroniques dernière génération pour des parties endiablées entre amis ou en
+                            famille.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-scroll>
+                    <div class="feature-card-content">
+                        <div class="feature-icon">🎱</div>
+                        <h3 class="feature-title">Shuffleboard</h3>
+                        <p class="feature-text">
+                            Découvrez ce jeu d'adresse venu d'Amérique. Stratégie et précision au rendez-vous !
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-scroll>
+                    <div class="feature-card-content">
+                        <div class="feature-icon">⚽</div>
+                        <h3 class="feature-title">Pétanque</h3>
+                        <p class="feature-text">
+                            Des terrains de pétanque en intérieur ! L'ambiance du sud de la France toute l'année.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-scroll>
+                    <div class="feature-card-content">
+                        <div class="feature-icon">🎤</div>
+                        <h3 class="feature-title">Karaoké Privatif</h3>
+                        <p class="feature-text">
+                            Une salle de karaoké privée pour chanter à tue-tête entre amis sans être jugé !
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-scroll>
+                    <div class="feature-card-content">
+                        <div class="feature-icon">🎲</div>
+                        <h3 class="feature-title">Jeux de Société</h3>
+                        <p class="feature-text">
+                            Plus de 50 jeux de société en libre accès. Des classiques aux dernières nouveautés.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-scroll>
+                    <div class="feature-card-content">
+                        <div class="feature-icon">🎪</div>
+                        <h3 class="feature-title">Événements</h3>
+                        <p class="feature-text">
+                            Soirées DJ, blind test, poker... Consultez régulièrement notre programmation !
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="text-section">
+            <h2 class="text-large" data-scroll>
+                <span class="word">Profitez</span> <span class="word">également</span> <span class="word">de</span>
+                <span class="word">nos</span><br>
+                <span class="word">activités</span> <span class="word">KOEZIO</span><br>
+                <span class="word">au</span> <span class="word">même</span> <span class="word">endroit</span>
+            </h2>
+        </section>
+
+        <section class="cta-section">
+            <p class="cta-text" data-scroll>Et si on</p>
+            <h2 class="cta-title" data-scroll>Buvait un verre ?</h2>
+            <a href="#" class="cta-button" data-page="boire" data-scroll><span>Découvrir la carte</span></a>
+        </section>
+    </div>
+
+    <!-- PAGE BOIRE -->
+    <div id="boire" class="page-section">
+        <section class="detail-section" style="padding-top: 200px;">
+            <div class="detail-hero">
+                <h2 data-scroll>BOIRE</h2>
+                <p data-scroll>
+                    Un bar à cocktails créatifs, des bières artisanales, des vins sélectionnés avec soin et des softs
+                    pour tous les goûts. Que ce soit pour un verre en terrasse ou une soirée festive, notre carte des
+                    boissons saura vous séduire !
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card" data-scroll>
+                    <div class="feature-card-content">
+                        <div class="feature-icon">🍸</div>
+                        <h3 class="feature-title">Cocktails</h3>
+                        <p class="feature-text">
+                            Des cocktails signatures créés par nos barmans. Classiques revisités et créations
+                            originales.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-scroll>
+                    <div class="feature-card-content">
+                        <div class="feature-icon">🍺</div>
+                        <h3 class="feature-title">Bières Artisanales</h3>
+                        <p class="feature-text">
+                            Une sélection de bières artisanales françaises et internationales. Pression et bouteilles.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-scroll>
+                    <div class="feature-card-content">
+                        <div class="feature-icon">🍷</div>
+                        <h3 class="feature-title">Vins</h3>
+                        <p class="feature-text">
+                            Une carte des vins soigneusement sélectionnée. Rouges, blancs, rosés de toutes les régions.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-scroll>
+                    <div class="feature-card-content">
+                        <div class="feature-icon">🥤</div>
+                        <h3 class="feature-title">Softs</h3>
+                        <p class="feature-text">
+                            Jus de fruits frais, smoothies, sodas artisanaux. Pour ceux qui ne boivent pas d'alcool.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-intro">
+                <div class="section-label" data-scroll>Notre ambiance</div>
+                <h2 class="section-title" data-scroll>Le Bar</h2>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item" data-scroll>
+                    <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=600&h=800&fit=crop"
+                        alt="Bar">
+                </div>
+                <div class="gallery-item" data-scroll>
+                    <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=600&h=800&fit=crop"
+                        alt="Cocktail">
+                </div>
+                <div class="gallery-item" data-scroll>
+                    <img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=600&h=800&fit=crop"
+                        alt="Terrasse">
+                </div>
+                <div class="gallery-item" data-scroll>
+                    <img src="https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?w=600&h=800&fit=crop"
+                        alt="Ambiance">
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <p class="cta-text" data-scroll>Retour à</p>
+            <h2 class="cta-title" data-scroll>L'accueil</h2>
+            <a href="#" class="cta-button" data-page="home" data-scroll><span>Page d'accueil</span></a>
+        </section>
+    </div>
+
+    <!-- PAGE GROUPES -->
+    <div id="groupes" class="page-section">
+        <section class="detail-section" style="padding-top: 200px;">
+            <div class="detail-hero">
+                <h2 data-scroll>OFFRES GROUPES</h2>
+                <p data-scroll>
+                    Lucky Folks est l'endroit idéal pour vos événements d'entreprise, teambuilding, anniversaires ou
+                    soirées privées. Nous vous proposons des formules sur-mesure pour des moments inoubliables !
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card" data-scroll>
+                    <div class="feature-card-content">
+                        <div class="feature-icon">💼</div>
+                        <h3 class="feature-title">Teambuilding</h3>
+                        <p class="feature-text">
+                            Renforcez la cohésion de vos équipes avec nos activités ludiques et nos espaces
+                            privatisables.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-scroll>
+                    <div class="feature-card-content">
+                        <div class="feature-icon">🎉</div>
+                        <h3 class="feature-title">Événements Privés</h3>
+                        <p class="feature-text">
+                            Anniversaires, enterrements de vie de célibataire... Nous privatisons l'espace pour vos
+                            événements.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-scroll>
+                    <div class="feature-card-content">
+                        <div class="feature-icon">🍽️</div>
+                        <h3 class="feature-title">Formules Repas</h3>
+                        <p class="feature-text">
+                            Des menus adaptés à vos besoins et budgets. Buffet, cocktail dînatoire ou repas assis.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-scroll>
+                    <div class="feature-card-content">
+                        <div class="feature-icon">🎮</div>
+                        <h3 class="feature-title">Activités sur Mesure</h3>
+                        <p class="feature-text">
+                            Tournois de pétanque, olympiades, blind test... Nous organisons vos animations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="text-section">
+            <h2 class="text-large" data-scroll>
+                <span class="word">Des</span> <span class="word">formules</span><br>
+                <span class="word">adaptées</span> <span class="word">à</span><br>
+                <span class="word">tous</span> <span class="word">vos</span> <span class="word">besoins</span>
+            </h2>
+        </section>
+
+        <section class="cta-section">
+            <p class="cta-text" data-scroll>Intéressé ?</p>
+            <h2 class="cta-title" data-scroll>Contactez-nous</h2>
+            <a href="tel:0160181818" class="cta-button" data-scroll><span>01 60 18 18 18</span></a>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-logo">LUCKY FOLKS</div>
+        <p class="footer-text">
+            Centre Commercial Carré Sénart<br>
+            3 Allée du Préambule, 77127 Lieusaint<br>
+            Tél : 01 60 18 18 18
+        </p>
+        <div class="footer-social">
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="Twitter">🐦</a>
+        </div>
+        <div class="footer-bottom">
+            © 2025 Lucky Folks - Tous droits réservés
+        </div>
+    </footer>
+
+    <script>
+        // Navigation entre pages
+        function showPage(pageName) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(pageName).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Réinitialiser les animations
+            setTimeout(() => {
+                initScrollAnimations();
+            }, 100);
+        }
+
+        // Menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            document.body.style.overflow = menuOverlay.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Navigation menu
+        document.querySelectorAll('.menu-content a, .card-link, .cta-button').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const page = link.getAttribute('data-page');
+                if (page) {
+                    e.preventDefault();
+                    menuToggle.classList.remove('active');
+                    menuOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+
+                    setTimeout(() => {
+                        showPage(page);
+                    }, menuOverlay.classList.contains('active') ? 800 : 0);
+                }
+            });
+        });
+
+        // Navbar scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+
+                        // Animation des mots
+                        if (entry.target.classList.contains('text-large')) {
+                            const words = entry.target.querySelectorAll('.word');
+                            words.forEach((word, index) => {
+                                setTimeout(() => {
+                                    word.style.opacity = '1';
+                                    word.style.transform = 'translateY(0)';
+                                }, index * 80);
+                            });
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('[data-scroll]').forEach(el => {
+                el.classList.remove('visible');
+                observer.observe(el);
+            });
+        }
+
+        initScrollAnimations();
+
+        // Effet magnétique sur les cards
+        document.querySelectorAll('.card').forEach(card => {
+            const inner = card.querySelector('.card-inner');
+
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = (y - centerY) / 25;
+                const rotateY = (centerX - x) / 25;
+
+                inner.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                inner.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            });
+        });
+
+        // Parallax sur les images pendant le scroll
+        let ticking = false;
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+
+                    // Parallax sur les images des cards
+                    document.querySelectorAll('.card-image').forEach((img) => {
+                        const card = img.closest('.card');
+                        if (!card) return;
+                        const rect = card.getBoundingClientRect();
+                        const scrollPercent = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+
+                        if (scrollPercent > 0 && scrollPercent < 1) {
+                            const translateY = (scrollPercent - 0.5) * 50;
+                            img.style.transform = `translateY(${translateY}px) scale(1.15)`;
+                        }
+                    });
+
+                    // Parallax sur la gallery
+                    document.querySelectorAll('.gallery-item img').forEach((img) => {
+                        const item = img.closest('.gallery-item');
+                        if (!item) return;
+                        const rect = item.getBoundingClientRect();
+                        const scrollPercent = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+
+                        if (scrollPercent > 0 && scrollPercent < 1) {
+                            const translateY = (scrollPercent - 0.5) * 30;
+                            img.style.transform = `translateY(${translateY}px) scale(1)`;
+                        }
+                    });
+
+                    ticking = false;
+                });
+
+                ticking = true;
+            }
+        });
+
+        // Curseur personnalisé (Desktop uniquement)
+        if (window.innerWidth > 1024) {
+            const cursor = document.createElement('div');
+            cursor.style.cssText = `
+                position: fixed;
+                width: 12px;
+                height: 12px;
+                background: var(--orange);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 10000;
+                transition: all 0.15s ease;
+                mix-blend-mode: difference;
+            `;
+            document.body.appendChild(cursor);
+
+            const cursorOutline = document.createElement('div');
+            cursorOutline.style.cssText = `
+                position: fixed;
+                width: 40px;
+                height: 40px;
+                border: 1px solid var(--orange);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 10000;
+                transition: all 0.2s ease;
+                mix-blend-mode: difference;
+            `;
+            document.body.appendChild(cursorOutline);
+
+            let mouseX = 0, mouseY = 0;
+            let cursorX = 0, cursorY = 0;
+            let outlineX = 0, outlineY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            function animateCursor() {
+                cursorX += (mouseX - cursorX) * 0.3;
+                cursorY += (mouseY - cursorY) * 0.3;
+                cursor.style.left = cursorX + 'px';
+                cursor.style.top = cursorY + 'px';
+
+                outlineX += (mouseX - outlineX) * 0.15;
+                outlineY += (mouseY - outlineY) * 0.15;
+                cursorOutline.style.left = (outlineX - 20) + 'px';
+                cursorOutline.style.top = (outlineY - 20) + 'px';
+
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+
+            // Agrandir sur les éléments interactifs
+            const interactives = document.querySelectorAll('a, button, .card, .menu-toggle, .gallery-item, .feature-card, .logo');
+            interactives.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.width = '30px';
+                    cursor.style.height = '30px';
+                    cursorOutline.style.width = '60px';
+                    cursorOutline.style.height = '60px';
+                    cursorOutline.style.borderWidth = '2px';
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.width = '12px';
+                    cursor.style.height = '12px';
+                    cursorOutline.style.width = '40px';
+                    cursorOutline.style.height = '40px';
+                    cursorOutline.style.borderWidth = '1px';
+                });
+            });
+
+            // Cacher le curseur par défaut
+            document.body.style.cursor = 'none';
+            interactives.forEach(el => el.style.cursor = 'none');
+        }
+
+        // Animation des délais échelonnés pour la gallery
+        const galleryObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const items = entry.target.querySelectorAll('.gallery-item');
+                    items.forEach((item, i) => {
+                        setTimeout(() => {
+                            item.classList.add('visible');
+                        }, i * 100);
+                    });
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.gallery-grid').forEach(grid => {
+            galleryObserver.observe(grid);
+        });
+
+        // Préchargement des images
+        document.querySelectorAll('img').forEach(img => {
+            const newImg = new Image();
+            newImg.src = img.src;
+        });
+
+        // Performance optimization
+        let isScrolling;
+        window.addEventListener('scroll', () => {
+            document.body.classList.add('disable-hover');
+
+            clearTimeout(isScrolling);
+            isScrolling = setTimeout(() => {
+                document.body.classList.remove('disable-hover');
+            }, 150);
+        });
+
+        const style = document.createElement('style');
+        style.textContent = `
+            .disable-hover * {
+                pointer-events: none !important;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Animation hover pour les feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Smooth scroll pour ancres
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || this.hasAttribute('data-page')) return;
+
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animation d'entrée pour les éléments au chargement
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+
+        // Gestion du redimensionnement de la fenêtre
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                initScrollAnimations();
+            }, 250);
+        });
+    </script>
+</body>
+
+</html>

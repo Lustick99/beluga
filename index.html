@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Beluga - Restaurant & Bar</title>
+
+    <link rel="stylesheet" href="static/style.css">
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">
+            <img src="static/images/beluga_sf.png" alt="Beluga Logo" style="height: 50px; vertical-align: middle;">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html">Restaurant</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="#services.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="btn-reserve">Réserver</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+
+        <div class="floating-badge badge-1">
+            <div class="badge-icon">🍽️</div>
+            <div class="badge-text">Cuisine Raffinée</div>
+        </div>
+
+        <div class="floating-badge badge-2">
+            <div class="badge-icon">💑</div>
+            <div class="badge-text">Cadre Romantique</div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-subtitle">Bienvenue chez</div>
+            <h1 class="hero-title">
+                <img src="static/images/beluga_sf.png" alt="Beluga" style="height: 120px; vertical-align: middle;">
+            </h1>
+            <p class="hero-description">
+                Un restaurant chaleureux où la gastronomie rencontre l'ambiance conviviale.
+                L'endroit parfait pour vos dîners romantiques, vos repas entre amis ou vos événements d'entreprise.
+            </p>
+            <div class="hero-buttons">
+                <a href="#restaurant" class="btn-primary">Découvrir la carte</a>
+                <a href="#contact" class="btn-secondary">Nous contacter</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="restaurant">
+        <div class="section-header">
+            <div class="section-label" data-scroll>Notre Histoire</div>
+            <h2 class="section-title" data-scroll>Une expérience culinaire unique</h2>
+            <p class="section-text" data-scroll>
+                Beluga, c'est avant tout un restaurant gastronomique où chaque plat est préparé
+                avec passion par nos chefs. Dans une ambiance chaleureuse inspirée des brasseries
+                d'antan, nous vous proposons une cuisine généreuse et raffinée.
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card" data-scroll>
+                <div class="feature-icon">👨‍🍳</div>
+                <h3 class="feature-title">Cuisine d'Exception</h3>
+                <p class="feature-description">
+                    95% de produits frais cuisinés sur place. Notre chef et son équipe créent des plats
+                    raffinés qui allient tradition et modernité.
+                </p>
+            </div>
+
+            <div class="feature-card" data-scroll>
+                <div class="feature-icon">🕯️</div>
+                <h3 class="feature-title">Ambiance Chaleureuse</h3>
+                <p class="feature-description">
+                    Un décor soigné, un éclairage tamisé et une atmosphère intimiste.
+                    Parfait pour vos soirées romantiques et moments précieux.
+                </p>
+            </div>
+
+            <div class="feature-card" data-scroll>
+                <div class="feature-icon">🍷</div>
+                <h3 class="feature-title">Cave Sélectionnée</h3>
+                <p class="feature-description">
+                    Une carte des vins exceptionnelle avec des références soigneusement choisies
+                    pour sublimer votre expérience culinaire.
+                </p>
+            </div>
+        </div>
+        <br><br><br>
+        <div class="hero-buttons">
+            <a href="about.html" class="btn-primary" style="color: var(--gold);"> En savoir plus </a>
+        </div>
+    </section>
+
+    <!-- Split Section 1 - Restaurant -->
+    <section class="split-section">
+        <div class="split-image">
+            <img src="static/images/DSC06195.jpg" alt="Restaurant">
+        </div>
+        <div class="split-content">
+            <div class="split-number">01</div>
+            <div class="split-label">Notre Restaurant</div>
+            <h2 class="split-title">Un cadre d'exception pour vos repas</h2>
+            <p class="split-text">
+                Notre restaurant vous accueille dans un cadre élégant et chaleureux.
+                Que ce soit pour un déjeuner d'affaires, un dîner en amoureux ou une célébration
+                entre amis, notre équipe met tout en œuvre pour rendre votre expérience inoubliable.
+            </p>
+            <ul class="split-list">
+                <li>Carte renouvelée selon les saisons</li>
+                <li>Menu découverte du chef</li>
+                <li>Options végétariennes et sans gluten</li>
+                <li>Service attentionné et discret</li>
+            </ul>
+            <a href="#contact" class="btn-primary">Réserver une table</a>
+        </div>
+    </section>
+
+    <!-- Split Section 2 - Bar -->
+    <section class="split-section">
+        <div class="split-content">
+            <div class="split-number">02</div>
+            <div class="split-label">Notre Bar</div>
+            <h2 class="split-title">Cocktails signature & vins d'exception</h2>
+            <p class="split-text">
+                Notre bar propose une sélection de cocktails créatifs élaborés par nos mixologues,
+                ainsi qu'une carte de vins soigneusement choisie. L'endroit idéal pour un apéritif
+                avant le dîner ou pour prolonger votre soirée dans une ambiance cosy.
+            </p>
+            <ul class="split-list">
+                <li>Cocktails signature exclusifs</li>
+                <li>Sélection de whiskies et spiritueux rares</li>
+                <li>Bières artisanales françaises</li>
+                <li>Tapas gastronomiques</li>
+            </ul>
+            <a href="#contact" class="btn-primary">Découvrir la carte</a>
+        </div>
+        <div class="split-image">
+            <img src="static/images/BELUGA-FOOD-30.jpg" alt="Bar">
+        </div>
+    </section>
+
+    <!-- Romantic Section -->
+    <section class="romantic-section" id="dates">
+        <div class="romantic-content">
+            <h2 class="romantic-title">L'endroit parfait pour vos rendez-vous romantiques</h2>
+            <p class="romantic-text">
+                Créez des souvenirs inoubliables dans notre restaurant intimiste.
+                Ambiance tamisée, service discret et cuisine raffinée : tous les ingrédients
+                sont réunis pour faire de votre soirée un moment magique.
+            </p>
+            <a href="#contact" class="btn-secondary">Organiser votre soirée</a>
+
+            <div class="romantic-features">
+                <div class="romantic-item">
+                    <div class="romantic-item-icon">🌹</div>
+                    <h3 class="romantic-item-title">Tables Intimistes</h3>
+                    <p class="romantic-item-text">
+                        Des espaces privatifs et cosy pour des moments à deux inoubliables
+                    </p>
+                </div>
+
+                <div class="romantic-item">
+                    <div class="romantic-item-icon">🎵</div>
+                    <h3 class="romantic-item-title">Ambiance Musicale</h3>
+                    <p class="romantic-item-text">
+                        Une playlist jazz et soul soigneusement sélectionnée pour vos soirées
+                    </p>
+                </div>
+
+                <div class="romantic-item">
+                    <div class="romantic-item-icon">🎁</div>
+                    <h3 class="romantic-item-title">Attentions Spéciales</h3>
+                    <p class="romantic-item-text">
+                        Possibilité d'organiser des surprises pour vos occasions spéciales
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <!-- <section class="gallery-section">
+        <div class="section-header">
+            <div class="section-label" data-scroll>Galerie</div>
+            <h2 class="section-title" data-scroll>Découvrez notre univers</h2>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item" data-scroll>
+                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&h=600&fit=crop"
+                    alt="Salle principale">
+                <div class="gallery-overlay">
+                    <div class="gallery-label">Salle Principale</div>
+                </div>
+            </div>
+            <div class="gallery-item" data-scroll>
+                <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=400&h=600&fit=crop" alt="Bar">
+                <div class="gallery-overlay">
+                    <div class="gallery-label">Notre Bar</div>
+                </div>
+            </div>
+            <div class="gallery-item" data-scroll>
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=600&fit=crop" alt="Plats">
+                <div class="gallery-overlay">
+                    <div class="gallery-label">Nos Plats</div>
+                </div>
+            </div>
+            <div class="gallery-item" data-scroll>
+                <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=400&h=600&fit=crop"
+                    alt="Ambiance">
+                <div class="gallery-overlay">
+                    <div class="gallery-label">L'Ambiance</div>
+                </div>
+            </div>
+            <div class="gallery-item" data-scroll>
+                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&h=400&fit=crop"
+                    alt="Terrasse">
+                <div class="gallery-overlay">
+                    <div class="gallery-label">Terrasse</div>
+                </div>
+            </div>
+            <div class="gallery-item" data-scroll>
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&h=600&fit=crop" alt="Cuisine">
+                <div class="gallery-overlay">
+                    <div class="gallery-label">En Cuisine</div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Groups Section -->
+    <section class="groups-section" id="groupes">
+        <div class="section-header">
+            <div class="section-label" data-scroll>Événements</div>
+            <h2 class="section-title" data-scroll>Nos services groupes & privatisation</h2>
+            <p class="section-text" data-scroll>
+                Beluga est l'endroit idéal pour vos événements professionnels et personnels.
+                Nous proposons des solutions sur-mesure pour répondre à tous vos besoins.
+            </p>
+        </div>
+
+        <div class="groups-grid">
+            <div class="group-card" data-scroll>
+                <div class="group-card-bg"
+                    style="background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop');">
+                </div>
+                <div class="group-card-overlay"></div>
+                <div class="group-card-content">
+                    <div class="group-card-label">Entreprises</div>
+                    <h3 class="group-card-title">Séminaires & Team Building</h3>
+                    <p class="group-card-text">
+                        Organisez vos événements d'entreprise dans un cadre unique. Repas d'affaires,
+                        séminaires, cocktails... nous créons l'événement qui vous ressemble.
+                    </p>
+                    <a href="#contact" class="group-card-link">
+                        En savoir plus →
+                    </a>
+                </div>
+            </div>
+
+            <div class="group-card" data-scroll>
+                <div class="group-card-bg"
+                    style="background-image: url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=600&fit=crop');">
+                </div>
+                <div class="group-card-overlay"></div>
+                <div class="group-card-content">
+                    <div class="group-card-label">Événements Privés</div>
+                    <h3 class="group-card-title">Célébrations & Réceptions</h3>
+                    <p class="group-card-text">
+                        Anniversaires, mariages, baptêmes... Privatisez notre espace pour vos moments
+                        précieux. Menu personnalisé et service dédié.
+                    </p>
+                    <a href="#contact" class="group-card-link">
+                        En savoir plus →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="section-header">
+            <div class="section-label" data-scroll>Témoignages</div>
+            <h2 class="section-title" data-scroll>Ce que nos clients disent de nous</h2>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">
+                    "Un endroit parfait pour une soirée romantique. Le cadre est intimiste,
+                    la cuisine excellente et le service aux petits soins. Nous y retournerons sans hésiter !"
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">M</div>
+                    <div class="testimonial-info">
+                        <div class="testimonial-name">Marie & Thomas</div>
+                        <div class="testimonial-type">Dîner en amoureux</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">
+                    "Nous avons privatisé le restaurant pour notre séminaire d'entreprise.
+                    L'équipe a été réactive et professionnelle. Nos collaborateurs ont adoré !"
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">S</div>
+                    <div class="testimonial-info">
+                        <div class="testimonial-name">Sophie Durand</div>
+                        <div class="testimonial-type">Événement entreprise</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">
+                    "La cuisine est exceptionnelle ! Des saveurs incroyables, une présentation soignée.
+                    Le menu dégustation est un véritable voyage culinaire."
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">P</div>
+                    <div class="testimonial-info">
+                        <div class="testimonial-name">Pierre Martin</div>
+                        <div class="testimonial-type">Dîner gastronomique</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-final" id="contact">
+        <div class="cta-box">
+            <h2 class="cta-final-title">Prêt à vivre l'expérience Beluga ?</h2>
+            <p class="cta-final-text">
+                Réservez dès maintenant votre table ou contactez-nous pour organiser votre événement
+            </p>
+            <button class="cta-final-button">Réserver maintenant</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">BELUGA</div>
+                <p class="footer-description">
+                    Restaurant gastronomique au cœur du Carré Sénart.
+                    Une expérience culinaire unique dans un cadre chaleureux et raffiné.
+                </p>
+                <div class="footer-social">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">🐦</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#restaurant">Restaurant</a></li>
+                    <li><a href="#dates">Pour vos dates</a></li>
+                    <li><a href="#groupes">Groupes</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Infos Pratiques</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Horaires</a></li>
+                    <li><a href="#">La Carte</a></li>
+                    <li><a href="#">Réserver</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li>Rue de l'Entente, Ex Rue de l'OCAM,</li>
+                    <li>En face de l’Hôtel de la Paix, Lomé-Togo</li>
+                    <li>+228 22 20 97 96</li>
+                    <li>contact@beluga.tg</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2025 Beluga - Tous droits réservés | Mentions légales | Politique de confidentialité
+        </div>
+    </footer>
+
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with data-scroll attribute
+        document.querySelectorAll('[data-scroll]').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Gallery items staggered animation
+        const galleryObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const items = entry.target.querySelectorAll('.gallery-item');
+                    items.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('visible');
+                        }, index * 100);
+                    });
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.gallery-grid').forEach(grid => {
+            galleryObserver.observe(grid);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect on split sections
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.split-image img').forEach(img => {
+                const section = img.closest('.split-section');
+                const rect = section.getBoundingClientRect();
+                const scrollPercent = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+
+                if (scrollPercent > 0 && scrollPercent < 1) {
+                    const translateY = (scrollPercent - 0.5) * 50;
+                    img.style.transform = `translateY(${translateY}px) scale(1.1)`;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

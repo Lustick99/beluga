@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beluga - Contact</title>
+    <link rel="stylesheet" href="static/style.css">
+    <style>
+        /* Styles spécifiques à la page Contact */
+        .contact-page {
+            background: var(--light);
+        }
+
+        /* Hero Contact */
+        .contact-hero {
+            height: 100vh;
+            min-height: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(43, 27, 77, 0.92) 0%, rgba(61, 42, 95, 0.88) 100%),
+                url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&h=1080&fit=crop') center/cover;
+            overflow: hidden;
+        }
+
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(204, 154, 51, 0.2) 0%, transparent 70%);
+        }
+
+        .contact-hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 40px;
+        }
+
+        .contact-hero-label {
+            font-size: 14px;
+            color: var(--accent);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.2s forwards;
+        }
+
+        .contact-hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 90px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 30px;
+            line-height: 1;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.4s forwards;
+        }
+
+        .contact-hero-text {
+            font-size: 22px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.6s forwards;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Contact Section */
+        .contact-main {
+            padding: 150px 60px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: start;
+        }
+
+        /* Formulaire */
+        .contact-form-section {
+            background: white;
+            padding: 60px;
+            border-radius: 30px;
+            box-shadow: 0 20px 80px rgba(43, 27, 77, 0.08);
+        }
+
+        .contact-form-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .contact-form-subtitle {
+            font-size: 17px;
+            color: var(--text-light);
+            margin-bottom: 50px;
+            line-height: 1.7;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 18px 20px;
+            border: 2px solid var(--warm);
+            border-radius: 15px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            background: var(--warm);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(204, 154, 51, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 160px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-top: 20px;
+        }
+
+        .form-submit:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(43, 27, 77, 0.3);
+        }
+
+        /* Info Section */
+        .contact-info-section {
+            position: sticky;
+            top: 150px;
+        }
+
+        .contact-info-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 40px;
+        }
+
+        .contact-info-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-info-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            border: 2px solid var(--warm);
+            transition: all 0.4s ease;
+        }
+
+        .contact-info-card:hover {
+            border-color: var(--accent);
+            transform: translateX(10px);
+            box-shadow: 0 15px 50px rgba(43, 27, 77, 0.12);
+        }
+
+        .contact-info-card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .contact-info-card-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        .contact-info-card-text a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info-card-text a:hover {
+            color: var(--primary);
+        }
+
+        /* Locations Section */
+        .locations-section {
+            padding: 120px 60px;
+            background: var(--warm);
+        }
+
+        .locations-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .locations-label {
+            font-size: 14px;
+            color: var(--accent);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .locations-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 58px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .locations-text {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .location-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 40px rgba(43, 27, 77, 0.08);
+        }
+
+        .location-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(43, 27, 77, 0.15);
+        }
+
+        .location-image {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .location-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .location-card:hover .location-image img {
+            transform: scale(1.1);
+        }
+
+        .location-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .location-content {
+            padding: 40px;
+        }
+
+        .location-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+
+        .location-info {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .location-info-item {
+            display: flex;
+            align-items: start;
+            gap: 15px;
+        }
+
+        .location-info-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--warm);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .location-info-text {
+            flex: 1;
+        }
+
+        .location-info-label {
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .location-info-value {
+            font-size: 16px;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .location-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .location-btn {
+            flex: 1;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .location-btn-primary {
+            background: var(--primary);
+            color: white;
+            border: 2px solid var(--primary);
+        }
+
+        .location-btn-primary:hover {
+            background: transparent;
+            color: var(--primary);
+        }
+
+        .location-btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .location-btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 0;
+            margin: 0;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 600px;
+            background: var(--warm);
+            position: relative;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--warm) 0%, rgba(204, 154, 51, 0.1) 100%);
+        }
+
+        .map-placeholder-content {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .map-placeholder-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            opacity: 0.6;
+        }
+
+        .map-placeholder-text {
+            font-size: 18px;
+            color: var(--text-light);
+        }
+
+        /* Social Section */
+        .social-section {
+            padding: 120px 60px;
+            background: white;
+            text-align: center;
+        }
+
+        .social-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 52px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .social-text {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 50px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 70px;
+            height: 70px;
+            background: var(--warm);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(43, 27, 77, 0.2);
+            border-color: var(--accent);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 120px 60px;
+            background: var(--warm);
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .faq-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 52px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .faq-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent);
+        }
+
+        .faq-question {
+            padding: 30px 35px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            user-select: none;
+        }
+
+        .faq-question-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .faq-icon {
+            font-size: 24px;
+            color: var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 35px 30px 35px;
+        }
+
+        .faq-answer-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .contact-info-section {
+                position: relative;
+                top: 0;
+            }
+
+            .locations-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-hero {
+                height: 60vh;
+                min-height: 500px;
+            }
+
+            .contact-hero-title {
+                font-size: 50px;
+            }
+
+            .contact-main {
+                padding: 100px 30px;
+            }
+
+            .contact-form-section {
+                padding: 40px 30px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .locations-section,
+            .social-section,
+            .faq-section {
+                padding: 80px 30px;
+            }
+
+            .locations-title,
+            .social-title,
+            .faq-title {
+                font-size: 38px;
+            }
+
+            .locations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .location-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body class="contact-page">
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">
+            <img src="static/images/beluga_sf.png" alt="Beluga Logo" style="height: 50px; vertical-align: middle;">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html">Restaurant</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="#services.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="btn-reserve">Réserver</button>
+    </nav>
+
+    <!-- Hero Contact -->
+    <section class="contact-hero">
+        <div class="contact-hero-content">
+            <div class="contact-hero-label">Restons en Contact</div>
+            <h1 class="contact-hero-title">Contactez-nous</h1>
+            <p class="contact-hero-text">
+                Notre équipe est à votre écoute pour répondre à toutes vos questions et réserver votre table
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Contact Section -->
+    <section class="contact-main">
+        <div class="contact-grid">
+            <!-- Formulaire -->
+            <div class="contact-form-section">
+                <h2 class="contact-form-title">Envoyez-nous un message</h2>
+                <p class="contact-form-subtitle">
+                    Remplissez ce formulaire et nous vous répondrons dans les plus brefs délais
+                </p>
+
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="firstName">Prénom *</label>
+                            <input type="text" id="firstName" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="lastName">Nom *</label>
+                            <input type="text" id="lastName" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email *</label>
+                            <input type="email" id="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Téléphone</label>
+                            <input type="tel" id="phone" class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="subject">Sujet *</label>
+                        <select id="subject" class="form-select" required>
+                            <option value="">Sélectionnez un sujet</option>
+                            <option value="reservation">Réservation</option>
+                            <option value="event">Événement privé</option>
+                            <option value="catering">Service traiteur</option>
+                            <option value="partnership">Partenariat</option>
+                            <option value="feedback">Avis / Commentaire</option>
+                            <option value="other">Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="message">Message *</label>
+                        <textarea id="message" class="form-textarea" required></textarea>
+                    </div>
+
+                    <button type="submit" class="form-submit">Envoyer le message</button>
+                </form>
+            </div>
+
+            <!-- Informations de contact -->
+            <div class="contact-info-section">
+                <h2 class="contact-info-title">Informations de contact</h2>
+
+                <div class="contact-info-cards">
+                    <div class="contact-info-card">
+                        <div class="contact-info-card-icon">📍</div>
+                        <h3 class="contact-info-card-title">Adresse</h3>
+                        <p class="contact-info-card-text">
+                            Rue de L'OCAM (Rue de l'Entente)<br>
+                            1er Etage au dessus de Saveur du Monde<br>
+                            Lomé, Togo
+                        </p>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <div class="contact-info-card-icon">📞</div>
+                        <h3 class="contact-info-card-title">Téléphone</h3>
+                        <p class="contact-info-card-text">
+                            <a href="tel:+22822209796">+228 22 20 97 96</a><br>
+                            Du lundi au samedi<br>
+                            12h00 - 23h00
+                        </p>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <div class="contact-info-card-icon">✉️</div>
+                        <h3 class="contact-info-card-title">Email</h3>
+                        <p class="contact-info-card-text">
+                            <a href="mailto:contact@beluga.tg">contact@beluga.tg</a><br>
+                            <a href="mailto:reservation@beluga.tg">reservation@beluga.tg</a><br>
+                            Réponse sous 24h
+                        </p>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <div class="contact-info-card-icon">🕐</div>
+                        <h3 class="contact-info-card-title">Horaires</h3>
+                        <p class="contact-info-card-text">
+                            <strong>Lundi - Samedi :</strong> 12h00 - 15h00 & 18h00 - 23h00<br>
+                            <strong> Dimanche :</strong> Fermé
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section class="locations-section">
+        <div class="locations-header">
+            <div class="locations-label">Nos Emplacements</div>
+            <h2 class="locations-title">Venez nous rendre visite</h2>
+            <p class="locations-text">
+                Découvrez notre établissement au cœur de Lomé non loin de la plage, facilement accessible en voiture ou
+                en transports
+                en commun
+            </p>
+        </div>
+
+        <div class="locations-grid">
+            <div class="location-card">
+                <div class="location-image">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop"
+                        alt="Restaurant Beluga">
+                    <div class="location-badge">Restaurant Principal</div>
+                </div>
+                <div class="location-content">
+                    <h3 class="location-title">Beluga - Ocam</h3>
+
+                    <div class="location-info">
+                        <div class="location-info-item">
+                            <div class="location-info-icon">📍</div>
+                            <div class="location-info-text">
+                                <div class="location-info-label">Adresse</div>
+                                <div class="location-info-value">
+                                    Rue de L'OCAM (Rue de l'Entente)<br>
+                                    1er Etage au dessus de Saveur du Monde<br>
+                                    Lomé, Togo
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="location-info-item">
+                            <div class="location-info-icon">🕐</div>
+                            <div class="location-info-text">
+                                <div class="location-info-label">Horaires</div>
+                                <div class="location-info-value">
+                                    Lundi - Samedi: 11h00 - 15h00 & 18h00 23h00
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="location-info-item">
+                            <div class="location-info-icon">📞</div>
+                            <div class="location-info-text">
+                                <div class="location-info-label">Téléphone</div>
+                                <div class="location-info-value">
+                                    <a href="tel:+22822209796">+228 22 20 97 96</a><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="location-actions">
+                        <a href="tel:+22822209796" class="location-btn location-btn-primary">
+                            📞 Appeler
+                        </a>
+                        <a href="#" class="location-btn location-btn-secondary">
+                            🗺️ Itinéraire
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.9804909187824!2d1.2450332756789046!3d6.133323327573123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1023e13972a54a3d%3A0xb413c581ff3b7dfb!2sBeluga!5e0!3m2!1sen!2stg!4v1762249772245!5m2!1sen!2stg"
+                width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <!-- <div class="map-placeholder">
+                <div class="map-placeholder-content">
+                    <div class="map-placeholder-icon">🗺️</div>
+                    <p class="map-placeholder-text">Carte interactive Google Maps</p>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <div class="faq-header">
+                <h2 class="faq-title">Questions Fréquentes</h2>
+                <p class="faq-subtitle">Trouvez rapidement les réponses à vos questions</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-question-text">Comment réserver une table ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="faq-answer-text">
+                            Vous pouvez réserver une table en nous appelant directement au +228 22 20 97 96, en
+                            utilisant
+                            notre formulaire de contact, ou via nos partenaires de réservation en ligne. Nous vous
+                            recommandons de réserver au moins 24h à l'avance, surtout pour le week-end.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-question-text">Proposez-vous des menus végétariens ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="faq-answer-text">
+                            Oui, nous proposons plusieurs options végétariennes sur notre carte. Notre chef peut
+                            également adapter certains plats selon vos préférences alimentaires. N'hésitez pas à nous en
+                            informer lors de votre réservation.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-question-text">Acceptez-vous les groupes et événements privés ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="faq-answer-text">
+                            Absolument ! Nous accueillons les groupes jusqu'à 50 personnes et organisons des événements
+                            privés (anniversaires, mariages, séminaires). Contactez-nous pour discuter de vos besoins
+                            spécifiques, des options disponibles et recevoir un devis personnalisé.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-question-text">Quels sont vos horaires d'ouverture ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="faq-answer-text">
+                            Nous sommes ouverts du lundi au vendredi de 11h00 à 14h30 et de 18h30 à 23h00, et le samedi
+                            et dimanche de 11h00 à 23h00 sans interruption.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-question-text">Y a-t-il un parking disponible ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="faq-answer-text">
+                            Oui, le Restaurant Béluga dispose parking gratuit. Notre restaurant
+                            est facilement accessible depuis l'entrée principale.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-question-text">Proposez-vous un service de traiteur ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="faq-answer-text">
+                            Oui, nous offrons un service de traiteur pour vos événements professionnels et privés. Notre
+                            chef peut créer un menu personnalisé adapté à vos besoins et à votre budget. Contactez-nous
+                            pour plus d'informations.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span class="faq-question-text">Quels moyens de paiement acceptez-vous ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="faq-answer-text">
+                            Nous acceptons les espèces, les cartes bancaires (Visa, Mastercard, American Express), et
+                            les paiements sans contact. Les chèques sont également acceptés sur présentation d'une pièce
+                            d'identité.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Social Section -->
+    <section class="social-section">
+        <h2 class="social-title">Suivez-nous</h2>
+        <p class="social-text">Restez connectés et découvrez nos actualités, nouveautés et offres spéciales</p>
+
+        <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook">📘</a>
+            <a href="#" class="social-link" aria-label="Instagram">📷</a>
+            <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+            <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+            <a href="#" class="social-link" aria-label="TripAdvisor">✈️</a>
+        </div>
+    </section>
+
+
+    <!-- CTA Final -->
+    <section class="cta-final" id="contact">
+        <div class="cta-box">
+            <h2 class="cta-final-title">Prêt à vivre l'expérience Beluga ?</h2>
+            <p class="cta-final-text">
+                Réservez dès maintenant votre table ou contactez-nous pour organiser votre événement
+            </p>
+            <button class="cta-final-button">Réserver maintenant</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">BELUGA</div>
+                <p class="footer-description">
+                    Restaurant gastronomique au cœur du Carré Sénart.
+                    Une expérience culinaire unique dans un cadre chaleureux et raffiné.
+                </p>
+                <div class="footer-social">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">🐦</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#restaurant">Restaurant</a></li>
+                    <li><a href="#dates">Pour vos dates</a></li>
+                    <li><a href="#groupes">Groupes</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Infos Pratiques</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Horaires</a></li>
+                    <li><a href="#">La Carte</a></li>
+                    <li><a href="#">Réserver</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li>Rue de l'Entente, Ex Rue de l'OCAM,</li>
+                    <li>En face de l’Hôtel de la Paix, Lomé-Togo</li>
+                    <li>+228 22 20 97 96</li>
+                    <li>contact@beluga.tg</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2025 Beluga - Tous droits réservés | Mentions légales | Politique de confidentialité
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Parallax effect on split sections
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.split-image img').forEach(img => {
+                const section = img.closest('.split-section');
+                const rect = section.getBoundingClientRect();
+                const scrollPercent = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+
+                if (scrollPercent > 0 && scrollPercent < 1) {
+                    const translateY = (scrollPercent - 0.5) * 50;
+                    img.style.transform = `translateY(${translateY}px) scale(1.1)`;
+                }
+            });
+        });
+    </script>
+    <script>
+        // Navbar scroll effect
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+
+                // Fermer tous les items
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                });
+
+                // Ouvrir l'item cliqué si il était fermé
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Récupérer les données du formulaire
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+
+            // Simuler l'envoi
+            console.log('Form submitted:', formData);
+
+            // Message de confirmation
+            alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
+
+            // Réinitialiser le formulaire
+            contactForm.reset();
+        });
+
+        // Animation au scroll pour les éléments
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer les cartes de contact
+        document.querySelectorAll('.contact-info-card, .location-card, .faq-item').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+
+        // Smooth scroll pour les ancres
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animation des inputs au focus
+        const inputs = document.querySelectorAll('.form-input, .form-textarea, .form-select');
+
+        inputs.forEach(input => {
+            input.addEventListener('focus', function () {
+                this.parentElement.style.transform = 'translateY(-2px)';
+            });
+
+            input.addEventListener('blur', function () {
+                this.parentElement.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Validation du formulaire en temps réel
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
+
+        emailInput.addEventListener('blur', function () {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (this.value && !emailRegex.test(this.value)) {
+                this.style.borderColor = '#ff4545';
+            } else {
+                this.style.borderColor = '';
+            }
+        });
+
+        phoneInput.addEventListener('input', function () {
+            // Formater le numéro de téléphone
+            let value = this.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                value = value.match(/.{1,2}/g).join(' ');
+            }
+            this.value = value.substring(0, 14); // Limite à 10 chiffres + espaces
+        });
+
+        // Hover effect sur les cartes d'info
+        const infoCards = document.querySelectorAll('.contact-info-card');
+
+        infoCards.forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                const icon = this.querySelector('.contact-info-card-icon');
+                icon.style.transform = 'scale(1.1) rotate(5deg)';
+            });
+
+            card.addEventListener('mouseleave', function () {
+                const icon = this.querySelector('.contact-info-card-icon');
+                icon.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+
+        // Animation des social links
+        const socialLinks = document.querySelectorAll('.social-link');
+
+        socialLinks.forEach((link, index) => {
+            link.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        // Copier l'email au clic
+        document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const email = this.textContent;
+                navigator.clipboard.writeText(email).then(() => {
+                    // Visual feedback
+                    const originalText = this.textContent;
+                    this.textContent = '✓ Copié !';
+                    this.style.color = 'var(--accent)';
+
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.color = '';
+                    }, 2000);
+                });
+            });
+        });
+
+        // Ajouter une classe aux éléments visibles
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, revealOptions);
+
+        document.querySelectorAll('.contact-form-section, .contact-info-section').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Style pour les éléments révélés
+        const revealStyle = document.createElement('style');
+        revealStyle.textContent = `
+            .contact-form-section,
+            .contact-info-section {
+                opacity: 0;
+                transform: translateY(40px);
+                transition: all 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+            }
+            
+            .contact-form-section.revealed,
+            .contact-info-section.revealed {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        `;
+        document.head.appendChild(revealStyle);
+    </script>
+</body>
+
+</html>

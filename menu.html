@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beluga - Notre Menu</title>
+    <link rel="stylesheet" href="static/style.css">
+    <style>
+        /* Styles spécifiques à la page Menu */
+        .menu-page {
+            background: var(--warm);
+        }
+
+        /* Hero Menu */
+        .menu-hero {
+            height: 60vh;
+            min-height: 500px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(43, 27, 77, 0.95) 0%, rgba(61, 42, 95, 0.9) 100%),
+                url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&h=1080&fit=crop') center/cover;
+        }
+
+        .menu-hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .menu-hero-label {
+            font-size: 14px;
+            color: var(--accent);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .menu-hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 80px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .menu-hero-text {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Navigation Menu Catégories */
+        .menu-categories-nav {
+            position: sticky;
+            top: 90px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 25px 60px;
+            box-shadow: 0 4px 30px rgba(43, 27, 77, 0.1);
+            z-index: 900;
+            margin-bottom: 80px;
+        }
+
+        .menu-categories-list {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            list-style: none;
+            max-width: 1400px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .menu-categories-list li a {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 10px 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .menu-categories-list li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .menu-categories-list li a:hover,
+        .menu-categories-list li a.active {
+            color: var(--accent);
+        }
+
+        .menu-categories-list li a:hover::after,
+        .menu-categories-list li a.active::after {
+            width: 100%;
+        }
+
+        /* Section Menu */
+        .menu-section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px 150px;
+        }
+
+        .menu-category {
+            margin-bottom: 120px;
+        }
+
+        .menu-category-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .menu-category-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            filter: grayscale(0.3);
+        }
+
+        .menu-category-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 58px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .menu-category-description {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Items Grid */
+        .menu-items-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px 80px;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            border: 1px solid rgba(204, 154, 51, 0.1);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(43, 27, 77, 0.15);
+            border-color: var(--accent);
+        }
+
+        .menu-item-image {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .menu-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .menu-item:hover .menu-item-image img {
+            transform: scale(1.1);
+        }
+
+        .menu-item-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .menu-item-content {
+            padding: 35px;
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .menu-item-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary);
+            flex: 1;
+            line-height: 1.3;
+        }
+
+        .menu-item-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-left: 20px;
+        }
+
+        .menu-item-description {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .menu-item-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .menu-item-tag {
+            padding: 6px 14px;
+            background: var(--warm);
+            color: var(--text-dark);
+            font-size: 12px;
+            border-radius: 15px;
+            font-weight: 500;
+        }
+
+        /* Menu Formules */
+        .menu-formulas {
+            background: white;
+            padding: 80px 60px;
+            margin-bottom: 120px;
+            border-radius: 30px;
+            border: 1px solid rgba(204, 154, 51, 0.2);
+        }
+
+        .menu-formulas-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .menu-formulas-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .menu-formulas-text {
+            font-size: 17px;
+            color: var(--text-light);
+        }
+
+        .menu-formulas-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .menu-formula-card {
+            text-align: center;
+            padding: 40px 30px;
+            border: 2px solid var(--warm);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .menu-formula-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(204, 154, 51, 0.2);
+        }
+
+        .menu-formula-card.featured {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, rgba(204, 154, 51, 0.05) 0%, rgba(204, 154, 51, 0.1) 100%);
+        }
+
+        .menu-formula-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .menu-formula-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .menu-formula-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--accent);
+            margin-bottom: 25px;
+        }
+
+        .menu-formula-items {
+            list-style: none;
+            text-align: left;
+        }
+
+        .menu-formula-items li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--warm);
+            color: var(--text-dark);
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-formula-items li:last-child {
+            border-bottom: none;
+        }
+
+        .menu-formula-items li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Info Section */
+        .menu-info-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 100px 60px;
+            text-align: center;
+            border-radius: 30px;
+            margin-bottom: 0;
+        }
+
+        .menu-info-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .menu-info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-info-item {
+            text-align: center;
+        }
+
+        .menu-info-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .menu-info-text {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .menu-items-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .menu-formulas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-info-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-hero-title {
+                font-size: 50px;
+            }
+
+            .menu-categories-nav {
+                padding: 20px 30px;
+                top: 70px;
+            }
+
+            .menu-categories-list {
+                gap: 20px;
+                justify-content: flex-start;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                padding-bottom: 10px;
+            }
+
+            .menu-section-container {
+                padding: 0 30px 100px;
+            }
+
+            .menu-category-title {
+                font-size: 38px;
+            }
+
+            .menu-item-image {
+                height: 220px;
+            }
+
+            .menu-formulas {
+                padding: 50px 30px;
+            }
+        }
+    </style>
+</head>
+
+<body class="menu-page">
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">
+            <img src="static/images/beluga_sf.png" alt="Beluga Logo" style="height: 50px; vertical-align: middle;">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html">Restaurant</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="#services.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="btn-reserve">Réserver</button>
+    </nav>
+
+    <!-- Hero Menu -->
+    <section class="menu-hero">
+        <div class="menu-hero-content">
+            <div class="menu-hero-label">Découvrez</div>
+            <h1 class="menu-hero-title">Notre Menu</h1>
+            <p class="menu-hero-text">
+                Une cuisine généreuse et raffinée, élaborée avec des produits frais de saison
+            </p>
+        </div>
+    </section>
+
+    <!-- Navigation Catégories -->
+    <nav class="menu-categories-nav">
+        <ul class="menu-categories-list">
+            <li><a href="#formules" class="active">Nos Formules</a></li>
+            <li><a href="#entrees">Entrées</a></li>
+            <li><a href="#plats">Plats</a></li>
+            <li><a href="#desserts">Desserts</a></li>
+            <li><a href="#boissons">Boissons</a></li>
+        </ul>
+    </nav>
+
+    <!-- Sections Menu -->
+    <div class="menu-section-container">
+
+        <!-- Formules -->
+        <div id="formules" class="menu-formulas">
+            <div class="menu-formulas-header">
+                <h2 class="menu-formulas-title">Nos Formules</h2>
+                <p class="menu-formulas-text">Découvrez nos menus composés avec soin pour une expérience complète</p>
+            </div>
+            <div class="menu-formulas-grid">
+                <div class="menu-formula-card">
+                    <h3 class="menu-formula-name">Formule Déjeuner</h3>
+                    <div class="menu-formula-price">22€</div>
+                    <ul class="menu-formula-items">
+                        <li>Entrée au choix</li>
+                        <li>Plat au choix</li>
+                        <li>Café ou thé</li>
+                    </ul>
+                </div>
+
+                <div class="menu-formula-card featured">
+                    <div class="menu-formula-badge">Le Plus Populaire</div>
+                    <h3 class="menu-formula-name">Formule Complète</h3>
+                    <div class="menu-formula-price">32€</div>
+                    <ul class="menu-formula-items">
+                        <li>Entrée au choix</li>
+                        <li>Plat au choix</li>
+                        <li>Dessert au choix</li>
+                        <li>Café ou thé</li>
+                    </ul>
+                </div>
+
+                <div class="menu-formula-card">
+                    <h3 class="menu-formula-name">Menu Gourmand</h3>
+                    <div class="menu-formula-price">45€</div>
+                    <ul class="menu-formula-items">
+                        <li>Mise en bouche</li>
+                        <li>Entrée gastronomique</li>
+                        <li>Plat signature</li>
+                        <li>Fromage ou pré-dessert</li>
+                        <li>Dessert au choix</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Entrées -->
+        <div id="entrees" class="menu-category">
+            <div class="menu-category-header">
+                <div class="menu-category-icon">🥗</div>
+                <h2 class="menu-category-title">Entrées</h2>
+                <p class="menu-category-description">
+                    Démarrez votre repas avec nos créations raffinées et savoureuses
+                </p>
+            </div>
+
+            <div class="menu-items-grid">
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&h=400&fit=crop"
+                            alt="Tartare de Saumon">
+                        <div class="menu-item-badge">Chef's Choice</div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Tartare de Saumon Frais</h3>
+                            <span class="menu-item-price">14€</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Saumon frais mariné aux agrumes, avocat crémeux, câpres et oignons rouges, servi avec des
+                            toasts croustillants
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Frais</span>
+                            <span class="menu-item-tag">Léger</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&h=400&fit=crop"
+                            alt="Foie Gras">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Foie Gras Maison</h3>
+                            <span class="menu-item-price">18€</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Foie gras de canard mi-cuit, chutney de figues, pain brioché toasté et fleur de sel
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Signature</span>
+                            <span class="menu-item-tag">Tradition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=400&fit=crop"
+                            alt="Salade">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Salade César Revisitée</h3>
+                            <span class="menu-item-price">12€</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Laitue romaine croquante, poulet mariné grillé, parmesan, croûtons maison et sauce césar
+                            onctueuse
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Classique</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1534080564583-6be75777b70a?w=600&h=400&fit=crop"
+                            alt="Velouté">
+                        <div class="menu-item-badge">Saison</div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Velouté de Butternut</h3>
+                            <span class="menu-item-price">10€</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Crème veloutée de butternut rôtie, éclats de noisettes torréfiées, crème fouettée et huile
+                            de truffe
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Végétarien</span>
+                            <span class="menu-item-tag">Automne</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Plats -->
+        <div id="plats" class="menu-category">
+            <div class="menu-category-header">
+                <div class="menu-category-icon">🍽️</div>
+                <h2 class="menu-category-title">Plats Principaux</h2>
+                <p class="menu-category-description">
+                    Nos créations signature, généreuses et savoureuses
+                </p>
+            </div>
+
+            <div class="menu-items-grid">
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&h=400&fit=crop"
+                            alt="Boeuf Bourguignon">
+                        <div class="menu-item-badge">Signature</div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Bœuf Bourguignon</h3>
+                            <span class="menu-item-price">26€</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Joue de bœuf braisée au vin rouge, carottes fondantes, champignons de Paris, lardons fumés
+                            et pommes grenailles
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Tradition</span>
+                            <span class="menu-item-tag">Mijoté</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1485921325833-c519f76c4927?w=600&h=400&fit=crop"
+                            alt="Bar de Ligne">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Bar de Ligne Grillé</h3>
+                            <span class="menu-item-price">32€</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Filet de bar sauvage grillé, risotto crémeux aux asperges, beurre blanc citronné et légumes
+                            de saison
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Poisson</span>
+                            <span class="menu-item-tag">Frais</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=600&h=400&fit=crop"
+                            alt="Magret de Canard">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Magret de Canard Rôti</h3>
+                            <span class="menu-item-price">28€</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Magret de canard rosé, purée de patate douce, sauce aux cerises et amandes effilées, légumes
+                            glacés
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Volaille</span>
+                            <span class="menu-item-tag">Gourmand</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=600&h=400&fit=crop"
+                            alt="Risotto">
+                        <div class="menu-item-badge">Végétarien</div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Risotto aux Cèpes</h3>
+                            <span class="menu-item-price">22€</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Riz arborio crémeux, cèpes frais poêlés, parmesan vieilli 24 mois, huile de truffe et persil
+                            frais
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Végétarien</span>
+                            <span class="menu-item-tag">Automne</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desserts -->
+        <div id="desserts" class="menu-category">
+            <div class="menu-category-header">
+                <div class="menu-category-icon">🍰</div>
+                <h2 class="menu-category-title">Desserts</h2>
+                <p class="menu-category-description">
+                    La touche sucrée finale pour sublimer votre expérience
+                </p>
+            </div>
+
+            <div class="menu-items-grid">
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&h=400&fit=crop"
+                            alt="Tarte Tatin">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Tarte Tatin Maison</h3>
+                            <span class="menu-item-price">10€</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Pommes caramélisées, pâte feuilletée croustillante, glace vanille bourbon et caramel au
+                            beurre salé
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Classique</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=600&h=400&fit=crop"
+                            alt="Fondant">
+                        <div class="menu-item-badge">Incontournable</div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Fondant au Chocolat</h3>
+                            <span class="menu-item-price">11€</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Cœur coulant au chocolat noir 70%, glace vanille artisanale, éclats de noisettes
+                            caramélisées
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Chocolat</span>
+                            <span class="menu-item-tag">Gourmand</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?w=600&h=400&fit=crop"
+                            alt="Crème Brûlée">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Crème Brûlée Vanille</h3>
+                            <span class="menu-item-price">9€</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Crème onctueuse à la vanille de Madagascar, caramel craquant, sablés bretons et fruits
+                            rouges
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Tradition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&h=400&fit=crop"
+                            alt="Tiramisu">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Tiramisu Traditionnel</h3>
+                            <span class="menu-item-price">10€</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Biscuits imbibés de café italien, mascarpone crémeux, cacao amer et éclats de spéculoos
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Italien</span>
+                            <span class="menu-item-tag">Café</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Boissons -->
+        <div id="boissons" class="menu-category">
+            <div class="menu-category-header">
+                <div class="menu-category-icon">🍷</div>
+                <h2 class="menu-category-title">Boissons</h2>
+                <p class="menu-category-description">
+                    Une sélection de vins et cocktails pour accompagner vos plats
+                </p>
+            </div>
+
+            <div class="menu-items-grid">
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&h=400&fit=crop"
+                            alt="Vins Rouges">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Vins Rouges</h3>
+                            <span class="menu-item-price">6-12€</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Sélection de vins rouges français : Bordeaux, Bourgogne, Côtes du Rhône. Au verre ou en
+                            bouteille.
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Verre</span>
+                            <span class="menu-item-tag">Bouteille</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1547595628-c61a29f496f0?w=600&h=400&fit=crop"
+                            alt="Vins Blancs">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Vins Blancs</h3>
+                            <span class="menu-item-price">6-11€</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Sélection de vins blancs : Chablis, Sancerre, Alsace. Parfaits pour accompagner poissons et
+                            fruits de mer.
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Verre</span>
+                            <span class="menu-item-tag">Bouteille</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&h=400&fit=crop"
+                            alt="Cocktails">
+                        <div class="menu-item-badge">Maison</div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Cocktails Signature</h3>
+                            <span class="menu-item-price">12€</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Nos créations originales : Beluga Spritz, Purple Passion, Golden Hour. Cocktails avec ou
+                            sans alcool.
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Original</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=600&h=400&fit=crop"
+                            alt="Champagne">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Champagnes</h3>
+                            <span class="menu-item-price">60-180€</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Grandes maisons et vignerons indépendants : Moët & Chandon, Veuve Clicquot, Dom Pérignon.
+                            Bouteilles uniquement.
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Premium</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="menu-info-section">
+            <h2 class="menu-info-title">Informations Importantes</h2>
+            <div class="menu-info-grid">
+                <div class="menu-info-item">
+                    <div class="menu-info-icon">🌿</div>
+                    <p class="menu-info-text">
+                        <strong>Produits Frais</strong><br>
+                        95% de nos ingrédients sont frais et cuisinés sur place quotidiennement
+                    </p>
+                </div>
+                <div class="menu-info-item">
+                    <div class="menu-info-icon">⚠️</div>
+                    <p class="menu-info-text">
+                        <strong>Allergènes</strong><br>
+                        N'hésitez pas à nous informer de vos allergies ou intolérances alimentaires
+                    </p>
+                </div>
+                <div class="menu-info-item">
+                    <div class="menu-info-icon">🌱</div>
+                    <p class="menu-info-text">
+                        <strong>Options Végétariennes</strong><br>
+                        Nous proposons des alternatives végétariennes pour la plupart de nos plats
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">BELUGA</div>
+                <p class="footer-description">
+                    Restaurant gastronomique au cœur du Carré Sénart.
+                    Une expérience culinaire unique dans un cadre chaleureux et raffiné.
+                </p>
+                <div class="footer-social">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">🐦</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#restaurant">Restaurant</a></li>
+                    <li><a href="#dates">Pour vos dates</a></li>
+                    <li><a href="#groupes">Groupes</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Infos Pratiques</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Horaires</a></li>
+                    <li><a href="#">La Carte</a></li>
+                    <li><a href="#">Réserver</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li>Rue de l'Entente, Ex Rue de l'OCAM,</li>
+                    <li>En face de l’Hôtel de la Paix, Lomé-Togo</li>
+                    <li>+228 22 20 97 96</li>
+                    <li>contact@beluga.tg</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2025 Beluga - Tous droits réservés | Mentions légales | Politique de confidentialité
+        </div>
+    </footer>
+
+
+    <script>
+        // Smooth scroll pour la navigation
+        document.querySelectorAll('.menu-categories-list a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Retirer la classe active de tous les liens
+                document.querySelectorAll('.menu-categories-list a').forEach(link => {
+                    link.classList.remove('active');
+                });
+
+                // Ajouter la classe active au lien cliqué
+                this.classList.add('active');
+
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 180; // Hauteur nav + menu categories
+                    const targetPosition = target.offsetTop - offset;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Mettre à jour la navigation active au scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.menu-category, .menu-formulas');
+            const navLinks = document.querySelectorAll('.menu-categories-list a');
+
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Animation au scroll pour les éléments
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer les cartes de menu
+        document.querySelectorAll('.menu-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            observer.observe(item);
+        });
+
+        // Observer les en-têtes de catégories
+        document.querySelectorAll('.menu-category-header').forEach(header => {
+            header.style.opacity = '0';
+            header.style.transform = 'translateY(30px)';
+            header.style.transition = 'all 0.8s ease';
+            observer.observe(header);
+        });
+    </script>
+</body>
+
+</html>
