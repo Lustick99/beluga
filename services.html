@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beluga - Restaurant</title>
+
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="static/images/b.png">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="static/style.css">
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Meta tags for SEO -->
+    <meta name="description"
+        content="Beluga, restaurant gastronomique au cœur de Lomé-Togo. Découvrez une cuisine raffinée dans un cadre chaleureux et convivial. Parfait pour vos dîners romantiques, repas entre amis ou événements d'entreprise. Réservez votre table dès maintenant !">
+    <meta name="keywords"
+        content="restaurant, gastronomique, Lomé, Togo, cuisine raffinée, dîner romantique, repas entre amis, événements d'entreprise, réservation">
+    <meta name="author" content="Lustick Services">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">
+            <img src="static/images/beluga_sf.png" alt="Beluga Logo" style="height: 50px; vertical-align: middle;">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html">Restaurant</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="btn-reserve">Réserver</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero services-hero">
+        <div class="hero-bg" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);">
+        </div>
+        <div class="hero-content">
+            <div class="hero-subtitle">Découvrez</div>
+            <h1 class="hero-title">Nos Services</h1>
+            <p class="hero-description" style="color: rgba(255, 255, 255, 0.9); text-shadow: none;">
+                Des prestations sur-mesure pour tous vos événements et occasions spéciales
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <div class="services-container">
+        <div class="services-grid">
+            <!-- Service 1 -->
+            <div class="service-card" data-scroll>
+                <div class="service-card-image">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&h=400&fit=crop"
+                        alt="Événements d'entreprise">
+                    <span class="service-card-badge">Populaire</span>
+                </div>
+                <div class="service-card-content">
+                    <span class="service-card-icon">🏢</span>
+                    <h3 class="service-card-title">Événements d'Entreprise</h3>
+                    <p class="service-card-description">
+                        Organisez vos séminaires, réunions et événements corporate dans un cadre professionnel et
+                        élégant.
+                    </p>
+                    <ul class="service-card-features">
+                        <li>Salles modulables jusqu'à 100 personnes</li>
+                        <li>Équipements audiovisuels inclus</li>
+                        <li>Menus personnalisables</li>
+                        <li>Service dédié</li>
+                    </ul>
+                    <a href="#contact" class="service-card-cta">En savoir plus →</a>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card" data-scroll>
+                <div class="service-card-image">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&h=400&fit=crop"
+                        alt="Mariages">
+                    <span class="service-card-badge">Premium</span>
+                </div>
+                <div class="service-card-content">
+                    <span class="service-card-icon">💍</span>
+                    <h3 class="service-card-title">Mariages & Réceptions</h3>
+                    <p class="service-card-description">
+                        Célébrez le plus beau jour de votre vie dans un cadre romantique et raffiné avec un service
+                        d'exception.
+                    </p>
+                    <ul class="service-card-features">
+                        <li>Privatisation complète du restaurant</li>
+                        <li>Menu gastronomique personnalisé</li>
+                        <li>Coordination avec vos prestataires</li>
+                        <li>Décoration sur-mesure</li>
+                    </ul>
+                    <a href="#contact" class="service-card-cta">En savoir plus →</a>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card" data-scroll>
+                <div class="service-card-image">
+                    <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&h=400&fit=crop"
+                        alt="Anniversaires">
+                </div>
+                <div class="service-card-content">
+                    <span class="service-card-icon">🎉</span>
+                    <h3 class="service-card-title">Anniversaires & Fêtes</h3>
+                    <p class="service-card-description">
+                        Marquez les esprits avec une célébration inoubliable pour vos anniversaires et événements
+                        privés.
+                    </p>
+                    <ul class="service-card-features">
+                        <li>Espaces privatifs disponibles</li>
+                        <li>Menus adaptés à tous les âges</li>
+                        <li>Animations possibles</li>
+                        <li>Gâteau d'anniversaire inclus</li>
+                    </ul>
+                    <a href="#contact" class="service-card-cta">En savoir plus →</a>
+                </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-card" data-scroll>
+                <div class="service-card-image">
+                    <img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=600&h=400&fit=crop"
+                        alt="Brunch">
+                </div>
+                <div class="service-card-content">
+                    <span class="service-card-icon">🥂</span>
+                    <h3 class="service-card-title">Brunch du Dimanche</h3>
+                    <p class="service-card-description">
+                        Profitez d'un brunch généreux et convivial tous les dimanches dans une ambiance détendue.
+                    </p>
+                    <ul class="service-card-features">
+                        <li>Buffet varié sucré-salé</li>
+                        <li>Boissons chaudes à volonté</li>
+                        <li>Ambiance musicale live</li>
+                        <li>Formules famille disponibles</li>
+                    </ul>
+                    <a href="#contact" class="service-card-cta">En savoir plus →</a>
+                </div>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="service-card" data-scroll>
+                <div class="service-card-image">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop"
+                        alt="Privatisation">
+                </div>
+                <div class="service-card-content">
+                    <span class="service-card-icon">🔒</span>
+                    <h3 class="service-card-title">Privatisation Complète</h3>
+                    <p class="service-card-description">
+                        Réservez l'intégralité du restaurant pour vos événements exclusifs en toute intimité.
+                    </p>
+                    <ul class="service-card-features">
+                        <li>Capacité jusqu'à 150 personnes</li>
+                        <li>Menu entièrement personnalisable</li>
+                        <li>Service exclusif</li>
+                        <li>Horaires flexibles</li>
+                    </ul>
+                    <a href="#contact" class="service-card-cta">En savoir plus →</a>
+                </div>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="service-card" data-scroll>
+                <div class="service-card-image">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&h=400&fit=crop"
+                        alt="Traiteur">
+                </div>
+                <div class="service-card-content">
+                    <span class="service-card-icon">🍱</span>
+                    <h3 class="service-card-title">Service Traiteur</h3>
+                    <p class="service-card-description">
+                        Savourez notre cuisine gastronomique chez vous ou dans le lieu de votre choix.
+                    </p>
+                    <ul class="service-card-features">
+                        <li>Livraison dans un rayon de 30km</li>
+                        <li>Cocktails & buffets</li>
+                        <li>Service à table disponible</li>
+                        <li>Vaisselle et équipement fournis</li>
+                    </ul>
+                    <a href="#contact" class="service-card-cta">En savoir plus →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature Section 1 -->
+        <div class="feature-section" data-scroll>
+            <div class="feature-image">
+                <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&h=600&fit=crop"
+                    alt="Événements sur-mesure">
+            </div>
+            <div class="feature-content">
+                <div class="feature-label">Notre Engagement</div>
+                <h2 class="feature-title">Des événements sur-mesure</h2>
+                <p class="feature-description">
+                    Chaque événement est unique. Notre équipe dédiée travaille avec vous pour créer une expérience
+                    personnalisée qui dépasse vos attentes et marque les esprits de vos invités.
+                </p>
+                <div class="feature-highlights">
+                    <div class="feature-highlight">
+                        <span class="feature-highlight-icon">✨</span>
+                        <span class="feature-highlight-text">Coordination complète de A à Z</span>
+                    </div>
+                    <div class="feature-highlight">
+                        <span class="feature-highlight-icon">👨‍🍳</span>
+                        <span class="feature-highlight-text">Menus créés par notre chef</span>
+                    </div>
+                    <div class="feature-highlight">
+                        <span class="feature-highlight-icon">🎨</span>
+                        <span class="feature-highlight-text">Décoration personnalisée</span>
+                    </div>
+                    <div class="feature-highlight">
+                        <span class="feature-highlight-icon">⭐</span>
+                        <span class="feature-highlight-text">Service d'excellence</span>
+                    </div>
+                </div>
+                <a href="#contact" class="btn-primary">Planifier mon événement</a>
+            </div>
+        </div>
+
+        <!-- Feature Section 2 -->
+        <div class="feature-section" data-scroll>
+            <div class="feature-image">
+                <img src="https://images.unsplash.com/photo-1478145787956-f6f12c59624d?w=800&h=600&fit=crop"
+                    alt="Équipe professionnelle">
+            </div>
+            <div class="feature-content">
+                <div class="feature-label">Notre Équipe</div>
+                <h2 class="feature-title">Une équipe d'experts à votre service</h2>
+                <p class="feature-description">
+                    De la planification à l'exécution, notre équipe de professionnels passionnés met tout en œuvre pour
+                    garantir le succès de votre événement.
+                </p>
+                <div class="feature-highlights">
+                    <div class="feature-highlight">
+                        <span class="feature-highlight-icon">👔</span>
+                        <span class="feature-highlight-text">Event manager dédié</span>
+                    </div>
+                    <div class="feature-highlight">
+                        <span class="feature-highlight-icon">🍷</span>
+                        <span class="feature-highlight-text">Sommelier expert</span>
+                    </div>
+                    <div class="feature-highlight">
+                        <span class="feature-highlight-icon">📋</span>
+                        <span class="feature-highlight-text">Logistique complète</span>
+                    </div>
+                    <div class="feature-highlight">
+                        <span class="feature-highlight-icon">💬</span>
+                        <span class="feature-highlight-text">Suivi personnalisé</span>
+                    </div>
+                </div>
+                <a href="#contact" class="btn-primary">Rencontrer l'équipe</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="process-header">
+            <div class="section-label" style="color: var(--accent);">Comment ça marche</div>
+            <h2 class="process-title">4 étapes simples</h2>
+            <p class="process-subtitle">
+                Un processus simple et efficace pour organiser votre événement sans stress
+            </p>
+        </div>
+
+        <div class="process-steps">
+            <div class="process-step" data-scroll>
+                <div class="process-step-number">1</div>
+                <h3 class="process-step-title">Consultation</h3>
+                <p class="process-step-description">
+                    Échangez avec notre équipe pour définir vos besoins et vos envies
+                </p>
+            </div>
+
+            <div class="process-step" data-scroll>
+                <div class="process-step-number">2</div>
+                <h3 class="process-step-title">Personnalisation</h3>
+                <p class="process-step-description">
+                    Création d'une proposition sur-mesure adaptée à votre événement
+                </p>
+            </div>
+
+            <div class="process-step" data-scroll>
+                <div class="process-step-number">3</div>
+                <h3 class="process-step-title">Validation</h3>
+                <p class="process-step-description">
+                    Affinage des détails et confirmation de tous les éléments
+                </p>
+            </div>
+
+            <div class="process-step" data-scroll>
+                <div class="process-step-number">4</div>
+                <h3 class="process-step-title">Réalisation</h3>
+                <p class="process-step-description">
+                    Profitez de votre événement, nous nous occupons de tout
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="section-header" style="text-align: center; margin-bottom: 20px;">
+            <div class="section-label" style="color: var(--accent);">Nos Formules</div>
+            <h2 class="section-title">Des tarifs adaptés à vos besoins</h2>
+            <p class="section-text" style="max-width: 700px; margin: 0 auto;">
+                Choisissez la formule qui correspond le mieux à votre événement
+            </p>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- Formule Essentielle -->
+            <div class="pricing-card" data-scroll>
+                <div class="pricing-name">Essentielle</div>
+                <div class="pricing-price">45€</div>
+                <div class="pricing-period">par personne</div>
+                <ul class="pricing-features">
+                    <li>Menu 3 services</li>
+                    <li>Vin ou soft drinks</li>
+                    <li>Café & mignardises</li>
+                    <li>Service à table</li>
+                    <li>Décoration basique</li>
+                </ul>
+                <a href="#contact" class="pricing-cta">Réserver</a>
+            </div>
+
+            <!-- Formule Prestige (Featured) -->
+            <div class="pricing-card featured" data-scroll>
+                <span class="pricing-badge">Recommandé</span>
+                <div class="pricing-name">Prestige</div>
+                <div class="pricing-price">75€</div>
+                <div class="pricing-period">par personne</div>
+                <ul class="pricing-features">
+                    <li>Menu 5 services</li>
+                    <li>Accord mets et vins</li>
+                    <li>Cocktail de bienvenue</li>
+                    <li>Service premium</li>
+                    <li>Décoration personnalisée</li>
+                    <li>Coordinateur dédié</li>
+                </ul>
+                <a href="#contact" class="pricing-cta">Réserver</a>
+            </div>
+
+            <!-- Formule Excellence -->
+            <div class="pricing-card" data-scroll>
+                <div class="pricing-name">Excellence</div>
+                <div class="pricing-price">120€</div>
+                <div class="pricing-period">par personne</div>
+                <ul class="pricing-features">
+                    <li>Menu gastronomique sur-mesure</li>
+                    <li>Vins grands crus</li>
+                    <li>Bar à cocktails</li>
+                    <li>Service majordome</li>
+                    <li>Décoration luxe</li>
+                    <li>Privatisation complète</li>
+                    <li>Photographe inclus</li>
+                </ul>
+                <a href="#contact" class="pricing-cta">Réserver</a>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 60px;">
+            <p style="font-size: 15px; color: var(--text-light); margin-bottom: 20px;">
+                * Tarifs indicatifs hors taxes. Devis personnalisé sur demande.
+            </p>
+            <a href="#contact" class="btn-secondary">Demander un devis personnalisé</a>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <div class="section-header" style="text-align: center; margin-bottom: 60px;">
+                <div class="section-label" style="color: var(--accent);">Questions Fréquentes</div>
+                <h2 class="section-title">Vous avez des questions ?</h2>
+                <p class="section-text">
+                    Retrouvez les réponses aux questions les plus courantes
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Quel est le nombre minimum de personnes pour privatiser ?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Nous acceptons les privatisations à partir de 30 personnes pour les déjeuners et 50 personnes
+                        pour les dîners. Pour les événements plus petits, des espaces semi-privatifs sont disponibles.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Combien de temps à l'avance dois-je réserver ?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Nous recommandons de réserver au moins 4 à 6 semaines à l'avance pour les événements standard.
+                        Pour les mariages et grands événements, un délai de 3 à 6 mois est idéal pour garantir la
+                        disponibilité et une préparation optimale.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Proposez-vous des menus végétariens et sans allergènes ?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Absolument ! Notre chef peut adapter tous nos menus pour répondre aux régimes végétariens,
+                        végans, sans gluten, et prendre en compte toutes les allergies alimentaires. Informez-nous
+                        simplement lors de la réservation.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Puis-je apporter ma propre décoration ?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Oui, vous pouvez apporter votre propre décoration. Notre équipe peut également vous mettre en
+                        relation avec nos décorateurs partenaires ou créer une décoration personnalisée selon vos
+                        souhaits et votre thème.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Quelles sont les conditions d'annulation ?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Les annulations effectuées plus de 30 jours avant l'événement sont remboursables à 100% (hors
+                        frais de dossier). Entre 30 et 15 jours : 50% de remboursement. Moins de 15 jours : aucun
+                        remboursement, sauf cas de force majeure justifié.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Avez-vous un parking pour mes invités ?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Oui, nous disposons d'un parking privé gratuit de 80 places à proximité immédiate du restaurant.
+                        Pour les grands événements, nous pouvons également organiser un service de voiturier.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-final">
+        <div class="cta-box">
+            <h2 class="cta-final-title">Prêt à organiser votre événement ?</h2>
+            <p class="cta-final-text">
+                Contactez-nous dès aujourd'hui pour discuter de votre projet et recevoir un devis personnalisé
+            </p>
+            <button class="cta-final-button">Demander un devis</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">BELUGA</div>
+                <p class="footer-description">
+                    Restaurant gastronomique au cœur du Carré Sénart.
+                    Une expérience culinaire unique dans un cadre chaleureux et raffiné.
+                </p>
+                <div class="footer-social">
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="about.html">Restaurant</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Infos Pratiques</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Horaires</a></li>
+                    <li><a href="#">La Carte</a></li>
+                    <li><a href="#">Réserver</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li>Rue de l'Entente, Ex Rue de l'OCAM,</li>
+                    <li>En face de l’Hôtel de la Paix, Lomé-Togo</li>
+                    <li>+228 22 20 97 96</li>
+                    <li>contact@beluga.tg</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2025 Beluga - Tous droits réservés | Mentions légales | Politique de confidentialité
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // FAQ Toggle
+        function toggleFaq(button) {
+            const faqItem = button.parentElement;
+            const allItems = document.querySelectorAll('.faq-item');
+
+            // Close all other items
+            allItems.forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                }
+            });
+
+            // Toggle current item
+            faqItem.classList.toggle('active');
+        }
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with data-scroll attribute
+        document.querySelectorAll('[data-scroll]').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Staggered animation for service cards
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Staggered animation for process steps
+        const processSteps = document.querySelectorAll('.process-step');
+        processSteps.forEach((step, index) => {
+            step.style.transitionDelay = `${index * 0.15}s`;
+        });
+
+        // Staggered animation for pricing cards
+        const pricingCards = document.querySelectorAll('.pricing-card');
+        pricingCards.forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

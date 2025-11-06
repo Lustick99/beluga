@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Beluga - Restaurant</title>
+    <title>Beluga - Restaurant</title>
 
     <!-- favicon -->
     <link rel="icon" type="image/png" href="static/images/b.png">
@@ -12,457 +12,18 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="static/style.css">
 
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- Meta tags for SEO -->
     <meta name="description"
         content="Beluga, restaurant gastronomique au cœur de Lomé-Togo. Découvrez une cuisine raffinée dans un cadre chaleureux et convivial. Parfait pour vos dîners romantiques, repas entre amis ou événements d'entreprise. Réservez votre table dès maintenant !">
     <meta name="keywords"
         content="restaurant, gastronomique, Lomé, Togo, cuisine raffinée, dîner romantique, repas entre amis, événements d'entreprise, réservation">
     <meta name="author" content="Lustick Services">
-    
-    <style>
-        /* Styles spécifiques à la page Menu */
-        .menu-page {
-            background: var(--warm);
-        }
 
-        /* Hero Menu */
-        .menu-hero {
-            height: 60vh;
-            min-height: 500px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(43, 27, 77, 0.95) 0%, rgba(61, 42, 95, 0.9) 100%),
-                url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&h=1080&fit=crop') center/cover;
-        }
-
-        .menu-hero-content {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .menu-hero-label {
-            font-size: 14px;
-            color: var(--accent);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        .menu-hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 80px;
-            font-weight: 900;
-            color: white;
-            margin-bottom: 20px;
-        }
-
-        .menu-hero-text {
-            font-size: 20px;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Navigation Menu Catégories */
-        .menu-categories-nav {
-            position: sticky;
-            top: 90px;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            padding: 25px 60px;
-            box-shadow: 0 4px 30px rgba(43, 27, 77, 0.1);
-            z-index: 900;
-            margin-bottom: 80px;
-        }
-
-        .menu-categories-list {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            list-style: none;
-            max-width: 1400px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-        }
-
-        .menu-categories-list li a {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--text-dark);
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 10px 0;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .menu-categories-list li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        .menu-categories-list li a:hover,
-        .menu-categories-list li a.active {
-            color: var(--accent);
-        }
-
-        .menu-categories-list li a:hover::after,
-        .menu-categories-list li a.active::after {
-            width: 100%;
-        }
-
-        /* Section Menu */
-        .menu-section-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 60px 150px;
-        }
-
-        .menu-category {
-            margin-bottom: 120px;
-        }
-
-        .menu-category-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .menu-category-icon {
-            font-size: 60px;
-            margin-bottom: 20px;
-            filter: grayscale(0.3);
-        }
-
-        .menu-category-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 58px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .menu-category-description {
-            font-size: 18px;
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        /* Items Grid */
-        .menu-items-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 60px 80px;
-        }
-
-        .menu-item {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.5s ease;
-            border: 1px solid rgba(204, 154, 51, 0.1);
-        }
-
-        .menu-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(43, 27, 77, 0.15);
-            border-color: var(--accent);
-        }
-
-        .menu-item-image {
-            width: 100%;
-            height: 280px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .menu-item-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-
-        .menu-item:hover .menu-item-image img {
-            transform: scale(1.1);
-        }
-
-        .menu-item-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--accent);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .menu-item-content {
-            padding: 35px;
-        }
-
-        .menu-item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 15px;
-        }
-
-        .menu-item-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 26px;
-            font-weight: 700;
-            color: var(--primary);
-            flex: 1;
-            line-height: 1.3;
-        }
-
-        .menu-item-price {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--accent);
-            margin-left: 20px;
-        }
-
-        .menu-item-description {
-            font-size: 15px;
-            line-height: 1.7;
-            color: var(--text-light);
-            margin-bottom: 20px;
-        }
-
-        .menu-item-tags {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .menu-item-tag {
-            padding: 6px 14px;
-            background: var(--warm);
-            color: var(--text-dark);
-            font-size: 12px;
-            border-radius: 15px;
-            font-weight: 500;
-        }
-
-        /* Menu Formules */
-        .menu-formulas {
-            background: white;
-            padding: 80px 60px;
-            margin-bottom: 120px;
-            border-radius: 30px;
-            border: 1px solid rgba(204, 154, 51, 0.2);
-        }
-
-        .menu-formulas-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .menu-formulas-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .menu-formulas-text {
-            font-size: 17px;
-            color: var(--text-light);
-        }
-
-        .menu-formulas-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-        }
-
-        .menu-formula-card {
-            text-align: center;
-            padding: 40px 30px;
-            border: 2px solid var(--warm);
-            border-radius: 20px;
-            transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .menu-formula-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(204, 154, 51, 0.2);
-        }
-
-        .menu-formula-card.featured {
-            border-color: var(--accent);
-            background: linear-gradient(135deg, rgba(204, 154, 51, 0.05) 0%, rgba(204, 154, 51, 0.1) 100%);
-        }
-
-        .menu-formula-badge {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent);
-            color: white;
-            padding: 6px 20px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .menu-formula-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .menu-formula-price {
-            font-family: 'Playfair Display', serif;
-            font-size: 42px;
-            font-weight: 900;
-            color: var(--accent);
-            margin-bottom: 25px;
-        }
-
-        .menu-formula-items {
-            list-style: none;
-            text-align: left;
-        }
-
-        .menu-formula-items li {
-            padding: 12px 0;
-            border-bottom: 1px solid var(--warm);
-            color: var(--text-dark);
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .menu-formula-items li:last-child {
-            border-bottom: none;
-        }
-
-        .menu-formula-items li::before {
-            content: '✓';
-            color: var(--accent);
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        /* Info Section */
-        .menu-info-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            padding: 100px 60px;
-            text-align: center;
-            border-radius: 30px;
-            margin-bottom: 0;
-        }
-
-        .menu-info-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 42px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 30px;
-        }
-
-        .menu-info-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 50px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .menu-info-item {
-            text-align: center;
-        }
-
-        .menu-info-icon {
-            font-size: 50px;
-            margin-bottom: 20px;
-        }
-
-        .menu-info-text {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.95);
-            line-height: 1.7;
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .menu-items-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .menu-formulas-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .menu-info-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .menu-hero-title {
-                font-size: 50px;
-            }
-
-            .menu-categories-nav {
-                padding: 20px 30px;
-                top: 70px;
-            }
-
-            .menu-categories-list {
-                gap: 20px;
-                justify-content: flex-start;
-                overflow-x: auto;
-                flex-wrap: nowrap;
-                padding-bottom: 10px;
-            }
-
-            .menu-section-container {
-                padding: 0 30px 100px;
-            }
-
-            .menu-category-title {
-                font-size: 38px;
-            }
-
-            .menu-item-image {
-                height: 220px;
-            }
-
-            .menu-formulas {
-                padding: 50px 30px;
-            }
-        }
-    </style>
 </head>
 
 <body class="menu-page">
@@ -475,7 +36,7 @@
             <li><a href="index.html">Accueil</a></li>
             <li><a href="about.html">Restaurant</a></li>
             <li><a href="menu.html">Menu</a></li>
-            <li><a href="#services.html">Services</a></li>
+            <li><a href="services.html">Services</a></li>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -499,8 +60,8 @@
             <li><a href="#formules" class="active">Nos Formules</a></li>
             <li><a href="#entrees">Entrées</a></li>
             <li><a href="#plats">Plats</a></li>
+            <li><a href="#grillades">Grillades</a></li>
             <li><a href="#desserts">Desserts</a></li>
-            <li><a href="#boissons">Boissons</a></li>
         </ul>
     </nav>
 
@@ -511,40 +72,37 @@
         <div id="formules" class="menu-formulas">
             <div class="menu-formulas-header">
                 <h2 class="menu-formulas-title">Nos Formules</h2>
-                <p class="menu-formulas-text">Découvrez nos menus composés avec soin pour une expérience complète</p>
+                <p class="menu-formulas-text">Découvrez nos menus selon les horaires</p>
             </div>
             <div class="menu-formulas-grid">
                 <div class="menu-formula-card">
-                    <h3 class="menu-formula-name">Formule Déjeuner</h3>
-                    <div class="menu-formula-price">22€</div>
+                    <h3 class="menu-formula-name">Formule Buffet (Midi)</h3>
+                    <div class="menu-formula-price">9 500 F CFA</div>
                     <ul class="menu-formula-items">
-                        <li>Entrée au choix</li>
-                        <li>Plat au choix</li>
-                        <li>Café ou thé</li>
+                        <li>Du lundi au vendredi</li>
+                        <li>De 12h à 15h</li>
+                        <li>Un verre de vin ou 50 cl d'eau minérale inclus</li>
                     </ul>
                 </div>
 
                 <div class="menu-formula-card featured">
-                    <div class="menu-formula-badge">Le Plus Populaire</div>
-                    <h3 class="menu-formula-name">Formule Complète</h3>
-                    <div class="menu-formula-price">32€</div>
+                    <div class="menu-formula-badge">Week-end</div>
+                    <h3 class="menu-formula-name">Formule Buffet (Soir)</h3>
+                    <div class="menu-formula-price">13 500 F CFA</div>
                     <ul class="menu-formula-items">
-                        <li>Entrée au choix</li>
-                        <li>Plat au choix</li>
-                        <li>Dessert au choix</li>
-                        <li>Café ou thé</li>
+                        <li>Vendredi et Samedi soir</li>
+                        <li>De 19h à 23h</li>
+                        <li>Un verre de vin ou 50 cl d'eau minérale inclus</li>
                     </ul>
                 </div>
 
                 <div class="menu-formula-card">
-                    <h3 class="menu-formula-name">Menu Gourmand</h3>
-                    <div class="menu-formula-price">45€</div>
+                    <h3 class="menu-formula-name">Service à la Carte</h3>
+                    <div class="menu-formula-price">Variable</div>
                     <ul class="menu-formula-items">
-                        <li>Mise en bouche</li>
-                        <li>Entrée gastronomique</li>
-                        <li>Plat signature</li>
-                        <li>Fromage ou pré-dessert</li>
-                        <li>Dessert au choix</li>
+                        <li>Du lundi au jeudi (soir)</li>
+                        <li>Carte menu et grillades</li>
+                        <li>Suggestions du Chef</li>
                     </ul>
                 </div>
             </div>
@@ -553,8 +111,10 @@
         <!-- Entrées -->
         <div id="entrees" class="menu-category">
             <div class="menu-category-header">
-                <div class="menu-category-icon">🥗</div>
-                <h2 class="menu-category-title">Entrées</h2>
+                <div class="menu-category-icon">
+                    <i class="fas fa-carrot"></i>
+                </div>
+                <h2 class="menu-category-title">Les Entrées</h2>
                 <p class="menu-category-description">
                     Démarrez votre repas avec nos créations raffinées et savoureuses
                 </p>
@@ -564,21 +124,115 @@
                 <div class="menu-item">
                     <div class="menu-item-image">
                         <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&h=400&fit=crop"
-                            alt="Tartare de Saumon">
+                            alt="Salade Niçoise">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">La Salade Niçoise</h3>
+                            <span class="menu-item-price">5 500 F CFA</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Classic French salad with laituce, tuna fish, tomatoes, olives and achovy.
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Frais</span>
+                            <span class="menu-item-tag">Classique</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600&h=400&fit=crop"
+                            alt="Nems aux crevettes">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Nems au Crevettes, Salade Vietnamienne</h3>
+                            <span class="menu-item-price">5 500 F CFA</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Prawn spring rolls, carrot, mint and sweet chili sauce.
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Asiatique</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&h=400&fit=crop"
+                            alt="Pastels">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Pastels de Poisson à la Sénégalaise</h3>
+                            <span class="menu-item-price">5 500 F CFA</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Senegalese stuffed pastry served with hot sauce.
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Africain</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=600&h=400&fit=crop"
+                            alt="Ravioles">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Ravioles de Bœuf, Sauce Acidulée</h3>
+                            <span class="menu-item-price">6 500 F CFA</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Japanese beef dumping, ponzu dressing.
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Japonais</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1625398407796-82650a8c135f?w=600&h=400&fit=crop"
+                            alt="Galette">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Galette de Chou à la Japonaise</h3>
+                            <span class="menu-item-price">7 500 F CFA</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Cabbage pancake with barbecue sauce and bonito flakes.
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Japonais</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&h=400&fit=crop"
+                            alt="Carpaccio">
                         <div class="menu-item-badge">Chef's Choice</div>
                     </div>
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h3 class="menu-item-title">Tartare de Saumon Frais</h3>
-                            <span class="menu-item-price">14€</span>
+                            <h3 class="menu-item-title">Carpaccio de Bœuf</h3>
+                            <span class="menu-item-price">9 500 F CFA</span>
                         </div>
                         <p class="menu-item-description">
-                            Saumon frais mariné aux agrumes, avocat crémeux, câpres et oignons rouges, servi avec des
-                            toasts croustillants
+                            Beef carpaccio with fresh herbs, vegetable and lime.
                         </p>
                         <div class="menu-item-tags">
-                            <span class="menu-item-tag">Frais</span>
-                            <span class="menu-item-tag">Léger</span>
+                            <span class="menu-item-tag">Signature</span>
                         </div>
                     </div>
                 </div>
@@ -587,60 +241,19 @@
                     <div class="menu-item-image">
                         <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&h=400&fit=crop"
                             alt="Foie Gras">
+                        <div class="menu-item-badge">Premium</div>
                     </div>
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h3 class="menu-item-title">Foie Gras Maison</h3>
-                            <span class="menu-item-price">18€</span>
+                            <h3 class="menu-item-title">Pressé de Foie Gras</h3>
+                            <span class="menu-item-price">12 000 F CFA</span>
                         </div>
                         <p class="menu-item-description">
-                            Foie gras de canard mi-cuit, chutney de figues, pain brioché toasté et fleur de sel
+                            Pressed foie gras with sweet potatoes chutney.
                         </p>
                         <div class="menu-item-tags">
                             <span class="menu-item-tag">Signature</span>
-                            <span class="menu-item-tag">Tradition</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item">
-                    <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=400&fit=crop"
-                            alt="Salade">
-                    </div>
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h3 class="menu-item-title">Salade César Revisitée</h3>
-                            <span class="menu-item-price">12€</span>
-                        </div>
-                        <p class="menu-item-description">
-                            Laitue romaine croquante, poulet mariné grillé, parmesan, croûtons maison et sauce césar
-                            onctueuse
-                        </p>
-                        <div class="menu-item-tags">
-                            <span class="menu-item-tag">Classique</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item">
-                    <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1534080564583-6be75777b70a?w=600&h=400&fit=crop"
-                            alt="Velouté">
-                        <div class="menu-item-badge">Saison</div>
-                    </div>
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h3 class="menu-item-title">Velouté de Butternut</h3>
-                            <span class="menu-item-price">10€</span>
-                        </div>
-                        <p class="menu-item-description">
-                            Crème veloutée de butternut rôtie, éclats de noisettes torréfiées, crème fouettée et huile
-                            de truffe
-                        </p>
-                        <div class="menu-item-tags">
-                            <span class="menu-item-tag">Végétarien</span>
-                            <span class="menu-item-tag">Automne</span>
+                            <span class="menu-item-tag">Premium</span>
                         </div>
                     </div>
                 </div>
@@ -650,8 +263,10 @@
         <!-- Plats -->
         <div id="plats" class="menu-category">
             <div class="menu-category-header">
-                <div class="menu-category-icon">🍽️</div>
-                <h2 class="menu-category-title">Plats Principaux</h2>
+                <div class="menu-category-icon">
+                    <i class="fas fa-drumstick-bite"></i>
+                </div>
+                <h2 class="menu-category-title">Les Plats Principaux</h2>
                 <p class="menu-category-description">
                     Nos créations signature, généreuses et savoureuses
                 </p>
@@ -660,22 +275,97 @@
             <div class="menu-items-grid">
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&h=400&fit=crop"
-                            alt="Boeuf Bourguignon">
-                        <div class="menu-item-badge">Signature</div>
+                        <img src="https://images.unsplash.com/photo-1580959375944-0b6f8a6c6f0a?w=600&h=400&fit=crop"
+                            alt="Spécialité Togolaise">
+                        <div class="menu-item-badge">Du Jour</div>
                     </div>
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h3 class="menu-item-title">Bœuf Bourguignon</h3>
-                            <span class="menu-item-price">26€</span>
+                            <h3 class="menu-item-title">La Spécialité Togolaise du Jour</h3>
+                            <span class="menu-item-price">10 000 F CFA</span>
                         </div>
                         <p class="menu-item-description">
-                            Joue de bœuf braisée au vin rouge, carottes fondantes, champignons de Paris, lardons fumés
-                            et pommes grenailles
+                            Traditional Togolese dish of the day (ask your waiter).
                         </p>
                         <div class="menu-item-tags">
+                            <span class="menu-item-tag">Local</span>
                             <span class="menu-item-tag">Tradition</span>
-                            <span class="menu-item-tag">Mijoté</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=600&h=400&fit=crop"
+                            alt="Tajine">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Tajine de Poulet à la Marocaine</h3>
+                            <span class="menu-item-price">11 000 F CFA</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Chicken tajine with preserved lemon and olive, semoulina with nuts.
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Marocain</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=600&h=400&fit=crop"
+                            alt="Suprême de volaille">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Suprême de Volaille</h3>
+                            <span class="menu-item-price">11 500 F CFA</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Slow cooked chicken breast with ginger sauce and garlic chips.
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Volaille</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=600&h=400&fit=crop"
+                            alt="Gambas">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Gambas Croustillantes</h3>
+                            <span class="menu-item-price">12 000 F CFA</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Crispy jumbo prawns, bread fruit and salsa sauce.
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Fruits de mer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&h=400&fit=crop"
+                            alt="Travers de porc">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Travers de Porc Confit</h3>
+                            <span class="menu-item-price">13 000 F CFA</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Baby ribs, mash potatoes, fresh herbs salad.
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Porc</span>
                         </div>
                     </div>
                 </div>
@@ -684,15 +374,15 @@
                     <div class="menu-item-image">
                         <img src="https://images.unsplash.com/photo-1485921325833-c519f76c4927?w=600&h=400&fit=crop"
                             alt="Bar de Ligne">
+                        <div class="menu-item-badge">Signature</div>
                     </div>
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h3 class="menu-item-title">Bar de Ligne Grillé</h3>
-                            <span class="menu-item-price">32€</span>
+                            <h3 class="menu-item-title">Pavé de Bar Rôti</h3>
+                            <span class="menu-item-price">15 500 F CFA</span>
                         </div>
                         <p class="menu-item-description">
-                            Filet de bar sauvage grillé, risotto crémeux aux asperges, beurre blanc citronné et légumes
-                            de saison
+                            Roast seabass with creamy risotto and chorizo salsa.
                         </p>
                         <div class="menu-item-tags">
                             <span class="menu-item-tag">Poisson</span>
@@ -703,45 +393,128 @@
 
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=600&h=400&fit=crop"
-                            alt="Magret de Canard">
+                        <img src="https://images.unsplash.com/photo-1559737558-2f5a5c0e87a1?w=600&h=400&fit=crop"
+                            alt="Langouste">
+                        <div class="menu-item-badge">Premium</div>
                     </div>
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h3 class="menu-item-title">Magret de Canard Rôti</h3>
-                            <span class="menu-item-price">28€</span>
+                            <h3 class="menu-item-title">Langouste Grillée</h3>
+                            <span class="menu-item-price">16 000 F CFA</span>
                         </div>
                         <p class="menu-item-description">
-                            Magret de canard rosé, purée de patate douce, sauce aux cerises et amandes effilées, légumes
-                            glacés
+                            Grilled rock lobster, vanilla sauce, rice with fresh herbs.
                         </p>
                         <div class="menu-item-tags">
-                            <span class="menu-item-tag">Volaille</span>
-                            <span class="menu-item-tag">Gourmand</span>
+                            <span class="menu-item-tag">Premium</span>
+                            <span class="menu-item-tag">Fruits de mer</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=600&h=400&fit=crop"
-                            alt="Risotto">
-                        <div class="menu-item-badge">Végétarien</div>
+                        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&h=400&fit=crop"
+                            alt="Côte de bœuf">
                     </div>
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h3 class="menu-item-title">Risotto aux Cèpes</h3>
-                            <span class="menu-item-price">22€</span>
+                            <h3 class="menu-item-title">Côte de Bœuf du Pays</h3>
+                            <span class="menu-item-price">17 000 F CFA</span>
                         </div>
                         <p class="menu-item-description">
-                            Riz arborio crémeux, cèpes frais poêlés, parmesan vieilli 24 mois, huile de truffe et persil
-                            frais
+                            Beef ribs and mousseline sauce with french fries.
                         </p>
                         <div class="menu-item-tags">
-                            <span class="menu-item-tag">Végétarien</span>
-                            <span class="menu-item-tag">Automne</span>
+                            <span class="menu-item-tag">Bœuf</span>
+                            <span class="menu-item-tag">Local</span>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grillades -->
+        <div id="grillades" class="menu-category">
+            <div class="menu-category-header">
+                <div class="menu-category-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h2 class="menu-category-title">Les Grillades</h2>
+                <p class="menu-category-description">
+                    En complément de la carte menu du restaurant
+                </p>
+            </div>
+
+            <div class="menu-list">
+                <div class="menu-list-item">
+                    <div class="menu-list-content">
+                        <h3 class="menu-list-name">Rognon Laqué à la Moutarde 🔥</h3>
+                        <p class="menu-list-description">
+                            Grillé à la perfection avec notre sauce moutarde maison
+                        </p>
+                    </div>
+                    <span class="menu-list-price">9 000 F CFA</span>
+                </div>
+
+                <div class="menu-list-item">
+                    <div class="menu-list-content">
+                        <h3 class="menu-list-name">Saucisses de Toulouse 🌭</h3>
+                        <p class="menu-list-description">
+                            Authentiques saucisses françaises grillées
+                        </p>
+                    </div>
+                    <span class="menu-list-price">10 000 F CFA</span>
+                </div>
+
+                <div class="menu-list-item">
+                    <div class="menu-list-content">
+                        <h3 class="menu-list-name">Tilapia d'Élevage Braisé 🐟</h3>
+                        <p class="menu-list-description">
+                            Façon bonne maman, avec nos épices traditionnelles
+                        </p>
+                    </div>
+                    <span class="menu-list-price">13 000 F CFA</span>
+                </div>
+
+                <div class="menu-list-item">
+                    <div class="menu-list-content">
+                        <h3 class="menu-list-name">Brochettes de Gambas 🍤</h3>
+                        <p class="menu-list-description">
+                            Gambas fraîches marinées et grillées
+                        </p>
+                    </div>
+                    <span class="menu-list-price">13 000 F CFA</span>
+                </div>
+
+                <div class="menu-list-item">
+                    <div class="menu-list-content">
+                        <h3 class="menu-list-name">Côtelette d'Agneau 🥩</h3>
+                        <p class="menu-list-description">
+                            Tendre agneau grillé aux herbes
+                        </p>
+                    </div>
+                    <span class="menu-list-price">14 000 F CFA</span>
+                </div>
+
+                <div class="menu-list-item">
+                    <div class="menu-list-content">
+                        <h3 class="menu-list-name">Magret de Canard aux 5 Épices 🦆</h3>
+                        <p class="menu-list-description">
+                            Magret fumé avec mélange d'épices asiatiques
+                        </p>
+                    </div>
+                    <span class="menu-list-price">15 000 F CFA</span>
+                </div>
+
+                <div class="menu-list-item">
+                    <div class="menu-list-content">
+                        <h3 class="menu-list-name">Le Mix Grill ⭐</h3>
+                        <p class="menu-list-description">
+                            Assortiment de 3 grillades au choix du chef
+                        </p>
+                    </div>
+                    <span class="menu-list-price">16 000 F CFA</span>
                 </div>
             </div>
         </div>
@@ -749,8 +522,200 @@
         <!-- Desserts -->
         <div id="desserts" class="menu-category">
             <div class="menu-category-header">
+                <div class="menu-category-icon">
+                    <i class="fas fa-ice-cream"></i>
+                </div>
+                <h2 class="menu-category-title">Les Desserts</h2>
+                <p class="menu-category-description">
+                    La touche sucrée finale pour sublimer votre expérience
+                </p>
+            </div>
+
+            <div class="menu-list">
+                <div class="menu-list-item">
+                    <div class="menu-list-content">
+                        <h3 class="menu-list-name">Salade de Fruits à Notre Façon 🍓</h3>
+                        <p class="menu-list-description">
+                            Our version of fresh fruits salad
+                        </p>
+                    </div>
+                    <span class="menu-list-price">4 500 F CFA</span>
+                </div>
+
+                <div class="menu-list-item">
+                    <div class="menu-list-content">
+                        <h3 class="menu-list-name">Les Fameuses Profiteroles 🍫</h3>
+                        <p class="menu-list-description">
+                            Choux pastry filled with vanilla ice-cream, a warm chocolate sauce
+                        </p>
+                    </div>
+                    <span class="menu-list-price">6 000 F CFA</span>
+                </div>
+
+                <div class="menu-list-item">
+                    <div class="menu-list-content">
+                        <h3 class="menu-list-name">Pommes Rôties au Caramel 🍎</h3>
+                        <p class="menu-list-description">
+                            Roast apple with salted caramel served with a madeleine
+                        </p>
+                    </div>
+                    <span class="menu-list-price">6 000 F CFA</span>
+                </div>
+
+                <div class="menu-list-item">
+                    <div class="menu-list-content">
+                        <h3 class="menu-list-name">Dessert du Jour ⭐</h3>
+                        <p class="menu-list-description">
+                            Dessert of the day (see your waiter)
+                        </p>
+                    </div>
+                    <span class="menu-list-price">6 000 F CFA</span>
+                </div>
+
+                <div class="menu-list-item">
+                    <div class="menu-list-content">
+                        <h3 class="menu-list-name">Nems de Bananes 🍌</h3>
+                        <p class="menu-list-description">
+                            Banana spring rolls with chocolate sauce and coconut sorbet
+                        </p>
+                    </div>
+                    <span class="menu-list-price">7 000 F CFA</span>
+                </div>
+
+                <div class="menu-list-item">
+                    <div class="menu-list-content">
+                        <h3 class="menu-list-name">Assiette de Pâtisserie "Saveurs du Monde" 🍰</h3>
+                        <p class="menu-list-description">
+                            Assorted desserts from our pastry
+                        </p>
+                    </div>
+                    <span class="menu-list-price">9 000 F CFA</span>
+                </div>
+
+                <div class="menu-list-item">
+                    <div class="menu-list-content">
+                        <h3 class="menu-list-name">Assiette de Fromage 🧀</h3>
+                        <p class="menu-list-description">
+                            Selection of cheese served with chutney
+                        </p>
+                    </div>
+                    <span class="menu-list-price">9 000 F CFA</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grillades -->
+        <!-- <div id="grillades" class="menu-category">
+            <div class="menu-category-header">
+                <div class="menu-category-icon">🔥</div>
+                <h2 class="menu-category-title">Les Grillades</h2>
+                <p class="menu-category-description">
+                    En complément de la carte menu du restaurant
+                </p>
+            </div>
+
+            <div class="menu-items-grid">
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600&h=400&fit=crop"
+                            alt="Rognon">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Rognon Laqué à la Moutarde</h3>
+                            <span class="menu-item-price">9 000 F CFA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=600&h=400&fit=crop"
+                            alt="Saucisses">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Saucisses de Toulouse</h3>
+                            <span class="menu-item-price">10 000 F CFA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&h=400&fit=crop"
+                            alt="Tilapia">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Tilapia d'Élevage Braisé</h3>
+                            <span class="menu-item-price">13 000 F CFA</span>
+                        </div>
+                        <p class="menu-item-description">Façon bonne maman</p>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=600&h=400&fit=crop"
+                            alt="Brochettes de gambas">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Brochettes de Gambas</h3>
+                            <span class="menu-item-price">13 000 F CFA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&h=400&fit=crop"
+                            alt="Côtelette d'agneau">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Côtelette d'Agneau</h3>
+                            <span class="menu-item-price">14 000 F CFA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=600&h=400&fit=crop"
+                            alt="Magret de canard">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Magret de Canard aux 5 Épices</h3>
+                            <span class="menu-item-price">15 000 F CFA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&h=400&fit=crop"
+                            alt="Mix Grill">
+                        <div class="menu-item-badge">Mix</div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Le Mix Grill</h3>
+                            <span class="menu-item-price">16 000 F CFA</span>
+                        </div>
+                        <p class="menu-item-description">Assortiments de 3 grillades</p>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Desserts -->
+        <!-- <div id="desserts" class="menu-category">
+            <div class="menu-category-header">
                 <div class="menu-category-icon">🍰</div>
-                <h2 class="menu-category-title">Desserts</h2>
+                <h2 class="menu-category-title">Les Desserts</h2>
                 <p class="menu-category-description">
                     La touche sucrée finale pour sublimer votre expérience
                 </p>
@@ -759,20 +724,19 @@
             <div class="menu-items-grid">
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&h=400&fit=crop"
-                            alt="Tarte Tatin">
+                        <img src="https://images.unsplash.com/photo-1559737558-2f5a5c0e87a1?w=600&h=400&fit=crop"
+                            alt="Salade de fruits">
                     </div>
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h3 class="menu-item-title">Tarte Tatin Maison</h3>
-                            <span class="menu-item-price">10€</span>
+                            <h3 class="menu-item-title">Salade de Fruits à Notre Façon</h3>
+                            <span class="menu-item-price">4 500 F CFA</span>
                         </div>
                         <p class="menu-item-description">
-                            Pommes caramélisées, pâte feuilletée croustillante, glace vanille bourbon et caramel au
-                            beurre salé
+                            Our version of fresh fruits salad.
                         </p>
                         <div class="menu-item-tags">
-                            <span class="menu-item-tag">Classique</span>
+                            <span class="menu-item-tag">Frais</span>
                         </div>
                     </div>
                 </div>
@@ -780,41 +744,39 @@
                 <div class="menu-item">
                     <div class="menu-item-image">
                         <img src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=600&h=400&fit=crop"
-                            alt="Fondant">
+                            alt="Profiteroles">
                         <div class="menu-item-badge">Incontournable</div>
                     </div>
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h3 class="menu-item-title">Fondant au Chocolat</h3>
-                            <span class="menu-item-price">11€</span>
+                            <h3 class="menu-item-title">Les Fameuses Profiteroles</h3>
+                            <span class="menu-item-price">6 000 F CFA</span>
                         </div>
                         <p class="menu-item-description">
-                            Cœur coulant au chocolat noir 70%, glace vanille artisanale, éclats de noisettes
-                            caramélisées
+                            Choux pastry filled with vanilla ice-cream, a warm chocolate sauce.
                         </p>
                         <div class="menu-item-tags">
+                            <span class="menu-item-tag">Classique</span>
                             <span class="menu-item-tag">Chocolat</span>
-                            <span class="menu-item-tag">Gourmand</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="menu-item">
                     <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?w=600&h=400&fit=crop"
-                            alt="Crème Brûlée">
+                        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&h=400&fit=crop"
+                            alt="Pommes rôties">
                     </div>
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h3 class="menu-item-title">Crème Brûlée Vanille</h3>
-                            <span class="menu-item-price">9€</span>
+                            <h3 class="menu-item-title">Pommes Rôties au Caramel</h3>
+                            <span class="menu-item-price">6 000 F CFA</span>
                         </div>
                         <p class="menu-item-description">
-                            Crème onctueuse à la vanille de Madagascar, caramel craquant, sablés bretons et fruits
-                            rouges
+                            Roast apple with salted caramel served with a madeleine.
                         </p>
                         <div class="menu-item-tags">
-                            <span class="menu-item-tag">Tradition</span>
+                            <span class="menu-item-tag">Maison</span>
                         </div>
                     </div>
                 </div>
@@ -822,144 +784,114 @@
                 <div class="menu-item">
                     <div class="menu-item-image">
                         <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&h=400&fit=crop"
-                            alt="Tiramisu">
+                            alt="Dessert du jour">
+                        <div class="menu-item-badge">Du Jour</div>
                     </div>
                     <div class="menu-item-content">
                         <div class="menu-item-header">
-                            <h3 class="menu-item-title">Tiramisu Traditionnel</h3>
-                            <span class="menu-item-price">10€</span>
+                            <h3 class="menu-item-title">Dessert du Jour</h3>
+                            <span class="menu-item-price">6 000 F CFA</span>
                         </div>
                         <p class="menu-item-description">
-                            Biscuits imbibés de café italien, mascarpone crémeux, cacao amer et éclats de spéculoos
+                            Dessert of the day (see your waiter).
                         </p>
                         <div class="menu-item-tags">
-                            <span class="menu-item-tag">Italien</span>
-                            <span class="menu-item-tag">Café</span>
+                            <span class="menu-item-tag">Surprise</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?w=600&h=400&fit=crop"
+                            alt="Nems de bananes">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Nems de Bananes</h3>
+                            <span class="menu-item-price">7 000 F CFA</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Banana spring rolls with chocolate sauce and coconut sorbet.
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Exotique</span>
+                            <span class="menu-item-tag">Chocolat</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?w=600&h=400&fit=crop"
+                            alt="Assiette de pâtisserie">
+                        <div class="menu-item-badge">Signature</div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Assiette de Pâtisserie</h3>
+                            <span class="menu-item-price">9 000 F CFA</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Assorted desserts from our pastry - Saveurs du Monde.
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Signature</span>
+                            <span class="menu-item-tag">Assortiment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1452195100486-9cc805987862?w=600&h=400&fit=crop"
+                            alt="Assiette de fromage">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">Assiette de Fromage</h3>
+                            <span class="menu-item-price">9 000 F CFA</span>
+                        </div>
+                        <p class="menu-item-description">
+                            Selection of cheese served with chutney.
+                        </p>
+                        <div class="menu-item-tags">
+                            <span class="menu-item-tag">Fromage</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Boissons -->
-        <div id="boissons" class="menu-category">
-            <div class="menu-category-header">
-                <div class="menu-category-icon">🍷</div>
-                <h2 class="menu-category-title">Boissons</h2>
-                <p class="menu-category-description">
-                    Une sélection de vins et cocktails pour accompagner vos plats
-                </p>
-            </div>
-
-            <div class="menu-items-grid">
-                <div class="menu-item">
-                    <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&h=400&fit=crop"
-                            alt="Vins Rouges">
-                    </div>
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h3 class="menu-item-title">Vins Rouges</h3>
-                            <span class="menu-item-price">6-12€</span>
-                        </div>
-                        <p class="menu-item-description">
-                            Sélection de vins rouges français : Bordeaux, Bourgogne, Côtes du Rhône. Au verre ou en
-                            bouteille.
-                        </p>
-                        <div class="menu-item-tags">
-                            <span class="menu-item-tag">Verre</span>
-                            <span class="menu-item-tag">Bouteille</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item">
-                    <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1547595628-c61a29f496f0?w=600&h=400&fit=crop"
-                            alt="Vins Blancs">
-                    </div>
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h3 class="menu-item-title">Vins Blancs</h3>
-                            <span class="menu-item-price">6-11€</span>
-                        </div>
-                        <p class="menu-item-description">
-                            Sélection de vins blancs : Chablis, Sancerre, Alsace. Parfaits pour accompagner poissons et
-                            fruits de mer.
-                        </p>
-                        <div class="menu-item-tags">
-                            <span class="menu-item-tag">Verre</span>
-                            <span class="menu-item-tag">Bouteille</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item">
-                    <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&h=400&fit=crop"
-                            alt="Cocktails">
-                        <div class="menu-item-badge">Maison</div>
-                    </div>
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h3 class="menu-item-title">Cocktails Signature</h3>
-                            <span class="menu-item-price">12€</span>
-                        </div>
-                        <p class="menu-item-description">
-                            Nos créations originales : Beluga Spritz, Purple Passion, Golden Hour. Cocktails avec ou
-                            sans alcool.
-                        </p>
-                        <div class="menu-item-tags">
-                            <span class="menu-item-tag">Original</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item">
-                    <div class="menu-item-image">
-                        <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=600&h=400&fit=crop"
-                            alt="Champagne">
-                    </div>
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <h3 class="menu-item-title">Champagnes</h3>
-                            <span class="menu-item-price">60-180€</span>
-                        </div>
-                        <p class="menu-item-description">
-                            Grandes maisons et vignerons indépendants : Moët & Chandon, Veuve Clicquot, Dom Pérignon.
-                            Bouteilles uniquement.
-                        </p>
-                        <div class="menu-item-tags">
-                            <span class="menu-item-tag">Premium</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div> -->
 
         <!-- Info Section -->
         <div class="menu-info-section">
             <h2 class="menu-info-title">Informations Importantes</h2>
             <div class="menu-info-grid">
                 <div class="menu-info-item">
-                    <div class="menu-info-icon">🌿</div>
+                    <div class="menu-info-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
                     <p class="menu-info-text">
                         <strong>Produits Frais</strong><br>
                         95% de nos ingrédients sont frais et cuisinés sur place quotidiennement
                     </p>
                 </div>
                 <div class="menu-info-item">
-                    <div class="menu-info-icon">⚠️</div>
+                    <div class="menu-info-icon">
+                        <i class="fas fa-allergen-warning"></i>
+                    </div>
                     <p class="menu-info-text">
                         <strong>Allergènes</strong><br>
                         N'hésitez pas à nous informer de vos allergies ou intolérances alimentaires
                     </p>
                 </div>
                 <div class="menu-info-item">
-                    <div class="menu-info-icon">🌱</div>
+                    <div class="menu-info-icon">
+                        <i class="fas fa-chef-hat"></i>
+                    </div>
                     <p class="menu-info-text">
-                        <strong>Options Végétariennes</strong><br>
-                        Nous proposons des alternatives végétariennes pour la plupart de nos plats
+                        <strong>Suggestions du Chef</strong><br>
+                        Consultez nos suggestions du jour auprès de votre serveur
                     </p>
                 </div>
             </div>
@@ -977,19 +909,30 @@
                     Une expérience culinaire unique dans un cadre chaleureux et raffiné.
                 </p>
                 <div class="footer-social">
-                    <a href="#" class="social-link">📘</a>
-                    <a href="#" class="social-link">📷</a>
-                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
                 </div>
             </div>
 
             <div class="footer-column">
                 <h4>Navigation</h4>
                 <ul class="footer-links">
-                    <li><a href="#accueil">Accueil</a></li>
-                    <li><a href="#restaurant">Restaurant</a></li>
-                    <li><a href="#dates">Pour vos dates</a></li>
-                    <li><a href="#groupes">Groupes</a></li>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="about.html">Restaurant</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
 
@@ -1018,7 +961,6 @@
             © 2025 Beluga - Tous droits réservés | Mentions légales | Politique de confidentialité
         </div>
     </footer>
-
 
     <script>
         // Smooth scroll pour la navigation

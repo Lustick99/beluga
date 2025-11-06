@@ -12,690 +12,18 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="static/style.css">
 
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- Meta tags for SEO -->
     <meta name="description"
         content="Beluga, restaurant gastronomique au cœur de Lomé-Togo. Découvrez une cuisine raffinée dans un cadre chaleureux et convivial. Parfait pour vos dîners romantiques, repas entre amis ou événements d'entreprise. Réservez votre table dès maintenant !">
     <meta name="keywords"
         content="restaurant, gastronomique, Lomé, Togo, cuisine raffinée, dîner romantique, repas entre amis, événements d'entreprise, réservation">
     <meta name="author" content="Lustick Services">
-    
-    <style>
-        /* Styles spécifiques à la page Contact */
-        .contact-page {
-            background: var(--light);
-        }
 
-        /* Hero Contact */
-        .contact-hero {
-            height: 100vh;
-            min-height: 600px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(43, 27, 77, 0.92) 0%, rgba(61, 42, 95, 0.88) 100%),
-                url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&h=1080&fit=crop') center/cover;
-            overflow: hidden;
-        }
-
-        .contact-hero::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 50%, rgba(204, 154, 51, 0.2) 0%, transparent 70%);
-        }
-
-        .contact-hero-content {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            padding: 0 40px;
-        }
-
-        .contact-hero-label {
-            font-size: 14px;
-            color: var(--accent);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-            opacity: 0;
-            animation: fadeUp 0.8s ease 0.2s forwards;
-        }
-
-        .contact-hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 90px;
-            font-weight: 900;
-            color: white;
-            margin-bottom: 30px;
-            line-height: 1;
-            opacity: 0;
-            animation: fadeUp 0.8s ease 0.4s forwards;
-        }
-
-        .contact-hero-text {
-            font-size: 22px;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.95);
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0;
-            animation: fadeUp 0.8s ease 0.6s forwards;
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Main Contact Section */
-        .contact-main {
-            padding: 150px 60px;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 100px;
-            align-items: start;
-        }
-
-        /* Formulaire */
-        .contact-form-section {
-            background: white;
-            padding: 60px;
-            border-radius: 30px;
-            box-shadow: 0 20px 80px rgba(43, 27, 77, 0.08);
-        }
-
-        .contact-form-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 42px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .contact-form-subtitle {
-            font-size: 17px;
-            color: var(--text-light);
-            margin-bottom: 50px;
-            line-height: 1.7;
-        }
-
-        .form-group {
-            margin-bottom: 30px;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .form-input,
-        .form-textarea,
-        .form-select {
-            width: 100%;
-            padding: 18px 20px;
-            border: 2px solid var(--warm);
-            border-radius: 15px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 16px;
-            color: var(--text-dark);
-            transition: all 0.3s ease;
-            background: var(--warm);
-        }
-
-        .form-input:focus,
-        .form-textarea:focus,
-        .form-select:focus {
-            outline: none;
-            border-color: var(--accent);
-            background: white;
-            box-shadow: 0 0 0 4px rgba(204, 154, 51, 0.1);
-        }
-
-        .form-textarea {
-            min-height: 160px;
-            resize: vertical;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .form-submit {
-            width: 100%;
-            padding: 20px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            margin-top: 20px;
-        }
-
-        .form-submit:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(43, 27, 77, 0.3);
-        }
-
-        /* Info Section */
-        .contact-info-section {
-            position: sticky;
-            top: 150px;
-        }
-
-        .contact-info-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 42px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 40px;
-        }
-
-        .contact-info-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .contact-info-card {
-            background: white;
-            padding: 35px;
-            border-radius: 20px;
-            border: 2px solid var(--warm);
-            transition: all 0.4s ease;
-        }
-
-        .contact-info-card:hover {
-            border-color: var(--accent);
-            transform: translateX(10px);
-            box-shadow: 0 15px 50px rgba(43, 27, 77, 0.12);
-        }
-
-        .contact-info-card-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 26px;
-            margin-bottom: 20px;
-        }
-
-        .contact-info-card-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 12px;
-        }
-
-        .contact-info-card-text {
-            font-size: 16px;
-            line-height: 1.8;
-            color: var(--text-light);
-        }
-
-        .contact-info-card-text a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .contact-info-card-text a:hover {
-            color: var(--primary);
-        }
-
-        /* Locations Section */
-        .locations-section {
-            padding: 120px 60px;
-            background: var(--warm);
-        }
-
-        .locations-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .locations-label {
-            font-size: 14px;
-            color: var(--accent);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        .locations-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 58px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .locations-text {
-            font-size: 18px;
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        .locations-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .location-card {
-            background: white;
-            border-radius: 25px;
-            overflow: hidden;
-            transition: all 0.5s ease;
-            box-shadow: 0 10px 40px rgba(43, 27, 77, 0.08);
-        }
-
-        .location-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 70px rgba(43, 27, 77, 0.15);
-        }
-
-        .location-image {
-            width: 100%;
-            height: 280px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .location-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-
-        .location-card:hover .location-image img {
-            transform: scale(1.1);
-        }
-
-        .location-badge {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: var(--accent);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .location-content {
-            padding: 40px;
-        }
-
-        .location-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 25px;
-        }
-
-        .location-info {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        .location-info-item {
-            display: flex;
-            align-items: start;
-            gap: 15px;
-        }
-
-        .location-info-icon {
-            width: 45px;
-            height: 45px;
-            background: var(--warm);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .location-info-text {
-            flex: 1;
-        }
-
-        .location-info-label {
-            font-size: 13px;
-            color: var(--accent);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-
-        .location-info-value {
-            font-size: 16px;
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        .location-actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .location-btn {
-            flex: 1;
-            padding: 15px 25px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .location-btn-primary {
-            background: var(--primary);
-            color: white;
-            border: 2px solid var(--primary);
-        }
-
-        .location-btn-primary:hover {
-            background: transparent;
-            color: var(--primary);
-        }
-
-        .location-btn-secondary {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .location-btn-secondary:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* Map Section */
-        .map-section {
-            padding: 0;
-            margin: 0;
-        }
-
-        .map-container {
-            width: 100%;
-            height: 600px;
-            background: var(--warm);
-            position: relative;
-        }
-
-        .map-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--warm) 0%, rgba(204, 154, 51, 0.1) 100%);
-        }
-
-        .map-placeholder-content {
-            text-align: center;
-            padding: 40px;
-        }
-
-        .map-placeholder-icon {
-            font-size: 80px;
-            margin-bottom: 20px;
-            opacity: 0.6;
-        }
-
-        .map-placeholder-text {
-            font-size: 18px;
-            color: var(--text-light);
-        }
-
-        /* Social Section */
-        .social-section {
-            padding: 120px 60px;
-            background: white;
-            text-align: center;
-        }
-
-        .social-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 52px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .social-text {
-            font-size: 18px;
-            color: var(--text-light);
-            margin-bottom: 50px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-
-        .social-link {
-            width: 70px;
-            height: 70px;
-            background: var(--warm);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            text-decoration: none;
-            transition: all 0.4s ease;
-            border: 2px solid transparent;
-        }
-
-        .social-link:hover {
-            background: var(--primary);
-            transform: translateY(-5px) rotate(5deg);
-            box-shadow: 0 15px 40px rgba(43, 27, 77, 0.2);
-            border-color: var(--accent);
-        }
-
-        /* FAQ Section */
-        .faq-section {
-            padding: 120px 60px;
-            background: var(--warm);
-        }
-
-        .faq-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .faq-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .faq-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 52px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .faq-subtitle {
-            font-size: 18px;
-            color: var(--text-light);
-        }
-
-        .faq-item {
-            background: white;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            overflow: hidden;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .faq-item:hover {
-            border-color: var(--accent);
-        }
-
-        .faq-question {
-            padding: 30px 35px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            user-select: none;
-        }
-
-        .faq-question-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .faq-icon {
-            font-size: 24px;
-            color: var(--accent);
-            transition: transform 0.3s ease;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(45deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding: 0 35px 30px 35px;
-        }
-
-        .faq-answer-text {
-            font-size: 16px;
-            line-height: 1.8;
-            color: var(--text-light);
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 60px;
-            }
-
-            .contact-info-section {
-                position: relative;
-                top: 0;
-            }
-
-            .locations-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .contact-hero {
-                height: 60vh;
-                min-height: 500px;
-            }
-
-            .contact-hero-title {
-                font-size: 50px;
-            }
-
-            .contact-main {
-                padding: 100px 30px;
-            }
-
-            .contact-form-section {
-                padding: 40px 30px;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .locations-section,
-            .social-section,
-            .faq-section {
-                padding: 80px 30px;
-            }
-
-            .locations-title,
-            .social-title,
-            .faq-title {
-                font-size: 38px;
-            }
-
-            .locations-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .location-actions {
-                flex-direction: column;
-            }
-        }
-    </style>
 </head>
 
 <body class="contact-page">
@@ -708,7 +36,7 @@
             <li><a href="index.html">Accueil</a></li>
             <li><a href="about.html">Restaurant</a></li>
             <li><a href="menu.html">Menu</a></li>
-            <li><a href="#services.html">Services</a></li>
+            <li><a href="services.html">Services</a></li>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -787,7 +115,9 @@
 
                 <div class="contact-info-cards">
                     <div class="contact-info-card">
-                        <div class="contact-info-card-icon">📍</div>
+                        <div class="contact-info-card-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
                         <h3 class="contact-info-card-title">Adresse</h3>
                         <p class="contact-info-card-text">
                             Rue de L'OCAM (Rue de l'Entente)<br>
@@ -797,7 +127,9 @@
                     </div>
 
                     <div class="contact-info-card">
-                        <div class="contact-info-card-icon">📞</div>
+                        <div class="contact-info-card-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
                         <h3 class="contact-info-card-title">Téléphone</h3>
                         <p class="contact-info-card-text">
                             <a href="tel:+22822209796">+228 22 20 97 96</a><br>
@@ -807,7 +139,9 @@
                     </div>
 
                     <div class="contact-info-card">
-                        <div class="contact-info-card-icon">✉️</div>
+                        <div class="contact-info-card-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
                         <h3 class="contact-info-card-title">Email</h3>
                         <p class="contact-info-card-text">
                             <a href="mailto:contact@beluga.tg">contact@beluga.tg</a><br>
@@ -817,7 +151,9 @@
                     </div>
 
                     <div class="contact-info-card">
-                        <div class="contact-info-card-icon">🕐</div>
+                        <div class="contact-info-card-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
                         <h3 class="contact-info-card-title">Horaires</h3>
                         <p class="contact-info-card-text">
                             <strong>Lundi - Samedi :</strong> 12h00 - 15h00 & 18h00 - 23h00<br>
@@ -853,7 +189,9 @@
 
                     <div class="location-info">
                         <div class="location-info-item">
-                            <div class="location-info-icon">📍</div>
+                            <div class="location-info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
                             <div class="location-info-text">
                                 <div class="location-info-label">Adresse</div>
                                 <div class="location-info-value">
@@ -865,7 +203,9 @@
                         </div>
 
                         <div class="location-info-item">
-                            <div class="location-info-icon">🕐</div>
+                            <div class="location-info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
                             <div class="location-info-text">
                                 <div class="location-info-label">Horaires</div>
                                 <div class="location-info-value">
@@ -875,7 +215,9 @@
                         </div>
 
                         <div class="location-info-item">
-                            <div class="location-info-icon">📞</div>
+                            <div class="location-info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
                             <div class="location-info-text">
                                 <div class="location-info-label">Téléphone</div>
                                 <div class="location-info-value">
@@ -887,10 +229,12 @@
 
                     <div class="location-actions">
                         <a href="tel:+22822209796" class="location-btn location-btn-primary">
-                            📞 Appeler
+                            <i class="fas fa-phone"></i>
+                            Appeler
                         </a>
                         <a href="#" class="location-btn location-btn-secondary">
-                            🗺️ Itinéraire
+                            <i class="fas fa-direction"></i>
+                            Itinéraire
                         </a>
                     </div>
                 </div>
@@ -1031,17 +375,24 @@
         <p class="social-text">Restez connectés et découvrez nos actualités, nouveautés et offres spéciales</p>
 
         <div class="social-links">
-            <a href="#" class="social-link" aria-label="Facebook">📘</a>
-            <a href="#" class="social-link" aria-label="Instagram">📷</a>
-            <a href="#" class="social-link" aria-label="Twitter">🐦</a>
-            <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
-            <a href="#" class="social-link" aria-label="TripAdvisor">✈️</a>
+            <a href="#" class="social-link" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
         </div>
     </section>
 
 
     <!-- CTA Final -->
-    <section class="cta-final" id="contact">
+    <!-- <section class="cta-final" id="contact">
         <div class="cta-box">
             <h2 class="cta-final-title">Prêt à vivre l'expérience Beluga ?</h2>
             <p class="cta-final-text">
@@ -1049,7 +400,7 @@
             </p>
             <button class="cta-final-button">Réserver maintenant</button>
         </div>
-    </section>
+    </section> -->
 
     <!-- Footer -->
     <footer>
@@ -1061,19 +412,30 @@
                     Une expérience culinaire unique dans un cadre chaleureux et raffiné.
                 </p>
                 <div class="footer-social">
-                    <a href="#" class="social-link">📘</a>
-                    <a href="#" class="social-link">📷</a>
-                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
                 </div>
             </div>
 
             <div class="footer-column">
                 <h4>Navigation</h4>
                 <ul class="footer-links">
-                    <li><a href="#accueil">Accueil</a></li>
-                    <li><a href="#restaurant">Restaurant</a></li>
-                    <li><a href="#dates">Pour vos dates</a></li>
-                    <li><a href="#groupes">Groupes</a></li>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="about.html">Restaurant</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
 
