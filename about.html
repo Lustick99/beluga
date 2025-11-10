@@ -11,6 +11,7 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="static/responsive.css">
 
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -226,7 +227,6 @@
             opacity: 0;
             animation: fadeUp 0.8s ease 0.2s forwards;
             font-weight: 600;
-            text-shadow: 0 0 15px rgba(204, 154, 51, 0.5);
         }
 
         .ahero-title {
@@ -237,7 +237,6 @@
             line-height: 0.9;
             margin-bottom: 40px;
             position: relative;
-            text-shadow: 0 0 30px rgba(204, 154, 51, 0.4);
         }
 
         .ahero-title span {
@@ -611,7 +610,6 @@
             color: var(--light);
             margin-bottom: 25px;
             letter-spacing: -1px;
-            text-shadow: 0 0 20px rgba(204, 154, 51, 0.3);
         }
 
         .values-subtitle {
@@ -809,7 +807,7 @@
         /* CTA avec Gradient Animé */
         .cta-section {
             padding: 180px 60px;
-            background: linear-gradient(-45deg, var(--primary), var(--secondary), var(--primary), var(--accent));
+            background: linear-gradient(-45deg, var(--dark), var(--dark-secondary), var(--dark), var(--accent));
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
             position: relative;
@@ -846,7 +844,6 @@
             color: white;
             margin-bottom: 35px;
             line-height: 1.1;
-            text-shadow: 0 0 30px rgba(204, 154, 51, 0.4);
         }
 
         .cta-text {
@@ -869,7 +866,6 @@
             border-radius: 60px;
             text-decoration: none;
             transition: all 0.5s var(--ease);
-            box-shadow: 0 15px 50px rgba(204, 154, 51, 0.4);
             border: 2px solid var(--accent);
         }
 
@@ -962,16 +958,46 @@
         <div class="logo">
             <img src="static/images/beluga_sf.png" alt="Beluga Logo" style="height: 50px; vertical-align: middle;">
         </div>
-        <ul class="nav-links">
+
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html">A Propos</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="btn-reserve">Réserver</button>
+        </div>
+
+        <!-- Bouton hamburger pour mobile -->
+        <button class="mobile-menu-btn" aria-label="Menu mobile">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- ========= MENU MOBILE ========= -->
+    <div class="mobile-nav">
+        <button class="mobile-nav-close" aria-label="Fermer le menu mobile">&times;</button>
+
+        <ul class="mobile-nav-links">
             <li><a href="index.html">Accueil</a></li>
-            <li><a href="about.html">Restaurant</a></li>
+            <li><a href="about.html">A Propos</a></li>
             <li><a href="menu.html">Menu</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
+
         <button class="btn-reserve">Réserver</button>
-    </nav>
+    </div>
+
+    <!-- L’overlay (sera activé/désactivé par JS) -->
+    <div class="mobile-overlay"></div>
+
 
     <div id="about">
         <!-- Hero Section -->
@@ -983,7 +1009,7 @@
             </div>
 
             <div class="ahero-content">
-                <div class="ahero-label">Découvrez notre histoire</div>
+                <!-- <div class="ahero-label">Découvrez notre histoire</div> -->
                 <h1 class="ahero-title">
                     <span>À</span> <span>P</span><span>r</span><span>o</span><span>p</span><span>o</span><span>s</span>
                 </h1>
@@ -1000,40 +1026,43 @@
         <section class="content-section">
             <div class="content-grid">
                 <div class="content-text">
-                    <div class="section-label" data-scroll>Notre Philosophie</div>
-                    <h2 class="content-title" data-scroll>L'Excellence Culinaire au Cœur de Notre ADN</h2>
+                    <div class="section-label" data-scroll>Notre Histoire</div>
+                    <!-- <h2 class="content-title" data-scroll>L'Excellence Culinaire au Cœur de Notre ADN</h2> -->
 
                     <p class="content-paragraph" data-scroll>
-                        <strong>BELUGA</strong>, c'est avant tout un restaurant qualitatif avec <strong>95% de produits
-                            frais cuisinés sur place</strong> par notre équipe de professionnels des métiers de bouche.
-                        Une carte variée, des produits sympas et tendance, des changements réguliers en fonction des
-                        saisons, un bar à cocktail, et pleins de moments festifs !
+                        L'histoire du <strong>BELUGA</strong> est née en <strong>2013</strong>, d'une ambition simple :
+                        <strong>
+                            <em>
+                                créer un lieu de vie où l'excellence gastronomique se conjugue avec l'art de
+                                l'hospitalité togolaise.
+                            </em>
+                        </strong>
                     </p>
 
                     <p class="content-paragraph" data-scroll>
-                        Notre cuisine « maison » se veut <strong>généreuse et conviviale</strong> à un prix accessible.
-                        Idéal pour un déjeuner rapide le midi dans une ambiance différente, pour un afterwork entre
-                        collègues, un dîner entre amis ou même un brunch familial le dimanche matin !
+                        Depuis plus d'une décennie, nous sommes fiers d'être <strong>une adresse de référence</strong>,
+                        un lieu où
+                        les <strong>rendez-vous importants</strong> et les <strong>célébrations du quotidien</strong>
+                        prennent un relief particulier.
                     </p>
 
                     <div class="content-highlight" data-scroll>
                         <p>
-                            "Chaque plat raconte une histoire, chaque ingrédient est choisi avec soin, et chaque
-                            assiette
-                            est préparée avec passion."
+                            "Notre engagement n'a jamais faibli : offrir un cadre intimiste et un service attentif."
                         </p>
                     </div>
 
                     <p class="content-paragraph" data-scroll>
-                        Nous croyons fermement que la qualité ne doit pas être un luxe. C'est pourquoi nous travaillons
-                        directement avec des producteurs locaux et des fournisseurs de confiance pour vous offrir le
-                        meilleur de la gastronomie togolaise, tout en respectant les saisons et l'environnement.
+                        Notre cuisine évolue aujourd'hui sur des notes <strong>d'Afro-Fusion gastronomique</strong>. Un
+                        dialogue
+                        passionné entre <strong>nos racines et les saveurs du monde</strong>, qui fait la signature
+                        unique du Beluga.
                     </p>
 
                     <p class="content-paragraph" data-scroll>
-                        Notre chef et son équipe créent des plats raffinés qui allient
-                        <strong>tradition et modernité</strong>,
-                        pour une expérience culinaire qui surprend et ravit à chaque bouchée.
+                        <strong>Notre perrenité est le reflet de votre fidélité</strong>. <br> <strong><em>Merci de
+                                continuer à écrire cette belle
+                                histoire avec nous, année après année</em></strong>.
                     </p>
                 </div>
 
@@ -1066,7 +1095,7 @@
         </section>
 
         <!-- Values Section -->
-        <section class="values-section">
+        <!-- <section class="values-section">
             <div class="values-container">
                 <div class="values-header">
                     <div class="section-label" data-scroll>Nos Valeurs</div>
@@ -1157,10 +1186,10 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Team Section -->
-        <section class="team-section">
+        <!-- <section class="team-section">
             <div class="team-container">
                 <div class="team-intro">
                     <div class="section-label" data-scroll>Notre Équipe</div>
@@ -1214,7 +1243,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- CTA Section -->
         <section class="cta-section">
@@ -1224,7 +1253,7 @@
                     Réservez votre table dès maintenant et découvrez une cuisine qui célèbre le meilleur de la
                     gastronomie.
                 </p>
-                <a href="#reservation" class="cta-button">Réserver une table</a>
+                <a href="#reservation" class="cta-button">Réserver maintenant</a>
             </div>
         </section>
     </div>
@@ -1233,10 +1262,22 @@
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <div class="footer-logo">BELUGA</div>
+                <div class="footer-logo">
+                    <img src="static/images/beluga_sf.png" alt="Beluga Logo"
+                        style="height: 50px; vertical-align: middle;">
+                </div>
                 <p class="footer-description">
-                    Restaurant gastronomique au cœur du Carré Sénart.
+                    Restaurant gastronomique au cœur de Lomé, non loin de la Plage.
                     Une expérience culinaire unique dans un cadre chaleureux et raffiné.
+                    <br>
+                    <br>
+                    <strong>Lundi à samedi</strong>
+                    <br>
+                    <em>Ouvert de <strong>12h00 à 15h00</strong> et de <strong>18h00 à 23h00</strong>.</em>
+                    <br>
+                    <br>
+                    <strong>Dimanche </strong>: <em>Nous sommes <strong>fermés</strong>.</em>
+                    <br>
                 </p>
                 <div class="footer-social">
                     <a href="#" class="social-link" aria-label="Facebook">
@@ -1293,6 +1334,58 @@
     </footer>
 
     <script>
+        // Navigation mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const mobileOverlay = document.querySelector('.mobile-overlay');
+            const mobileNavClose = document.querySelector('.mobile-nav-close');
+            const body = document.body;
+
+            // Créer l'overlay s'il n'existe pas
+            if (!mobileOverlay) {
+                const overlay = document.createElement('div');
+                overlay.className = 'mobile-overlay';
+                document.body.appendChild(overlay);
+            }
+
+            // Fonction pour ouvrir le menu mobile
+            function openMobileMenu() {
+                mobileMenuBtn.classList.add('active');
+                mobileNav.classList.add('active');
+                document.querySelector('.mobile-overlay').classList.add('active');
+                body.classList.add('mobile-menu-open');
+            }
+
+            // Fonction pour fermer le menu mobile
+            function closeMobileMenu() {
+                mobileMenuBtn.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.querySelector('.mobile-overlay').classList.remove('active');
+                body.classList.remove('mobile-menu-open');
+            }
+
+            // Événements
+            mobileMenuBtn.addEventListener('click', openMobileMenu);
+            mobileNavClose.addEventListener('click', closeMobileMenu);
+
+            // Fermer le menu en cliquant sur l'overlay
+            document.querySelector('.mobile-overlay').addEventListener('click', closeMobileMenu);
+
+            // Fermer le menu en cliquant sur les liens
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+
+            // Fermer le menu avec la touche Escape
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+                    closeMobileMenu();
+                }
+            });
+        });
+
         // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {

@@ -11,6 +11,7 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="static/responsive.css">
 
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -32,16 +33,46 @@
         <div class="logo">
             <img src="static/images/beluga_sf.png" alt="Beluga Logo" style="height: 50px; vertical-align: middle;">
         </div>
-        <ul class="nav-links">
+
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html">A Propos</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="btn-reserve">Réserver</button>
+        </div>
+
+        <!-- Bouton hamburger pour mobile -->
+        <button class="mobile-menu-btn" aria-label="Menu mobile">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- ========= MENU MOBILE ========= -->
+    <div class="mobile-nav">
+        <button class="mobile-nav-close" aria-label="Fermer le menu mobile">&times;</button>
+
+        <ul class="mobile-nav-links">
             <li><a href="index.html">Accueil</a></li>
-            <li><a href="about.html">Restaurant</a></li>
+            <li><a href="about.html">A Propos</a></li>
             <li><a href="menu.html">Menu</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
+
         <button class="btn-reserve">Réserver</button>
-    </nav>
+    </div>
+
+    <!-- L’overlay (sera activé/désactivé par JS) -->
+    <div class="mobile-overlay"></div>
+
 
     <!-- Hero Contact -->
     <section class="contact-hero">
@@ -134,7 +165,7 @@
                         <p class="contact-info-card-text">
                             <a href="tel:+22822209796">+228 22 20 97 96</a><br>
                             Du lundi au samedi<br>
-                            12h00 - 23h00
+                            12h00 - 15h00 & 18h00 - 23h00
                         </p>
                     </div>
 
@@ -145,7 +176,7 @@
                         <h3 class="contact-info-card-title">Email</h3>
                         <p class="contact-info-card-text">
                             <a href="mailto:contact@beluga.tg">contact@beluga.tg</a><br>
-                            <a href="mailto:reservation@beluga.tg">reservation@beluga.tg</a><br>
+                            <!-- <a href="mailto:reservation@beluga.tg">reservation@beluga.tg</a><br> -->
                             Réponse sous 24h
                         </p>
                     </div>
@@ -166,7 +197,7 @@
     </section>
 
     <!-- Locations Section -->
-    <section class="locations-section">
+    <!-- <section class="locations-section">
         <div class="locations-header">
             <div class="locations-label">Nos Emplacements</div>
             <h2 class="locations-title">Venez nous rendre visite</h2>
@@ -240,7 +271,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Map Section -->
     <section class="map-section">
@@ -406,10 +437,22 @@
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <div class="footer-logo">BELUGA</div>
+                <div class="footer-logo">
+                    <img src="static/images/beluga_sf.png" alt="Beluga Logo"
+                        style="height: 50px; vertical-align: middle;">
+                </div>
                 <p class="footer-description">
-                    Restaurant gastronomique au cœur du Carré Sénart.
+                    Restaurant gastronomique au cœur de Lomé, non loin de la Plage.
                     Une expérience culinaire unique dans un cadre chaleureux et raffiné.
+                    <br>
+                    <br>
+                    <strong>Lundi à samedi</strong>
+                    <br>
+                    <em>Ouvert de <strong>12h00 à 15h00</strong> et de <strong>18h00 à 23h00</strong>.</em>
+                    <br>
+                    <br>
+                    <strong>Dimanche </strong>: <em>Nous sommes <strong>fermés</strong>.</em>
+                    <br>
                 </p>
                 <div class="footer-social">
                     <a href="#" class="social-link" aria-label="Facebook">
@@ -466,6 +509,58 @@
     </footer>
 
     <script>
+        // Navigation mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const mobileOverlay = document.querySelector('.mobile-overlay');
+            const mobileNavClose = document.querySelector('.mobile-nav-close');
+            const body = document.body;
+
+            // Créer l'overlay s'il n'existe pas
+            if (!mobileOverlay) {
+                const overlay = document.createElement('div');
+                overlay.className = 'mobile-overlay';
+                document.body.appendChild(overlay);
+            }
+
+            // Fonction pour ouvrir le menu mobile
+            function openMobileMenu() {
+                mobileMenuBtn.classList.add('active');
+                mobileNav.classList.add('active');
+                document.querySelector('.mobile-overlay').classList.add('active');
+                body.classList.add('mobile-menu-open');
+            }
+
+            // Fonction pour fermer le menu mobile
+            function closeMobileMenu() {
+                mobileMenuBtn.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.querySelector('.mobile-overlay').classList.remove('active');
+                body.classList.remove('mobile-menu-open');
+            }
+
+            // Événements
+            mobileMenuBtn.addEventListener('click', openMobileMenu);
+            mobileNavClose.addEventListener('click', closeMobileMenu);
+
+            // Fermer le menu en cliquant sur l'overlay
+            document.querySelector('.mobile-overlay').addEventListener('click', closeMobileMenu);
+
+            // Fermer le menu en cliquant sur les liens
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+
+            // Fermer le menu avec la touche Escape
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+                    closeMobileMenu();
+                }
+            });
+        });
+        
         // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
@@ -489,8 +584,7 @@
                 }
             });
         });
-    </script>
-    <script>
+        
         // Navbar scroll effect
         const nav = document.querySelector('nav');
         window.addEventListener('scroll', () => {

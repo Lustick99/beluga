@@ -11,6 +11,7 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="static/responsive.css">
 
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -31,20 +32,49 @@
         <div class="logo">
             <img src="static/images/beluga_sf.png" alt="Beluga Logo" style="height: 50px; vertical-align: middle;">
         </div>
-        <ul class="nav-links">
+
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html">A Propos</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="btn-reserve">Réserver</button>
+        </div>
+
+        <!-- Bouton hamburger pour mobile -->
+        <button class="mobile-menu-btn" aria-label="Menu mobile">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- ========= MENU MOBILE ========= -->
+    <div class="mobile-nav">
+        <button class="mobile-nav-close" aria-label="Fermer le menu mobile">&times;</button>
+
+        <ul class="mobile-nav-links">
             <li><a href="index.html">Accueil</a></li>
-            <li><a href="about.html">Restaurant</a></li>
+            <li><a href="about.html">A Propos</a></li>
             <li><a href="menu.html">Menu</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
+
         <button class="btn-reserve">Réserver</button>
-    </nav>
+    </div>
+
+    <!-- L’overlay (sera activé/désactivé par JS) -->
+    <div class="mobile-overlay"></div>
+    <!-- ================================ -->
 
     <!-- Hero Section -->
     <section class="hero services-hero">
-        <div class="hero-bg" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);">
         </div>
         <div class="hero-content">
             <div class="hero-subtitle">Découvrez</div>
@@ -61,22 +91,23 @@
             <!-- Service 1 -->
             <div class="service-card" data-scroll>
                 <div class="service-card-image">
-                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&h=400&fit=crop"
-                        alt="Événements d'entreprise">
-                    <span class="service-card-badge">Populaire</span>
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=400&fit=crop"
+                        alt="Formule du déjeuner">
+                    <span class="service-card-badge">Buffet en interne</span>
                 </div>
                 <div class="service-card-content">
-                    <span class="service-card-icon">🏢</span>
-                    <h3 class="service-card-title">Événements d'Entreprise</h3>
+                    <h3 class="service-card-title">Formule du déjeuner</h3>
+                    <div class="menu-formula-price">9 500 F CFA</div>
                     <p class="service-card-description">
-                        Organisez vos séminaires, réunions et événements corporate dans un cadre professionnel et
-                        élégant.
+                        Organisez vos déjeuners d'affaires ou réunions professionnelles dans un cadre élégant et
+                        convivial.
                     </p>
                     <ul class="service-card-features">
-                        <li>Salles modulables jusqu'à 100 personnes</li>
-                        <li>Équipements audiovisuels inclus</li>
-                        <li>Menus personnalisables</li>
-                        <li>Service dédié</li>
+                        <li>3 entrées</li>
+                        <li>2 plats </li>
+                        <li>2 desserts</li>
+                        <li>Bouteille d’eau <strong>OU</strong> un verre de vin</li>
+                        <li>Lundi à vendredi : 11H30-15H30</li>
                     </ul>
                     <a href="#contact" class="service-card-cta">En savoir plus →</a>
                 </div>
@@ -85,22 +116,22 @@
             <!-- Service 2 -->
             <div class="service-card" data-scroll>
                 <div class="service-card-image">
-                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&h=400&fit=crop"
-                        alt="Mariages">
-                    <span class="service-card-badge">Premium</span>
+                    <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&h=400&fit=crop"
+                        alt="Formule de dîner">
+                    <span class="service-card-badge">Buffet en Interne</span>
                 </div>
                 <div class="service-card-content">
-                    <span class="service-card-icon">💍</span>
-                    <h3 class="service-card-title">Mariages & Réceptions</h3>
+                    <h3 class="service-card-title">Formule de dîner</h3>
+                    <div class="menu-formula-price">15 000 F CFA</div>
                     <p class="service-card-description">
-                        Célébrez le plus beau jour de votre vie dans un cadre romantique et raffiné avec un service
-                        d'exception.
+                        Créez une expérience culinaire mémorable pour vos dîners d'entreprise ou événements privés.
                     </p>
                     <ul class="service-card-features">
-                        <li>Privatisation complète du restaurant</li>
-                        <li>Menu gastronomique personnalisé</li>
-                        <li>Coordination avec vos prestataires</li>
-                        <li>Décoration sur-mesure</li>
+                        <li>3 entrées</li>
+                        <li>2 plats </li>
+                        <li>2 desserts</li>
+                        <li>Bouteille d’eau <strong>ET</strong> un verre de vin</li>
+                        <li>Lundi à samedi : 18H30-23H00</li>
                     </ul>
                     <a href="#contact" class="service-card-cta">En savoir plus →</a>
                 </div>
@@ -109,23 +140,27 @@
             <!-- Service 3 -->
             <div class="service-card" data-scroll>
                 <div class="service-card-image">
-                    <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&h=400&fit=crop"
-                        alt="Anniversaires">
+                    <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&h=600&fit=crop"
+                        alt="Buffet classique">
+                    <span class="service-card-badge">Buffet en externe (hors logistique)</span>
                 </div>
                 <div class="service-card-content">
-                    <span class="service-card-icon">🎉</span>
-                    <h3 class="service-card-title">Anniversaires & Fêtes</h3>
+                    <h3 class="service-card-title">Buffet classique</h3>
+                    <div class="menu-formula-price">14 500 F CFA</div>
                     <p class="service-card-description">
-                        Marquez les esprits avec une célébration inoubliable pour vos anniversaires et événements
-                        privés.
+                        Offrez à vos invités une variété de plats savoureux avec notre service de buffet classique.
                     </p>
                     <ul class="service-card-features">
-                        <li>Espaces privatifs disponibles</li>
-                        <li>Menus adaptés à tous les âges</li>
-                        <li>Animations possibles</li>
-                        <li>Gâteau d'anniversaire inclus</li>
-                    </ul>
-                    <a href="#contact" class="service-card-cta">En savoir plus →</a>
+                        <ul class="service-card-features">
+                            <li>2 entrées</li>
+                            <li>2 plats </li>
+                            <li>2 desserts</li>
+                            <li>
+                                Bouteille d’eau, jus de fruits aux choix : ananas, bissap, gingembre, orange, pastèque
+                                OU soft
+                            </li>
+                        </ul>
+                        <a href="#contact" class="service-card-cta">En savoir plus →</a>
                 </div>
             </div>
 
@@ -133,19 +168,24 @@
             <div class="service-card" data-scroll>
                 <div class="service-card-image">
                     <img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=600&h=400&fit=crop"
-                        alt="Brunch">
+                        alt="Buffet gourmand">
+                    <span class="service-card-badge">Buffet en externe (hors logistique)</span>
+
                 </div>
                 <div class="service-card-content">
-                    <span class="service-card-icon">🥂</span>
-                    <h3 class="service-card-title">Brunch du Dimanche</h3>
+                    <h3 class="service-card-title">Buffet gourmand</h3>
+                    <div class="menu-formula-price">16 500 F CFA</div>
                     <p class="service-card-description">
-                        Profitez d'un brunch généreux et convivial tous les dimanches dans une ambiance détendue.
+                        Faites plaisir à vos invités avec notre buffet gourmand, riche en saveurs et en diversité.
                     </p>
                     <ul class="service-card-features">
-                        <li>Buffet varié sucré-salé</li>
-                        <li>Boissons chaudes à volonté</li>
-                        <li>Ambiance musicale live</li>
-                        <li>Formules famille disponibles</li>
+                        <li>3 entrées</li>
+                        <li>3 plats </li>
+                        <li>2 desserts</li>
+                        <li>
+                            Bouteille d’eau, jus de fruits aux choix : ananas, bissap, gingembre, orange, pastèque
+                            OU soft
+                        </li>
                     </ul>
                     <a href="#contact" class="service-card-cta">En savoir plus →</a>
                 </div>
@@ -155,19 +195,23 @@
             <div class="service-card" data-scroll>
                 <div class="service-card-image">
                     <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop"
-                        alt="Privatisation">
+                        alt="Buffet classique">
+                    <span class="service-card-badge">Buffet en externe (avec la logistique)</span>
                 </div>
                 <div class="service-card-content">
-                    <span class="service-card-icon">🔒</span>
-                    <h3 class="service-card-title">Privatisation Complète</h3>
+                    <h3 class="service-card-title">Buffet classique</h3>
+                    <div class="menu-formula-price">17 500 F CFA</div>
                     <p class="service-card-description">
-                        Réservez l'intégralité du restaurant pour vos événements exclusifs en toute intimité.
+                        Un buffet complet avec service et logistique pour vos événements à partir de 20 personnes.
                     </p>
                     <ul class="service-card-features">
-                        <li>Capacité jusqu'à 150 personnes</li>
-                        <li>Menu entièrement personnalisable</li>
-                        <li>Service exclusif</li>
-                        <li>Horaires flexibles</li>
+                        <li>2 entrées</li>
+                        <li>2 plats </li>
+                        <li>2 desserts</li>
+                        <li>
+                            Bouteille d’eau, jus de fruits aux choix : ananas, bissap, gingembre, orange, pastèque
+                            OU soft
+                        </li>
                     </ul>
                     <a href="#contact" class="service-card-cta">En savoir plus →</a>
                 </div>
@@ -177,19 +221,24 @@
             <div class="service-card" data-scroll>
                 <div class="service-card-image">
                     <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&h=400&fit=crop"
-                        alt="Traiteur">
+                        alt="Buffet gourmand">
+                    <span class="service-card-badge">Buffet en externe (avec la logistique)</span>
                 </div>
                 <div class="service-card-content">
-                    <span class="service-card-icon">🍱</span>
-                    <h3 class="service-card-title">Service Traiteur</h3>
+                    <h3 class="service-card-title">Buffet gourmand</h3>
+                    <div class="menu-formula-price">19 500 F CFA</div>
                     <p class="service-card-description">
-                        Savourez notre cuisine gastronomique chez vous ou dans le lieu de votre choix.
+                        Un buffet gourmand avec service et logistique pour une expérience culinaire inoubliable. Service
+                        offert pour un minimum de 20 personnes.
                     </p>
                     <ul class="service-card-features">
-                        <li>Livraison dans un rayon de 30km</li>
-                        <li>Cocktails & buffets</li>
-                        <li>Service à table disponible</li>
-                        <li>Vaisselle et équipement fournis</li>
+                        <li>3 entrées</li>
+                        <li>3 plats </li>
+                        <li>2 desserts</li>
+                        <li>
+                            Bouteille d’eau, jus de fruits aux choix : ananas, bissap, gingembre, orange, pastèque
+                            OU soft
+                        </li>
                     </ul>
                     <a href="#contact" class="service-card-cta">En savoir plus →</a>
                 </div>
@@ -197,42 +246,70 @@
         </div>
 
         <!-- Feature Section 1 -->
+
         <div class="feature-section" data-scroll>
             <div class="feature-image">
-                <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&h=600&fit=crop"
-                    alt="Événements sur-mesure">
+                <img src="https://img.freepik.com/free-photo/girls-rest-cafe_1157-15304.jpg?w=800&h=600&fit=crop"
+                    alt="La pause-café - Professionnels africains partageant un moment de convivialité">
             </div>
             <div class="feature-content">
-                <div class="feature-label">Notre Engagement</div>
-                <h2 class="feature-title">Des événements sur-mesure</h2>
+                <!-- <div class="feature-label">La pause-café</div> -->
+                <h2 class="feature-title">La pause-café</h2>
                 <p class="feature-description">
-                    Chaque événement est unique. Notre équipe dédiée travaille avec vous pour créer une expérience
-                    personnalisée qui dépasse vos attentes et marque les esprits de vos invités.
+                    Nous vous proposons des options adaptées, avec nos formules pause café, pour une ambiance
+                    chaleureuse et conviviale lors de vos réunions.
                 </p>
                 <div class="feature-highlights">
                     <div class="feature-highlight">
-                        <span class="feature-highlight-icon">✨</span>
-                        <span class="feature-highlight-text">Coordination complète de A à Z</span>
+                        <span class="feature-highlight-icon">
+                            <i class="fas fa-coffee"></i>
+                        </span>
+                        <span class="feature-highlight-text">Boissons chaudes</span>
                     </div>
                     <div class="feature-highlight">
-                        <span class="feature-highlight-icon">👨‍🍳</span>
-                        <span class="feature-highlight-text">Menus créés par notre chef</span>
+                        <span class="feature-highlight-icon">
+                            <i class="fas fa-wine-glass-alt"></i>
+                        </span>
+                        <span class="feature-highlight-text">Boissons fraîches</span>
                     </div>
                     <div class="feature-highlight">
-                        <span class="feature-highlight-icon">🎨</span>
-                        <span class="feature-highlight-text">Décoration personnalisée</span>
+                        <span class="feature-highlight-icon">
+                            <i class="fas fa-cookie-bite"></i>
+                        </span>
+                        <span class="feature-highlight-text">Piéces salées</span>
                     </div>
                     <div class="feature-highlight">
-                        <span class="feature-highlight-icon">⭐</span>
-                        <span class="feature-highlight-text">Service d'excellence</span>
+                        <span class="feature-highlight-icon">
+                            <i class="fas fa-birthday-cake"></i>
+                        </span>
+                        <span class="feature-highlight-text">Piéces sucrées</span>
                     </div>
                 </div>
-                <a href="#contact" class="btn-primary">Planifier mon événement</a>
+                <a href="#" class="btn-primary" id="view-brochure">Consulter la brochure</a>
             </div>
         </div>
 
+        <!-- Modal pour afficher le PDF -->
+        <div class="modal-overlay" id="pdf-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Brochure - BELUGA</h3>
+                    <button class="close-modal" id="close-modal">&times;</button>
+                </div>
+                <div class="pdf-container">
+                    <!-- Remplacez l'URL par celle de votre PDF -->
+                    <iframe class="pdf-viewer" src="beluga.pdf" frameborder="0"></iframe>
+                </div>
+                <div class="modal-footer">
+                    <a href="beluga.pdf" class="btn-secondary" download>Télécharger la brochure</a>
+                    <button class="btn-primary" id="close-modal-footer">Fermer</button>
+                </div>
+            </div>
+        </div>
+
+
         <!-- Feature Section 2 -->
-        <div class="feature-section" data-scroll>
+        <!-- <div class="feature-section" data-scroll>
             <div class="feature-image">
                 <img src="https://images.unsplash.com/photo-1478145787956-f6f12c59624d?w=800&h=600&fit=crop"
                     alt="Équipe professionnelle">
@@ -264,16 +341,16 @@
                 </div>
                 <a href="#contact" class="btn-primary">Rencontrer l'équipe</a>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <!-- Process Section -->
     <section class="process-section">
         <div class="process-header">
-            <div class="section-label" style="color: var(--accent);">Comment ça marche</div>
+            <div class="section-label" style="color: var(--accent); opacity:1">Comment ça marche</div>
             <h2 class="process-title">4 étapes simples</h2>
             <p class="process-subtitle">
-                Un processus simple et efficace pour organiser votre événement sans stress
+                Un processus simple et efficace pour organiser votre événement
             </p>
         </div>
 
@@ -313,17 +390,17 @@
     </section>
 
     <!-- Pricing Section -->
-    <section class="pricing-section">
+    <!-- <section class="pricing-section">
         <div class="section-header" style="text-align: center; margin-bottom: 20px;">
-            <div class="section-label" style="color: var(--accent);">Nos Formules</div>
-            <h2 class="section-title">Des tarifs adaptés à vos besoins</h2>
-            <p class="section-text" style="max-width: 700px; margin: 0 auto;">
+            <div class="section-label" style="color: var(--accent);" data-scroll>Nos Formules</div>
+            <h2 class="section-title" data-scroll>Des tarifs adaptés à vos besoins</h2>
+            <p class="section-text" style="max-width: 700px; margin: 0 auto;" data-scroll>
                 Choisissez la formule qui correspond le mieux à votre événement
             </p>
         </div>
 
         <div class="pricing-grid">
-            <!-- Formule Essentielle -->
+            <!-- Formule Essentielle
             <div class="pricing-card" data-scroll>
                 <div class="pricing-name">Essentielle</div>
                 <div class="pricing-price">45€</div>
@@ -338,7 +415,7 @@
                 <a href="#contact" class="pricing-cta">Réserver</a>
             </div>
 
-            <!-- Formule Prestige (Featured) -->
+            <!-- Formule Prestige (Featured)
             <div class="pricing-card featured" data-scroll>
                 <span class="pricing-badge">Recommandé</span>
                 <div class="pricing-name">Prestige</div>
@@ -355,7 +432,7 @@
                 <a href="#contact" class="pricing-cta">Réserver</a>
             </div>
 
-            <!-- Formule Excellence -->
+            <!-- Formule Excellence
             <div class="pricing-card" data-scroll>
                 <div class="pricing-name">Excellence</div>
                 <div class="pricing-price">120€</div>
@@ -379,25 +456,25 @@
             </p>
             <a href="#contact" class="btn-secondary">Demander un devis personnalisé</a>
         </div>
-    </section>
+    </section> -->
 
     <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="faq-container">
+    <section class="faqs-section">
+        <div class="faqs-container">
             <div class="section-header" style="text-align: center; margin-bottom: 60px;">
-                <div class="section-label" style="color: var(--accent);">Questions Fréquentes</div>
-                <h2 class="section-title">Vous avez des questions ?</h2>
-                <p class="section-text">
+                <div class="section-label" style="color: var(--accent);" data-scroll>Questions Fréquentes</div>
+                <h2 class="section-title" data-scroll>Vous avez des questions ?</h2>
+                <p class="section-text" style="text-align: center;" data-scroll>
                     Retrouvez les réponses aux questions les plus courantes
                 </p>
             </div>
 
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">
+            <div class="faqs-item">
+                <button class="faqs-question" onclick="toggleFaq(this)">
                     <span>Quel est le nombre minimum de personnes pour privatiser ?</span>
-                    <span class="faq-icon">+</span>
+                    <span class="faqs-icon">+</span>
                 </button>
-                <div class="faq-answer">
+                <div class="faqs-answer">
                     <p>
                         Nous acceptons les privatisations à partir de 30 personnes pour les déjeuners et 50 personnes
                         pour les dîners. Pour les événements plus petits, des espaces semi-privatifs sont disponibles.
@@ -405,12 +482,12 @@
                 </div>
             </div>
 
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">
+            <div class="faqs-item">
+                <button class="faqs-question" onclick="toggleFaq(this)">
                     <span>Combien de temps à l'avance dois-je réserver ?</span>
-                    <span class="faq-icon">+</span>
+                    <span class="faqs-icon">+</span>
                 </button>
-                <div class="faq-answer">
+                <div class="faqs-answer">
                     <p>
                         Nous recommandons de réserver au moins 4 à 6 semaines à l'avance pour les événements standard.
                         Pour les mariages et grands événements, un délai de 3 à 6 mois est idéal pour garantir la
@@ -419,12 +496,12 @@
                 </div>
             </div>
 
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">
+            <div class="faqs-item">
+                <button class="faqs-question" onclick="toggleFaq(this)">
                     <span>Proposez-vous des menus végétariens et sans allergènes ?</span>
-                    <span class="faq-icon">+</span>
+                    <span class="faqs-icon">+</span>
                 </button>
-                <div class="faq-answer">
+                <div class="faqs-answer">
                     <p>
                         Absolument ! Notre chef peut adapter tous nos menus pour répondre aux régimes végétariens,
                         végans, sans gluten, et prendre en compte toutes les allergies alimentaires. Informez-nous
@@ -433,12 +510,12 @@
                 </div>
             </div>
 
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">
+            <div class="faqs-item">
+                <button class="faqs-question" onclick="toggleFaq(this)">
                     <span>Puis-je apporter ma propre décoration ?</span>
-                    <span class="faq-icon">+</span>
+                    <span class="faqs-icon">+</span>
                 </button>
-                <div class="faq-answer">
+                <div class="faqs-answer">
                     <p>
                         Oui, vous pouvez apporter votre propre décoration. Notre équipe peut également vous mettre en
                         relation avec nos décorateurs partenaires ou créer une décoration personnalisée selon vos
@@ -447,12 +524,12 @@
                 </div>
             </div>
 
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">
+            <div class="faqs-item">
+                <button class="faqs-question" onclick="toggleFaq(this)">
                     <span>Quelles sont les conditions d'annulation ?</span>
-                    <span class="faq-icon">+</span>
+                    <span class="faqs-icon">+</span>
                 </button>
-                <div class="faq-answer">
+                <div class="faqs-answer">
                     <p>
                         Les annulations effectuées plus de 30 jours avant l'événement sont remboursables à 100% (hors
                         frais de dossier). Entre 30 et 15 jours : 50% de remboursement. Moins de 15 jours : aucun
@@ -461,12 +538,12 @@
                 </div>
             </div>
 
-            <div class="faq-item">
-                <button class="faq-question" onclick="toggleFaq(this)">
+            <div class="faqs-item">
+                <button class="faqs-question" onclick="toggleFaq(this)">
                     <span>Avez-vous un parking pour mes invités ?</span>
-                    <span class="faq-icon">+</span>
+                    <span class="faqs-icon">+</span>
                 </button>
-                <div class="faq-answer">
+                <div class="faqs-answer">
                     <p>
                         Oui, nous disposons d'un parking privé gratuit de 80 places à proximité immédiate du restaurant.
                         Pour les grands événements, nous pouvons également organiser un service de voiturier.
@@ -481,7 +558,7 @@
         <div class="cta-box">
             <h2 class="cta-final-title">Prêt à organiser votre événement ?</h2>
             <p class="cta-final-text">
-                Contactez-nous dès aujourd'hui pour discuter de votre projet et recevoir un devis personnalisé
+                Contactez-nous dès aujourd'hui pour discuter de votre projet et recevoir un devis personnalisé.
             </p>
             <button class="cta-final-button">Demander un devis</button>
         </div>
@@ -491,10 +568,22 @@
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <div class="footer-logo">BELUGA</div>
+                <div class="footer-logo">
+                    <img src="static/images/beluga_sf.png" alt="Beluga Logo"
+                        style="height: 50px; vertical-align: middle;">
+                </div>
                 <p class="footer-description">
-                    Restaurant gastronomique au cœur du Carré Sénart.
-                    Une expérience culinaire unique dans un cadre chaleureux et raffiné.
+                    Situé au cœur de Lomé, non loin de la Plage,
+                    Beluga est une adresse incontournable pour les amateurs de gastronomie.
+                    <br>
+                    <br>
+                    <strong>Lundi à samedi</strong>
+                    <br>
+                    <em>Ouvert de <strong>12h00 à 15h00</strong> et de <strong>18h00 à 23h00</strong>.</em>
+                    <br>
+                    <br>
+                    <strong>Dimanche </strong>: <em>Nous sommes <strong>fermés</strong>.</em>
+                    <br>
                 </p>
                 <div class="footer-social">
                     <a href="#" class="social-link" aria-label="Facebook">
@@ -551,6 +640,96 @@
     </footer>
 
     <script>
+        // Navigation mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const mobileOverlay = document.querySelector('.mobile-overlay');
+            const mobileNavClose = document.querySelector('.mobile-nav-close');
+            const body = document.body;
+
+            // Créer l'overlay s'il n'existe pas
+            if (!mobileOverlay) {
+                const overlay = document.createElement('div');
+                overlay.className = 'mobile-overlay';
+                document.body.appendChild(overlay);
+            }
+
+            // Fonction pour ouvrir le menu mobile
+            function openMobileMenu() {
+                mobileMenuBtn.classList.add('active');
+                mobileNav.classList.add('active');
+                document.querySelector('.mobile-overlay').classList.add('active');
+                body.classList.add('mobile-menu-open');
+            }
+
+            // Fonction pour fermer le menu mobile
+            function closeMobileMenu() {
+                mobileMenuBtn.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.querySelector('.mobile-overlay').classList.remove('active');
+                body.classList.remove('mobile-menu-open');
+            }
+
+            // Événements
+            mobileMenuBtn.addEventListener('click', openMobileMenu);
+            mobileNavClose.addEventListener('click', closeMobileMenu);
+
+            // Fermer le menu en cliquant sur l'overlay
+            document.querySelector('.mobile-overlay').addEventListener('click', closeMobileMenu);
+
+            // Fermer le menu en cliquant sur les liens
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+
+            // Fermer le menu avec la touche Escape
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+                    closeMobileMenu();
+                }
+            });
+        });
+        
+        // Gestion de l'affichage du PDF
+        document.addEventListener('DOMContentLoaded', function () {
+            const viewBrochureBtn = document.getElementById('view-brochure');
+            const pdfModal = document.getElementById('pdf-modal');
+            const closeModalBtn = document.getElementById('close-modal');
+            const closeModalFooterBtn = document.getElementById('close-modal-footer');
+
+            // Ouvrir le modal lors du clic sur le bouton
+            viewBrochureBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                pdfModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Empêcher le défilement de la page
+            });
+
+            // Fermer le modal
+            function closeModal() {
+                pdfModal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Rétablir le défilement
+            }
+
+            closeModalBtn.addEventListener('click', closeModal);
+            closeModalFooterBtn.addEventListener('click', closeModal);
+
+            // Fermer le modal en cliquant en dehors du contenu
+            pdfModal.addEventListener('click', function (e) {
+                if (e.target === pdfModal) {
+                    closeModal();
+                }
+            });
+
+            // Fermer le modal avec la touche Échap
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && pdfModal.style.display === 'flex') {
+                    closeModal();
+                }
+            });
+        });
+
         // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
